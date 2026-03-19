@@ -10,7 +10,7 @@
 class Joueur {
 public :
     // Constructeurs :
-    Joueur();   // Constructeur par défault
+    Joueur();   // Constructeur par défaut
     Joueur(std::string prenom, CouleurWagon couleurWagon); // Constructeur classique
 
     // Accesseurs
@@ -19,7 +19,7 @@ public :
     int getNbWagon() const; // Accesseur pour connaitre le nombre de wagon
     std::vector<Ticket> getTicket() const; // Accesseur pour prendre un ticket
     int getTicketValide() const ;
-    CouleurWagon getCouleurWagon(); // Accesseur pour connaitre la couleur d'un wagon
+    CouleurWagon getCouleurWagon() const; // Accesseur pour connaitre la couleur d'un wagon
     
     // Mutateur
     void setGrdTraversee(bool B); // ??????????????
@@ -36,8 +36,7 @@ public :
 
 private :
     std::string prenom;
-    std::string nom;
-    // vector<CoutTrai> main ???
+    std::vector<CarteTrain> main;
     CouleurWagon couleurWagon;
     int nbWagon;
     std::vector<Ticket> ticket;
