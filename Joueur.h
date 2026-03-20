@@ -6,6 +6,7 @@
 #include "Ticket.h"
 #include "Route.h"
 #include "CarteTrain.h"
+#include "Plateau.h"
 
 class Joueur {
 public :
@@ -22,10 +23,10 @@ public :
     CouleurWagon getCouleurWagon() const; // Accesseur pour connaitre la couleur d'un wagon
     
     // Mutateur
-    void setGrdTraversee(bool B); // ??????????????
+    void setGrandeTraversee(bool B); 
 
     // Méthodes
-    void piocherCarte();
+    void piocherCarte(Plateau& plateau);
     void defausserCarte();
     void piocherTicket();
     void defausserTicket();

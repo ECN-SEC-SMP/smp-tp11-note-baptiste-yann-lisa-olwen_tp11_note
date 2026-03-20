@@ -1,16 +1,3 @@
-/*    
-    // Mutateur
-    void setGrdTraversee(bool B); // ??????????????
-
-    // Méthodes
-    void piocherCarte();
-    void defausserCarte();
-    void piocherTicket();
-    void defausserTicket();
-    void validerTicket(Ticket* t);
-    bool peutPrendreRoute(Route* R);
-    void afficherMain();
-*/
 #include <string>
 
 #include "Joueur.h"
@@ -65,6 +52,54 @@ int Joueur::getTicketValide() const
 //////////////////////////////////////
 ///////////// Mutateurs //////////////
 //////////////////////////////////////
+
+void setGrandeTraversee(bool B)
+{
+    // a remplir
+}
+
+
+//////////////////////////////////////
+///////////// Méthodes ///////////////
+//////////////////////////////////////
+
+void Joueur::piocherCarte(Plateau& plateau)
+{   
+    main.push_back(plateau.getPioche().back()); // Prend la dernière carte de la pioche
+    plateau.retirerCartePioche();               // Retire la dernière carte de la pioche
+}
+
+void defausserCarte()
+{
+
+}
+
+void piocherTicket()
+{
+
+}
+
+void defausserTicket()
+{
+
+}
+
+void validerTicket(Ticket* t)
+{
+
+}
+
+bool peutPrendreRoute(Route* R)
+{
+
+}
+
+void afficherMain()
+{
+
+}
+
+
 
 
     
