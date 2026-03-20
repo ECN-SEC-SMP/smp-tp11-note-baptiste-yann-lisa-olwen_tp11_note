@@ -1,5 +1,4 @@
-#ifndef COULEURWAGON_H
-#define COULEURWAGON_H
+#pragma once
 
 enum class CouleurWagon
 {
@@ -8,5 +7,3 @@ enum class CouleurWagon
     Jaune,
     Vert,
 };
-
-#endif

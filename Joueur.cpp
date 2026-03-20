@@ -1,7 +1,10 @@
 #include <string>
+#include <iostream>
 
 #include "Joueur.h"
 #include "CouleurWagon.h"
+#include "Ticket.h"
+#include "Plateau.h"
 
 //////////////////////////////////////
 ////// Constructeur par défaut ///////
@@ -69,35 +72,49 @@ void Joueur::piocherCarte(Plateau& plateau)
     plateau.retirerCartePioche();               // Retire la dernière carte de la pioche
 }
 
-void defausserCarte()
+void Joueur::defausserCarte(std::vector<CarteTrain> main, CarteTrain carteTrain)
 {
+    for (auto it = main.begin(); it != main.end(); it++) 
+    {
+        if (*it == carteTrain)
+        {
+            main.erase(it);
+            break;
+        }
+    }
+}
+
+void Joueur::piocherTicket(Ticket nouvTicket)
+{
+    ticket.push_back(nouvTicket);
+}
+
+void Joueur::defausserTicket(Ticket ticket, Plateau& plateau)
+{
+    plateau.ajouterDefausseTicket(ticket);
 
 }
 
-void piocherTicket()
+void Joueur::validerTicket(Ticket* t)
 {
-
+    if (Ticket::estValide)
+    {
+        setNbTicketValide(t);
+    }
 }
 
-void defausserTicket()
+bool Joueur::peutPrendreRoute(Route* R)
 {
-
-}
-
-void validerTicket(Ticket* t)
-{
-
-}
-
-bool peutPrendreRoute(Route* R)
-{
-
+    
 }
 
 void afficherMain()
 {
 
 }
+
+
+
 
 
 

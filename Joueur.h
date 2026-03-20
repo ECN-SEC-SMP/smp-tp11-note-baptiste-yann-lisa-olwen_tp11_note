@@ -24,12 +24,13 @@ public :
     
     // Mutateur
     void setGrandeTraversee(bool B); 
+    void setNbTicketValide(Ticket* t);
 
     // Méthodes
     void piocherCarte(Plateau& plateau);
-    void defausserCarte();
-    void piocherTicket();
-    void defausserTicket();
+    void defausserCarte(std::vector<CarteTrain> main, CarteTrain carteTrain);
+    void piocherTicket(Ticket nouvTicket);
+    void defausserTicket(Ticket ticket, Plateau& plateau);
     void validerTicket(Ticket* t);
     bool peutPrendreRoute(Route* R);
     void afficherMain();

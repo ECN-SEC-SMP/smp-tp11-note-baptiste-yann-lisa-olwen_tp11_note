@@ -1,5 +1,4 @@
-#ifndef COULEURROUTE_H
-#define COULEURROUTE_H
+#pragma once
 
 enum class CouleurRoute
 {
@@ -10,5 +9,3 @@ enum class CouleurRoute
     Noir,
     Vert
 };
-
-#endif

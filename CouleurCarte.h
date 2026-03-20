@@ -1,5 +1,4 @@
-#ifndef COULEURCARTE_H
-#define COULEURCARTE_H
+#pragma once
 
 enum class CouleurCarte
 {
@@ -11,5 +10,3 @@ enum class CouleurCarte
     Vert,
     Locomotive
 };
-
-#endif

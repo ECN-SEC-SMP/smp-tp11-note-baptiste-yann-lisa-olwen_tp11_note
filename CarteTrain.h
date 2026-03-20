@@ -1,6 +1,5 @@
+#pragma once
 #include "CouleurCarte.h"
-#ifndef CARTETRAIN_H
-#define CARTETRAIN_H
 
 class CarteTrain
 {
@@ -9,6 +8,8 @@ private:
 public:
     CarteTrain(CouleurCarte couleur);
     CouleurCarte getCouleur() const;
+
+    // Surcharge d'opérateur
+    bool operator==(const CarteTrain& other) const;
 };
 
-#endif 
