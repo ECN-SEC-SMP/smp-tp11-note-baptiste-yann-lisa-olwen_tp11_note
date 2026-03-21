@@ -10,6 +10,7 @@ private:
     bool coteOuest;
     bool coteEst;
 public:
+    Ville();
     Ville(const std::string& nom);
     const std::string& getNom() const;
     bool estCoteOuest() const;
