@@ -23,8 +23,7 @@ public :
     CouleurWagon getCouleurWagon() const; // Accesseur pour connaitre la couleur d'un wagon
     
     // Mutateur
-    void setGrandeTraversee(bool B); 
-    void setNbTicketValide(Ticket* t);
+    void setNbTicketValide(int nbTicketValide);
 
     // Méthodes
     void piocherCarte(Plateau& plateau);
@@ -32,9 +31,9 @@ public :
     void piocherTicket(Ticket nouvTicket);
     void defausserTicket(Ticket ticket, Plateau& plateau);
     void validerTicket(Ticket* t);
-    bool peutPrendreRoute(Route* R);
+    bool peutPrendreRoute();
     void afficherMain();
-
+    void GrandeTraversee(bool B); 
 
 private :
     std::string prenom;

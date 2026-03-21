@@ -11,14 +11,14 @@ class Route {
 public :   
     // Constructeurs 
     Route();
-    Route(int A, int B); // Paramètres à compléter
+    Route(int longueur, bool estRouteDouble, CouleurRoute couleurRoute); 
 
     // Accesseurs
     Ville getVilleA() const;
     Ville getVilleB() const;
     CouleurRoute getCouleur() const;
     int getLongueur() const;
-    Joueur getProprio() const;
+    Joueur* getProprio() const;
 
     // Mutateurs
     void setProprio(Joueur* j);
@@ -28,10 +28,10 @@ public :
     bool estDispo();
 
 private :
-    Ville VilleA();
-    Ville VilleB();
-    CouleurRoute Couleur;
+    Ville villeA;
+    Ville villeB;
+    CouleurRoute couleurRoute;
     int longueur;
-    bool estDouble;
-    Joueur proprio;
+    bool estRouteDouble;
+    Joueur* proprio;
 };
