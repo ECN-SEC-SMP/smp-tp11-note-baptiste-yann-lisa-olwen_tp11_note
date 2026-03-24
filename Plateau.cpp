@@ -68,24 +68,24 @@ void Plateau::chargerMapCsv()
 
 void Plateau::chargerTicketCsv()
 {
-    std::fstream fichier("Ticket.csv"); // Ouvre le fichier Ticket.csv en lecture
+    std::fstream fichierTicket("Ticket.csv"); // Ouvre le fichier Ticket.csv en lecture
 
-    if (!fichier.is_open()) {
+    if (!fichierTicket.is_open()) {
         std::cerr << "Erreur : impossible d'ouvrir le fichier Ticket.csv" << std::endl;
         return;
     }
 
     std::string ligne; // Variable pour stocker chaque ligne du fichier
 
-    std::getline(fichier, ligne); // Lit la première ligne (en-tête) et l'ignore
+    std::getline(fichierTicket, ligne); // Lit la première ligne (en-tête) et l'ignore
 
-    std::stringstream ss(ligne);  // Créer un flux de chaîne pour la ligne lue
+    std::stringstream flux_string(ligne);  // Créer un flux de string pour la ligne lue
     std::string id_str, city_A, city_B;  // Variables pour stocker les valeurs extraites de la ligne
 
     // Lire les valeurs séparées par des virgules
-    if (std::getline(ss, id_str, ',') && 
-        std::getline(ss, city_A, ',') &&
-        std::getline(ss, city_B, ',')) 
+    if (std::getline(flux_string, id_str, ',') && 
+        std::getline(flux_string, city_A, ',') &&
+        std::getline(flux_string, city_B, ',')) 
     {
         int id = std::stoi(id_str); // Convertir l'ID en entier
 
@@ -110,7 +110,7 @@ void Plateau::chargerTicketCsv()
             std::cerr << "Erreur : villes non trouvées pour le ticket " << id << std::endl;
         }
     }
-    fichier.close(); // Ferme le fichier après la lecture
+    fichierTicket.close(); // Ferme le fichier après la lecture
 }
 
 void Plateau::afficher()
