@@ -40,6 +40,11 @@ Joueur* Route::getProprio() const
     return proprio;
 }
 
+bool Route::getEstDouble() const
+{
+    return estRouteDouble;
+}
+
 
 //////////////////////////////////////
 ///////////// Mutateurs //////////////
@@ -53,11 +58,6 @@ void Route::setProprio(Joueur* j)
 //////////////////////////////////////
 ///////////// Méthodes ///////////////
 //////////////////////////////////////
-bool Route::estDouble()
-{
-    return estDouble;
-}
-
 bool Route::estDispo()
 {
     return proprio == nullptr;

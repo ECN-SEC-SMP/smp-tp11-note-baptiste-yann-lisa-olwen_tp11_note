@@ -19,12 +19,12 @@ public :
     CouleurRoute getCouleur() const;
     int getLongueur() const;
     Joueur* getProprio() const;
+    bool getEstDouble() const;
 
     // Mutateurs
     void setProprio(Joueur* j);
 
     // Méthodes
-    bool estDouble();
     bool estDispo();
 
 private :

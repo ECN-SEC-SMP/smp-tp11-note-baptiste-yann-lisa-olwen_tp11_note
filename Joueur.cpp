@@ -136,13 +136,3 @@ void Joueur::GrandeTraversee(bool B)
         std::cout << "La grande traversée n'est pas valide." << std::endl;
     }
 }
-
-
-
-
-
-    
-
-
-
-
