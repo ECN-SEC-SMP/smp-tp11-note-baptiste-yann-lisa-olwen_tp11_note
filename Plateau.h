@@ -14,14 +14,15 @@ public:
     std::vector<Ville> getVille() const;
     std::vector<Route> getRoute() const;
     std::vector<CarteTrain> getPioche() const;
+    std::vector<Ticket> getTickets() const;
     std::vector<Ticket> getDefausseTicket() const;
 
     // Mutateurs
     std::vector<Route*> setRouteJoueur(Joueur* j);
 
     // Méthodes
-    void chargerVilleCsv(); // Charger le fichier .csv des villes
-    void chargerRouteCsv(); // Charger le fichier .csv des routes
+    void chargerMapCsv(); // Charger le fichier .csv des villes
+    void chargerTicketCsv(); // Charger le fichier .csv des routes
     void afficher();
     void retirerCartePioche();
     void ajouterDefausseTicket(Ticket ticket);
@@ -30,6 +31,7 @@ private:
     std::vector<Ville> ville;
     std::vector<Route> route;
     std::vector<CarteTrain> pioche;
+    std::vector<Ticket> tickets;
     std::vector<Ticket> defausseTicket;
 
 };
