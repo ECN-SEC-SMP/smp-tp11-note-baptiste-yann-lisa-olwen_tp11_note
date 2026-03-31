@@ -30,3 +30,4 @@ add_executable(AventuriersDuRail
 )
 
 target_link_libraries(AventuriersDuRail Qt6::Core Qt6::Widgets)
+
