@@ -1,4 +1,6 @@
 #include "Route.h"
+#include "Joueur.h"
+#include "Plateau.h"
 
 
 //////////////////////////////////////
@@ -58,7 +60,7 @@ void Route::setProprio(Joueur* j)
 //////////////////////////////////////
 ///////////// Méthodes ///////////////
 //////////////////////////////////////
-bool Route::estDispo()
+bool Route::estDispo() const
 {
     return proprio == nullptr;
 }

@@ -4,9 +4,12 @@
 
 #include "CouleurWagon.h"
 #include "Ticket.h"
-#include "Route.h"
+//#include "Route.h"
 #include "CarteTrain.h"
-#include "Plateau.h"
+//#include "Plateau.h"
+
+class Route;
+class Plateau;  // déclaration anticipée
 
 class Joueur {
 public :
@@ -26,12 +29,12 @@ public :
     void setNbTicketValide(int nbTicketValide);
 
     // Méthodes
-    void piocherCarte(Plateau& plateau);
-    void defausserCarte(std::vector<CarteTrain> main, CarteTrain carteTrain);
+    void piocherCarte(Plateau* plateau);
+    void defausserCarte(CarteTrain carteTrain);
     void piocherTicket(Ticket nouvTicket);
-    void defausserTicket(Ticket ticket, Plateau& plateau);
+    void defausserTicket(Ticket ticket, Plateau* plateau);
     void validerTicket(Ticket* t);
-    bool peutPrendreRoute();
+    bool peutPrendreRoute(Route* route);
     void afficherMain();
     void GrandeTraversee(bool B); 
 

@@ -1,3 +1,4 @@
+#pragma once
 #include "Ville.h"
 #include <string>
 

@@ -7,6 +7,8 @@
 #include "CouleurRoute.h"
 #include "CouleurWagon.h"
 
+class Joueur;
+
 class Route { 
 public :   
     // Constructeurs 
@@ -25,7 +27,7 @@ public :
     void setProprio(Joueur* j);
 
     // Méthodes
-    bool estDispo();
+    bool estDispo() const;
 
 private :
     Ville villeA;
