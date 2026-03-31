@@ -68,15 +68,15 @@ void Joueur::setNbTicketValide(int nbTicketValide)
 ///////////// Méthodes ///////////////
 //////////////////////////////////////
 
-void Joueur::piocherCarte(Plateau& plateau)
+void Joueur::piocherCarte(Plateau* plateau)
 {   
-    main.push_back(plateau.getPioche().back()); // Prend la dernière carte de la pioche
-    plateau.retirerCartePioche();               // Retire la dernière carte de la pioche
+    main.push_back(plateau->getPioche().back()); // Prend la dernière carte de la pioche
+    plateau->retirerCartePioche();               // Retire la dernière carte de la pioche
 }
 
-void Joueur::defausserCarte(std::vector<CarteTrain> main, CarteTrain carteTrain)
+void Joueur::defausserCarte(CarteTrain carteTrain)
 {
-    for (auto it = main.begin(); it != main.end(); it++) 
+    for (auto it = main.begin(); it != main.end(); it++)
     {
         if (*it == carteTrain)
         {
@@ -91,15 +91,15 @@ void Joueur::piocherTicket(Ticket nouvTicket)
     ticket.push_back(nouvTicket);
 }
 
-void Joueur::defausserTicket(Ticket ticket, Plateau& plateau)
+void Joueur::defausserTicket(Ticket ticket, Plateau* plateau)
 {
-    plateau.ajouterDefausseTicket(ticket);
+    plateau->ajouterDefausseTicket(ticket);
 
 }
 
 void Joueur::validerTicket(Ticket* t)
 {
-    if (Ticket::estValide)
+    if (t->estValide())
     {
         int TicVal = getTicketValide();
         TicVal += 1;
@@ -107,12 +107,13 @@ void Joueur::validerTicket(Ticket* t)
     }
 }
 
-bool Joueur::peutPrendreRoute()
+bool Joueur::peutPrendreRoute(Route* route)
 {
-    if (Route::estDispo)
+    if (route->estDispo())
     {
         return true;
     }
+    return false;
 }
 
 void Joueur::afficherMain()

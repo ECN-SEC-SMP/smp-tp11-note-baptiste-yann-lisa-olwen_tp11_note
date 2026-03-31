@@ -1,15 +1,32 @@
-cmake_minimum_required(VERSION 3.10)
-
-project(aventuriers_du_rail)
+cmake_minimum_required(VERSION 3.16)
+project(AventuriersDuRail)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_AUTOMOC ON)   # nécessaire pour Q_OBJECT
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
 
-add_executable(aventuriers_du_rail
-main.cpp
-CarteTrain.cpp
-Joueur.cpp
-Plateau.cpp
-Route.cpp
-Ticket.cpp
-Ville.cpp
+find_package(Qt6 COMPONENTS Core Widgets REQUIRED)
+
+add_executable(AventuriersDuRail
+    main.cpp
+    Affichage.cpp
+    Affichage.h
+    Joueur.cpp
+    Joueur.h
+    Plateau.cpp
+    Plateau.h
+    CarteTrain.cpp
+    CarteTrain.h
+    Route.cpp
+    Route.h
+    Ville.cpp
+    Ville.h
+    Ticket.cpp
+    Ticket.h
+    CouleurCarte.h
+    CouleurRoute.h
+    CouleurWagon.h
 )
+
+target_link_libraries(AventuriersDuRail Qt6::Core Qt6::Widgets)

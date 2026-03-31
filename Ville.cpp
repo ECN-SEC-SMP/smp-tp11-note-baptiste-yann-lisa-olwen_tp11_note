@@ -1,5 +1,6 @@
 #include "Ville.h"
 
+Ville::Ville() {}
 Ville::Ville(const std::string& nom) : nom(nom), coteOuest(false), coteEst(false) {}
 
 const std::string& Ville::getNom() const 
