@@ -1,3 +1,11 @@
+/**
+ * @file CarteTrain.h
+ * @author Lisa Le Goff (lisalegoff29@gmail.com)
+ * @brief Description de la classe CarteTrain
+ * @version 0.1
+ * @date 2026-03-31
+ */
+ 
 #pragma once
 #include "CouleurCarte.h"
 

@@ -23,11 +23,22 @@ Joueur::Joueur(std::string prenom, CouleurWagon couleurWagon) : prenom(prenom), 
 //////////////////////////////////////
 //////////// Accesseurs //////////////
 //////////////////////////////////////
+
+/**
+ * @brief Fonction qui retourne le prénom du joueur
+ * 
+ * @return std::string 
+ */
 std::string Joueur::getPrenom() const
 {
     return prenom;
 } 
 
+/**
+ * @brief Fonction qui retourne la main du joueur
+ * 
+ * @return std::vector<CarteTrain> 
+ */
 std::vector<CarteTrain> Joueur::getMain() const
 {
     return main;

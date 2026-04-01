@@ -12,11 +12,21 @@
 #include <fstream> // Pour la lecture de fichiers.csv
 #include <sstream> // Pour la manipulation de chaînes de caractères lors de la lecture de fichiers.csv
 
+/**
+ * @brief Constructeur par défaut et constructeur avec paramètres pour la classe Plateau
+ * 
+ */
 Plateau::Plateau()
 {
     // Rien à mettre dedans car paramètres par défaut
 }
 
+/**
+ * @brief Constructeur de la classe Plateau avec paramètres pour initialiser les éléments du plateau de jeu
+ * 
+ * @param A 
+ * @param B 
+ */
 Plateau::Plateau(int A, int B)
 {
     // Paramètres à compléter
