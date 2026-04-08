@@ -57,9 +57,12 @@ std::vector<Route> Plateau::getRoute() const
  * 
  * @return std::vector<CarteTrain> 
  */
-std::vector<CarteTrain> Plateau::getPioche() const
-{
+std::vector<CarteTrain>& Plateau::getPioche() {
     return pioche;
+}
+
+void Plateau::setPioche(std::vector<CarteTrain> p) {
+    pioche = p;
 }
 
 /**
