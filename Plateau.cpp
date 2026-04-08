@@ -32,31 +32,62 @@ Plateau::Plateau(int A, int B)
     // Paramètres à compléter
 }
 
+/**
+ * @brief Accesseurs pour les éléments du plateau de jeu
+ * 
+ * @return std::vector<Ville> 
+ */
 std::vector<Ville> Plateau::getVille() const
 {
     return ville;
 }
 
+/**
+ * @brief  Accesseur pour les routes du plateau de jeu
+ * 
+ * @return std::vector<Route> 
+ */
 std::vector<Route> Plateau::getRoute() const
 {
     return route;
 }
 
+/**
+ * @brief Accesseur pour la pioche de cartes de train du plateau de jeu
+ * 
+ * @return std::vector<CarteTrain> 
+ */
 std::vector<CarteTrain> Plateau::getPioche() const
 {
     return pioche;
 }
 
+/**
+ * @brief Accesseur pour les tickets du plateau de jeu 
+ * 
+ * @return std::vector<Ticket> 
+ */
 std::vector<Ticket> Plateau::getTickets() const
 {
     return tickets;
 }
 
+/**
+ * @brief Accesseur pour la défausse de tickets du plateau de jeu
+ * 
+ * @return std::vector<Ticket> 
+ */
 std::vector<Ticket> Plateau::getDefausseTicket() const
 {
     return defausseTicket;
 }
 
+/**
+ * @brief   Méthode qui retourne une liste de pointeurs vers les routes prises par un joueur donné en paramètre
+ * 
+ * @param j 
+ * @return std::vector<Route*> 
+ */
 std::vector<Route*> Plateau::setRouteJoueur(Joueur* j)
 {
     std::vector<Route*> routesPrises;
@@ -70,12 +101,20 @@ std::vector<Route*> Plateau::setRouteJoueur(Joueur* j)
     return routesPrises;                        // On retourne la liste des routes prises par le joueur
 }
 
+/**
+ * @brief 
+ * 
+ */
 void Plateau::chargerMapCsv()
 {
     // Charger le fichier .csv des villes
     
 }
 
+/**
+ * @brief  
+ * 
+ */
 void Plateau::chargerTicketCsv()
 {
     std::fstream fichierTicket("Ticket.csv"); // Ouvre le fichier Ticket.csv en lecture
@@ -123,16 +162,29 @@ void Plateau::chargerTicketCsv()
     fichierTicket.close(); // Ferme le fichier après la lecture
 }
 
+/**
+ * @brief   Affiche le plateau de jeu (villes, routes, cartes de train disponibles, etc.)
+ * 
+ */
 void Plateau::afficher()
 {
     // Afficher le plateau de jeu
 }
 
+/**
+ * @brief  
+ * 
+ */
 void Plateau::retirerCartePioche()
 {
     pioche.pop_back(); // Retire la dernière carte de la pioche
 }
 
+/**
+ * @brief   Ajoute un ticket à la défausse du plateau de jeu
+ * 
+ * @param ticket 
+ */
 void Plateau::ajouterDefausseTicket(Ticket ticket)
 {
     defausseTicket.push_back(ticket); // Ajoute un ticket à la défausse

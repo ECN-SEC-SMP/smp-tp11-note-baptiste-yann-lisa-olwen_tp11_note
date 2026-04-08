@@ -1,6 +1,12 @@
 #include "Affichage.h"
 #include <QGraphicsTextItem>
 
+/**
+ * @brief Constructeur de la classe Affichage qui initialise la fenêtre de jeu et dessine le plateau de jeu
+ * 
+ * @param plateau 
+ * @param parent 
+ */
 Affichage::Affichage(Plateau* plateau, QWidget* parent)
     : QMainWindow(parent), plateau(plateau)
 {
@@ -13,6 +19,10 @@ Affichage::Affichage(Plateau* plateau, QWidget* parent)
     dessinerPlateau();
 }
 
+/**
+ * @brief  Méthode qui dessine le plateau de jeu en utilisant les éléments du plateau (villes, routes, etc.)
+ * 
+ */
 void Affichage::dessinerPlateau()
 {
     // Image de fond
@@ -52,7 +62,13 @@ void Affichage::dessinerPlateau()
     // ...
 }
 
-
+/**
+ * @brief Dessine une ville sur le plateau de jeu avec un cercle et son nom à côté
+ * 
+ * @param x 
+ * @param y 
+ * @param nom 
+ */
 void Affichage::dessinerVille(int x, int y, QString nom)
 {
     scene->addEllipse(x-8, y-8, 16, 16, QPen(Qt::black), QBrush(Qt::white));
@@ -61,12 +77,27 @@ void Affichage::dessinerVille(int x, int y, QString nom)
     texte->setDefaultTextColor(Qt::darkRed);
 }
 
+/**
+ * @brief  Méthode qui met à jour l'affichage du plateau de jeu en redessinant les éléments du plateau
+ * 
+ */
 void Affichage::mettreAJour()
 {
     scene->clear();
     dessinerPlateau();
 }
 
+/**
+ * @brief  Méthode qui dessine une route entre deux villes avec une couleur et une longueur donnée, et gère les routes doubles
+ * 
+ * @param x1 
+ * @param y1 
+ * @param x2 
+ * @param y2 
+ * @param couleur 
+ * @param longueur 
+ * @param estDouble 
+ */
 void Affichage::dessinerRoute(int x1, int y1, int x2, int y2, QColor couleur, int longueur, bool estDouble)
 {
     // Calcule la direction entre les deux villes
