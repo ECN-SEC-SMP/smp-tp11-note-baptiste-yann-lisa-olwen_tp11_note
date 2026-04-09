@@ -12,13 +12,13 @@
 //////////////////////////////////////
 Joueur::Joueur()
 {
-    // Rien à mettre dedans car paramètres par défaut
 }
 
-Joueur::Joueur(std::string prenom, CouleurWagon couleurWagon) : prenom(prenom), couleurWagon(couleurWagon)
+Joueur::Joueur(std::string prenom, CouleurWagon couleurWagon) : prenom(prenom), couleurWagon(couleurWagon), nbWagon(20), nbTicketValide(0), grdTraversee(0)
 {
-    // Rien d'autre à faire
 }
+
+
 
 //////////////////////////////////////
 //////////// Accesseurs //////////////
