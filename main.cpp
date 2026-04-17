@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     fenetre.show();
 
     int nbJoueurs = 0;
-    std::cout << "Combien de joueurs ? (2 a 5) :";
+    std::cout << "Combien de joueurs ? (2 à 4) :";
     std::cin >> nbJoueurs;
 
     std :: vector<CouleurWagon> couleurs=

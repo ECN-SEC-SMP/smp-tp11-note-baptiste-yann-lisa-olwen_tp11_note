@@ -135,9 +135,7 @@ void Plateau::chargerTicketCsv()
     std::string id_str, city_A, city_B;  // Variables pour stocker les valeurs extraites de la ligne
 
     // Lire les valeurs séparées par des virgules
-    if (std::getline(flux_string, id_str, ',') && 
-        std::getline(flux_string, city_A, ',') &&
-        std::getline(flux_string, city_B, ',')) 
+    if (std::getline(flux_string, id_str, ',') && std::getline(flux_string, city_A, ',') && std::getline(flux_string, city_B, ',')) 
     {
         int id = std::stoi(id_str); // Convertir l'ID en entier
 
