@@ -2,9 +2,9 @@
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QGraphicsView>
-#include <QGraphicsRectItem>  // ← ajouter
-#include <QTransform>         // ← ajouter
-#include <QtMath>             // ← ajouter pour atan2
+#include <QGraphicsRectItem>  
+#include <QTransform>         
+#include <QtMath>           
 #include "Plateau.h"
 #include "Joueur.h"
 
