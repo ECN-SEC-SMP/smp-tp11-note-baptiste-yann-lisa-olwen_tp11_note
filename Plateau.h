@@ -13,7 +13,8 @@ public:
     // Accesseurs
     std::vector<Ville> getVille() const;
     std::vector<Route> getRoute() const;
-    std::vector<CarteTrain> getPioche() const;
+    std::vector<CarteTrain>& getPioche();
+    void setPioche(std::vector<CarteTrain> p);
     std::vector<Ticket> getTickets() const;
     std::vector<Ticket> getDefausseTicket() const;
 

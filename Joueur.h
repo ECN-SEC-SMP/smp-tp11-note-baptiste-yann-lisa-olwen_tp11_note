@@ -37,6 +37,7 @@ public :
     bool peutPrendreRoute(Route* route);
     void afficherMain();
     void GrandeTraversee(bool B); 
+    void afficherMain() const;
 
 private :
     std::string prenom;
