@@ -17,10 +17,11 @@
 #include "Ville.h"
 
 
-
 int main(int argc, char *argv[])
 {
+
     QApplication app(argc, argv);
+    
     Plateau plateau;
     Affichage fenetre(&plateau);
     fenetre.show();
