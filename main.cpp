@@ -19,18 +19,18 @@
 
 int main(int argc, char *argv[])
 {
-
     QApplication app(argc, argv);
     
     Plateau plateau;
     Affichage fenetre(&plateau);
     fenetre.show();
+    app.processEvents();  // ← affiche la fenêtre immédiatement
 
     int nbJoueurs = 0;
     std::cout << "Combien de joueurs ? (2 a 5) :";
     std::cin >> nbJoueurs;
 
-    std :: vector<CouleurWagon> couleurs=
+    std::vector<CouleurWagon> couleurs =
     {
         CouleurWagon::Rouge,
         CouleurWagon::Bleu,
@@ -39,14 +39,14 @@ int main(int argc, char *argv[])
     };
 
     std::vector<Joueur> joueurs;
-    for (int i=0; i<nbJoueurs; i++)
+    for (int i = 0; i < nbJoueurs; i++)
     {
         std::string prenom;
         std::cout << "Prenom du joueur " << i+1 << " : ";
         std::cin >> prenom;
         joueurs.push_back(Joueur(prenom, couleurs[i]));
         std::cout << "Joueur " << prenom << " créé " << std::endl;
-
+        app.processEvents();
     }
 
     std::vector<CarteTrain> pioche;
@@ -62,20 +62,19 @@ int main(int argc, char *argv[])
         CouleurCarte::Locomotive
     };
 
-    for (CouleurCarte couleur : couleursCartes) 
+    for (CouleurCarte couleur : couleursCartes)
     {
-        for (int i = 0; i < 10; i++) // 10 cartes de chaque couleur
-        { 
+        for (int i = 0; i < 10; i++)
+        {
             pioche.push_back(CarteTrain(couleur));
         }
     }
-    for (int i = 0; i < 12; i++) // 12 cartes locomotive
-        {
-            pioche.push_back(CarteTrain(CouleurCarte::Locomotive));
-        }
-    
+    for (int i = 0; i < 12; i++)
+    {
+        pioche.push_back(CarteTrain(CouleurCarte::Locomotive));
+    }
 
-    srand(time(nullptr)); // initialisation
+    srand(time(nullptr));
 
     // Mélange de la pioche
     for (int i = pioche.size() - 1; i > 0; i--)
@@ -86,11 +85,8 @@ int main(int argc, char *argv[])
         pioche[j] = temp;
     }
 
-    
-    //poser la pioche sur le plateau
-    plateau.setPioche(pioche); 
-
-    std::cout << "Pioche créée : " << pioche.size() << " cartes dans la pioche."<< std::endl;
+    plateau.setPioche(pioche);
+    std::cout << "Pioche créée : " << pioche.size() << " cartes dans la pioche." << std::endl;
 
     // Distribuer 4 cartes à chaque joueur
     for (Joueur& j : joueurs)
@@ -99,45 +95,42 @@ int main(int argc, char *argv[])
         {
             j.piocherCarte(&plateau);
         }
-        std::cout << j.getPrenom() << " a eu ses cartes."<< std::endl;
+        std::cout << j.getPrenom() << " a eu ses cartes." << std::endl;
     }
 
     std::vector<Ticket> piocheTickets;
- 
-    std::ifstream fichier("ticket.csv"); // ouvrir le fichier
- 
+
+    std::ifstream fichier("ticket.csv");
+
     if (!fichier.is_open())
     {
-        std::cerr << "Erreur : impossible d'ouvrir ticket.csv"<< std::endl;
+        std::cerr << "Erreur : impossible d'ouvrir ticket.csv" << std::endl;
         return -1;
     }
- 
+
     std::string ligne;
-    std::getline(fichier, ligne); // ignorer la première ligne (en-tête)
- 
+    std::getline(fichier, ligne);
+
     while (std::getline(fichier, ligne))
     {
         std::stringstream ss(ligne);
         std::string id_str, nomA, nomB;
- 
-        // Découper la ligne par les virgules
+
         std::getline(ss, id_str, ',');
         std::getline(ss, nomA, ',');
         std::getline(ss, nomB, ',');
- 
+
         int id = std::stoi(id_str);
- 
-        // Créer les deux villes
+
         Ville vA(nomA);
         Ville vB(nomB);
- 
-        // Créer le ticket et l'ajouter à la pioche
+
         piocheTickets.push_back(Ticket(id, vA, vB));
     }
- 
+
     fichier.close();
-    std::cout << piocheTickets.size() << " tickets charges."<< std::endl;
- 
+    std::cout << piocheTickets.size() << " tickets charges." << std::endl;
+
     // Mélanger les tickets
     for (int i = piocheTickets.size() - 1; i > 0; i--)
     {
@@ -146,7 +139,7 @@ int main(int argc, char *argv[])
         piocheTickets[i] = piocheTickets[j];
         piocheTickets[j] = temp;
     }
- 
+
     // Distribuer 2 tickets à chaque joueur
     for (Joueur& j : joueurs)
     {
@@ -155,52 +148,53 @@ int main(int argc, char *argv[])
             j.piocherTicket(piocheTickets.back());
             piocheTickets.pop_back();
         }
-        std::cout << j.getPrenom() << " a recu ses tickets."<< std::endl;
+        std::cout << j.getPrenom() << " a recu ses tickets." << std::endl;
+    }
 
-    }    
     int nombredeTour = 0;
     bool partieFinie = false;
 
     while (!partieFinie)
     {
-        // Quel joueur est en train de jouer ?
+        app.processEvents();  // ← garde la fenêtre Qt réactive
+
         Joueur& joueurCourant = joueurs[nombredeTour % nbJoueurs];
-        
-        // Afficher l'état du joueur
-        std::cout << std::endl << "============================="<< std::endl;
+
+        std::cout << std::endl << "=============================" << std::endl;
         std::cout << "C'est le tour de : " << joueurCourant.getPrenom() << std::endl;
         std::cout << "Wagons restants : " << joueurCourant.getNbWagon() << std::endl;
         std::cout << "Tickets valides : " << joueurCourant.getTicketValide() << std::endl;
-        std::cout << "Vos tickets :"<< std::endl;
+        std::cout << "Vos tickets :" << std::endl;
+
         std::vector<Ticket> tickets = joueurCourant.getTicket();
         if (tickets.empty())
         {
-            std::cout << "Le joueur n'a pas encore deticket" << std::endl;
+            std::cout << "Le joueur n'a pas encore de ticket" << std::endl;
         }
         else
         {
-            for (int i = 0; i < tickets.size(); i++)
+            for (int i = 0; i < (int)tickets.size(); i++)
             {
                 std::cout << "- " << tickets[i].getVilleA().getNom() << " <-> " << tickets[i].getVilleB().getNom() << std::endl;
             }
         }
 
-        std::cout << "Vos cartes : "<< std::endl;
+        std::cout << "Vos cartes : " << std::endl;
         joueurCourant.afficherMain();
         std::cout << "=============================" << std::endl;
 
-        // Demander une action
         int action = 0;
-        std::cout << "\nQue voulez-vous faire ?"<< std::endl;
-        std::cout << "1. Piocher une carte train"<< std::endl;
-        std::cout << "2. Poser des wagons"<< std::endl;
-        std::cout << "3. Echanger ses deux tickets contre deux nouveaux"<< std::endl;
+        std::cout << "\nQue voulez-vous faire ?" << std::endl;
+        std::cout << "1. Piocher une carte train" << std::endl;
+        std::cout << "2. Poser des wagons" << std::endl;
+        std::cout << "3. Echanger ses deux tickets contre deux nouveaux" << std::endl;
         std::cout << "Votre choix : ";
         std::cin >> action;
 
+        app.processEvents();  // ← après chaque action
+
         if (action == 1)
         {
-            // Piocher 2 cartes wagon
             for (int i = 0; i < 2; i++)
             {
                 if (!plateau.getPioche().empty())
@@ -218,7 +212,6 @@ int main(int argc, char *argv[])
         {
             std::cout << joueurCourant.getPrenom() << " passe son tour." << std::endl;
         }
-        
         else if (action == 3)
         {
             std::vector<Ticket> anciensTickets = joueurCourant.getTicket();
@@ -245,7 +238,7 @@ int main(int argc, char *argv[])
                     std::cout << "Nouveaux tickets de " << joueurCourant.getPrenom() << " :" << std::endl;
 
                     std::vector<Ticket> nouveauxTickets = joueurCourant.getTicket();
-                    for (int i = 0; i < nouveauxTickets.size(); i++)
+                    for (int i = 0; i < (int)nouveauxTickets.size(); i++)
                     {
                         std::cout << "- " << nouveauxTickets[i].getVilleA().getNom() << " <-> " << nouveauxTickets[i].getVilleB().getNom() << std::endl;
                     }
@@ -267,10 +260,8 @@ int main(int argc, char *argv[])
             }
         }
 
-        // Passer au joueur suivant
         nombredeTour++;
     }
- 
+
     return app.exec();
 }
- 
