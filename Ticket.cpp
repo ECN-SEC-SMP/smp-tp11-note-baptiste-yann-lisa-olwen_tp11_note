@@ -50,3 +50,15 @@ bool Ticket::estValide() const
 { 
     return valide; 
 }
+
+/**
+ * @brief Surcharge de l'opérateur ==
+ * 
+ * @param other 
+ * @return true 
+ * @return false 
+ */
+bool Ticket::operator==(const Ticket& other) const
+{
+    return this->id == other.id;
+}

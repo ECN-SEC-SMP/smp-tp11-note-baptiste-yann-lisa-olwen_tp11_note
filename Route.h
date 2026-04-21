@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 
-#include "Joueur.h"
 #include "Ville.h"
 #include "CouleurCarte.h"
 #include "CouleurRoute.h"

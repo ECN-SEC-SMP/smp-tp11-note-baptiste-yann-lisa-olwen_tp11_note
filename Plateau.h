@@ -3,6 +3,8 @@
 
 #include "Ville.h"
 #include "Route.h"
+#include "CarteTrain.h"
+#include "Ticket.h"
 
 class Plateau {
 public:

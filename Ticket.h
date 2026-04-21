@@ -14,5 +14,6 @@ public:
     const Ville& getVilleA() const;
     const Ville& getVilleB() const;
     bool estValide() const;
-    // Potentiellement fonction pour afficher le ticket
+    bool operator==(const Ticket& other) const;
 };
+

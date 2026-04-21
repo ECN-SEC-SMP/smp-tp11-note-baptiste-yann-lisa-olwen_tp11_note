@@ -148,10 +148,18 @@ void Joueur::piocherTicket(Ticket nouvTicket)
  * @param ticket 
  * @param plateau 
  */
-void Joueur::defausserTicket(Ticket ticket, Plateau* plateau)
+void Joueur::defausserTicket(Ticket t, Plateau* plateau)
 {
-    plateau->ajouterDefausseTicket(ticket);
+    plateau->ajouterDefausseTicket(t);
 
+    for (auto it = this->ticket.begin(); it != this->ticket.end(); it++)
+    {
+        if (*it == t)
+        {
+            this->ticket.erase(it);
+            break;
+        }
+    }
 }
 
 /**

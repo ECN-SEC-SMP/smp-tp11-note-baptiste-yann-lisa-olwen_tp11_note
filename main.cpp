@@ -190,7 +190,7 @@ int main(int argc, char *argv[])
 
         // Demander une action
         int action = 0;
-        std::cout << "\nQue voulez-vous faire ?"<< std::endl;
+        std::cout << std::endl << "Que voulez-vous faire ?"<< std::endl;
         std::cout << "1. Piocher une carte train"<< std::endl;
         std::cout << "2. Poser des wagons"<< std::endl;
         std::cout << "3. Echanger ses deux tickets contre deux nouveaux"<< std::endl;
@@ -199,8 +199,8 @@ int main(int argc, char *argv[])
 
         if (action == 1)
         {
-            // Piocher 2 cartes wagon
-            for (int i = 0; i < 2; i++)
+            // Piocher 1 cartes train
+            for (int i = 0; i < 1; i++)
             {
                 if (!plateau.getPioche().empty())
                 {
@@ -228,26 +228,24 @@ int main(int argc, char *argv[])
             }
             else
             {
-                joueurCourant.defausserTicket(anciensTickets[0], &plateau);
-                joueurCourant.defausserTicket(anciensTickets[1], &plateau);
-
                 if ((int)piocheTickets.size() >= 2)
                 {
-                    joueurCourant.piocherTicket(piocheTickets.back());
+                    joueurCourant.defausserTicket(anciensTickets[0], &plateau);
+                    joueurCourant.defausserTicket(anciensTickets[1], &plateau);
+
+                    Ticket nouveauTicket1 = piocheTickets.back();
+                    joueurCourant.piocherTicket(nouveauTicket1);
                     piocheTickets.pop_back();
 
-                    joueurCourant.piocherTicket(piocheTickets.back());
+                    Ticket nouveauTicket2 = piocheTickets.back();
+                    joueurCourant.piocherTicket(nouveauTicket2);
                     piocheTickets.pop_back();
 
                     system("clear");
 
                     std::cout << "Nouveaux tickets de " << joueurCourant.getPrenom() << " :" << std::endl;
-
-                    std::vector<Ticket> nouveauxTickets = joueurCourant.getTicket();
-                    for (int i = 0; i < nouveauxTickets.size(); i++)
-                    {
-                        std::cout << "- " << nouveauxTickets[i].getVilleA().getNom() << " <-> " << nouveauxTickets[i].getVilleB().getNom() << std::endl;
-                    }
+                    std::cout << "- " << nouveauTicket1.getVilleA().getNom() << " <-> " << nouveauTicket1.getVilleB().getNom() << std::endl;
+                    std::cout << "- " << nouveauTicket2.getVilleA().getNom() << " <-> " << nouveauTicket2.getVilleB().getNom() << std::endl;
                 }
                 else
                 {
@@ -255,7 +253,6 @@ int main(int argc, char *argv[])
                 }
             }
         }
-
         // Vérifier la fin de partie
         for (Joueur& j : joueurs)
         {

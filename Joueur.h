@@ -4,9 +4,9 @@
 
 #include "CouleurWagon.h"
 #include "Ticket.h"
-//#include "Route.h"
+#include "Route.h"
 #include "CarteTrain.h"
-//#include "Plateau.h"
+#include "Plateau.h"
 
 class Route;
 class Plateau;  // déclaration anticipée
