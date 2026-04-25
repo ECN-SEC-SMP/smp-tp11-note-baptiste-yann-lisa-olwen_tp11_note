@@ -11,7 +11,9 @@
 //////////////////////////////////////
 Route::Route()
 {
-    // Rien à mettre dedans car paramètres par défaut
+    proprio = nullptr; 
+    longueur = 0;
+    estRouteDouble = false;
 }
 
 /**
@@ -21,7 +23,7 @@ Route::Route()
  * @param estRouteDouble 
  * @param couleurRoute 
  */
-Route::Route(int longueur, bool estRouteDouble, CouleurRoute couleurRoute) : longueur(longueur), estRouteDouble(estRouteDouble), couleurRoute(couleurRoute) {}
+Route::Route(int longueur, bool estRouteDouble, CouleurRoute couleurRoute) : longueur(longueur), estRouteDouble(estRouteDouble), couleurRoute(couleurRoute), proprio(nullptr) {}
 
 
 //////////////////////////////////////
@@ -121,6 +123,26 @@ bool Route::estDispo() const
     return proprio == nullptr;
 }
 
+
+void Route::setVilleA(Ville v) 
+{ 
+    villeA = v; 
+}
+
+void Route::setVilleB(Ville v) 
+{ 
+    villeB = v; 
+}
+
+CouleurRoute Route::getCouleur2() const 
+{ 
+    return couleurRoute2; 
+}
+
+void Route::setCouleur2(CouleurRoute c) 
+{ 
+    couleurRoute2 = c; 
+}
 
 
 
