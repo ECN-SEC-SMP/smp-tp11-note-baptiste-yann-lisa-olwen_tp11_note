@@ -18,7 +18,7 @@ private:
 
     void dessinerPlateau();
     void dessinerVille(int x, int y, QString nom);
-    void dessinerRoute(int x1, int y1, int x2, int y2, QColor couleur, int longueur, QColor couleur2 = Qt::transparent);
+    void dessinerRoute(int x1, int y1, int x2, int y2, QColor couleur, int longueur, QColor couleur2 = Qt::transparent, QString proprio = "");    
     void dessinerJoueurs();
 
 public:

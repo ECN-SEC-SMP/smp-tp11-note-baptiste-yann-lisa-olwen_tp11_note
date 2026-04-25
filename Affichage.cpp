@@ -2,6 +2,8 @@
 #include <QGraphicsTextItem>
 #include <QMouseEvent>
 #include <QDebug>
+#include <map>
+#include <string>
 
 void Affichage::mousePressEvent(QMouseEvent* event)
 {
@@ -115,10 +117,80 @@ void Affichage::mettreAJour()
 {
     scene->clear();
     dessinerPlateau();
+
+    // Map des coordonnées des villes
+    std::map<std::string, std::pair<int,int>> coords = {
+        {"Seattle",       {80,  168}},
+        {"Calgary",       {310, 68}},
+        {"San Francisco", {70,  444}},
+        {"Los Angeles",   {157, 577}},
+        {"Salt Lake City",{274, 388}},
+        {"Helena",        {314, 222}},
+        {"Denver",        {484, 413}},
+        {"Albuquerque",   {439, 570}},
+        {"Winnipeg",      {584, 99}},
+        {"Kansas City",   {692, 413}},
+        {"Dallas",        {655, 581}},
+        {"New Orleans",   {856, 657}},
+        {"Duluth",        {730, 173}},
+        {"Montreal",      {1015, 96}},
+        {"New York",      {1135, 199}},
+        {"Chicago",       {825, 309}},
+        {"Washington",    {1101, 357}},
+        {"Atlanta",       {953, 531}},
+        {"Miami",         {1127, 698}}
+    };
+
+    // Afficher les propriétaires
+    for (Route& r : plateau->getRoute())
+    {
+        if (!r.estDispo())
+        {
+            std::string nomA = r.getVilleA().getNom();
+            std::string nomB = r.getVilleB().getNom();
+
+            if (coords.count(nomA) && coords.count(nomB))
+            {
+                int x1 = coords[nomA].first;
+                int y1 = coords[nomA].second;
+                int x2 = coords[nomB].first;
+                int y2 = coords[nomB].second;
+
+                float midX = (x1 + x2) / 2.0f;
+                float midY = (y1 + y2) / 2.0f;
+
+                QString proprio = QString::fromStdString(r.getProprio()->getPrenom());
+                QGraphicsTextItem* texte = scene->addText(proprio);
+                QFont font;
+                font.setPointSize(15);
+                font.setBold(true);
+                texte->setFont(font);
+                QColor couleurTexte;
+                CouleurWagon cw = r.getProprio()->getCouleurWagon();
+                if (cw == CouleurWagon::Rouge)  couleurTexte = Qt::red;
+                if (cw == CouleurWagon::Bleu)   couleurTexte = Qt::blue;
+                if (cw == CouleurWagon::Jaune)  couleurTexte = Qt::yellow;
+                if (cw == CouleurWagon::Vert)   couleurTexte = Qt::green;
+                texte->setDefaultTextColor(couleurTexte);
+                texte->setPos(midX - texte->boundingRect().width()/2,
+                              midY - texte->boundingRect().height()/2);
+                // Contour noir derrière le texte
+                QGraphicsRectItem* fond = scene->addRect(
+                    midX - texte->boundingRect().width()/2 - 2,
+                    midY - texte->boundingRect().height()/2 - 2,
+                    texte->boundingRect().width() + 4,
+                    texte->boundingRect().height() + 4
+                );
+                fond->setBrush(QBrush(Qt::black));
+                fond->setPen(QPen(Qt::transparent));
+                fond->setZValue(-1);  // derrière le texte
+            }
+        }
+    }
 }
 
 
-void Affichage::dessinerRoute(int x1, int y1, int x2, int y2, QColor couleur, int longueur, QColor couleur2)
+void Affichage::dessinerRoute(int x1, int y1, int x2, int y2, QColor couleur, int longueur, QColor couleur2, QString proprio)
 {
     float totalDx = x2 - x1;
     float totalDy = y2 - y1;
@@ -160,4 +232,19 @@ void Affichage::dessinerRoute(int x1, int y1, int x2, int y2, QColor couleur, in
             segment2->setTransform(transform2);
         }
     }
+
+        if (!proprio.isEmpty())
+        {
+            float midX = (x1 + x2) / 2.0f;
+            float midY = (y1 + y2) / 2.0f;
+
+            QGraphicsTextItem* texte = scene->addText(proprio);
+            QFont font;
+            font.setPointSize(8);
+            font.setBold(true);
+            texte->setFont(font);
+            texte->setDefaultTextColor(Qt::darkBlue);
+            texte->setPos(midX - texte->boundingRect().width()/2, 
+                        midY - texte->boundingRect().height()/2);
+        }
 }

@@ -47,7 +47,12 @@ std::vector<Ville> Plateau::getVille() const
  * 
  * @return std::vector<Route> 
  */
-std::vector<Route> Plateau::getRoute() const
+/*std::vector<Route> Plateau::getRoute() const
+{
+    return route;
+}*/
+
+std::vector<Route>& Plateau::getRoute()
 {
     return route;
 }
@@ -104,15 +109,6 @@ std::vector<Route*> Plateau::setRouteJoueur(Joueur* j)
     return routesPrises;                        // On retourne la liste des routes prises par le joueur
 }
 
-/**
- * @brief 
- * 
- */
-void Plateau::chargerMapCsv()
-{
-    // Charger le fichier .csv des villes
-    
-}
 
 /**
  * @brief  
@@ -194,3 +190,73 @@ void Plateau::ajouterDefausseTicket(Ticket ticket)
 }
 
 
+void Plateau::chargerMapCsv()
+{
+    std::ifstream fichier("route.csv");
+    if (!fichier.is_open()) {
+        std::cerr << "Erreur : impossible d'ouvrir route.csv" << std::endl;
+        return;
+    }
+
+    std::string ligne;
+    std::getline(fichier, ligne); // ignorer l'en-tête
+
+    while (std::getline(fichier, ligne))
+    {
+        std::stringstream ss(ligne);
+        std::string nomA, nomB, longueur_str, couleur_str, double_str;
+        std::getline(ss, nomA, ',');
+        std::getline(ss, nomB, ',');
+        std::getline(ss, longueur_str, ',');
+        std::getline(ss, couleur_str, ',');
+        std::getline(ss, double_str, ',');
+
+        int longueur = std::stoi(longueur_str);
+        bool estDouble = (double_str != "Aucune");
+
+        CouleurRoute couleur = CouleurRoute::Blanc;
+        if (couleur_str == "Noir")   couleur = CouleurRoute::Noir;
+        if (couleur_str == "Blanc")  couleur = CouleurRoute::Blanc;
+        if (couleur_str == "Rouge")  couleur = CouleurRoute::Rouge;
+        if (couleur_str == "Bleu")   couleur = CouleurRoute::Bleu;
+        if (couleur_str == "Vert")   couleur = CouleurRoute::Vert;
+        if (couleur_str == "Jaune")  couleur = CouleurRoute::Jaune;
+
+        Route r(longueur, estDouble, couleur);  // ← créer r d'abord
+        r.setVilleA(Ville(nomA));
+        r.setVilleB(Ville(nomB));
+
+        if (double_str != "Aucune")  // ← setCouleur2 après création de r
+        {
+            CouleurRoute couleur2 = CouleurRoute::Blanc;
+            if (double_str == "Noir")   couleur2 = CouleurRoute::Noir;
+            if (double_str == "Blanc")  couleur2 = CouleurRoute::Blanc;
+            if (double_str == "Rouge")  couleur2 = CouleurRoute::Rouge;
+            if (double_str == "Bleu")   couleur2 = CouleurRoute::Bleu;
+            if (double_str == "Vert")   couleur2 = CouleurRoute::Vert;
+            if (double_str == "Jaune")  couleur2 = CouleurRoute::Jaune;
+            r.setCouleur2(couleur2);
+        }
+
+        route.push_back(r);
+    }
+    fichier.close();
+}
+
+void Plateau::viderDefausseTicket()
+{
+    defausseTicket.clear();
+}
+
+void Plateau::ajouterDefausseCartes(CarteTrain carte)
+{
+    defausseCartes.push_back(carte);
+}
+std::vector<CarteTrain> Plateau::getDefausseCartes() const
+{
+    return defausseCartes;
+}
+void Plateau::viderDefausseCartes()
+{
+    defausseCartes.clear();
+}
