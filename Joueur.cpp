@@ -39,7 +39,7 @@ std::string Joueur::getPrenom() const
  * 
  * @return std::vector<CarteTrain> 
  */
-std::vector<CarteTrain> Joueur::getMain() const
+std::vector<CarteTrain>& Joueur::getMain()
 {
     return main;
 }
@@ -69,7 +69,7 @@ int Joueur::getNbWagon() const
  * 
  * @return std::vector<Ticket> 
  */
-std::vector<Ticket> Joueur::getTicket() const
+std::vector<Ticket>& Joueur::getTicket()
 {
     return ticket;
 }
@@ -224,10 +224,46 @@ void Joueur::GrandeTraversee(bool B)
     }
 }
 
-void Joueur::afficherMain() const   // ← juste ajouter const ici
+
+bool Joueur::verifierTicket(Ticket t, std::vector<Route>& routes)
 {
-    for (auto it = main.begin(); it != main.end(); it++)
+    std::string villeA = t.getVilleA().getNom();
+    std::string villeB = t.getVilleB().getNom();
+
+    // Construire le graphe des routes du joueur
+    std::map<std::string, std::vector<std::string>> graphe;
+    for (Route& r : routes)
     {
-        std::cout << couleurToString(it->getCouleur()) << std::endl;
+        if (r.getProprio() == this)  // seulement les routes du joueur
+        {
+            graphe[r.getVilleA().getNom()].push_back(r.getVilleB().getNom());
+            graphe[r.getVilleB().getNom()].push_back(r.getVilleA().getNom());
+        }
     }
+
+    // BFS depuis villeA
+    std::vector<std::string> visites;
+    std::vector<std::string> file = {villeA};
+
+    while (!file.empty())
+    {
+        std::string ville = file.front();
+        file.erase(file.begin());
+
+        if (ville == villeB)
+            return true;  // chemin trouvé !
+
+        // Marquer comme visitée
+        bool dejaVisite = false;
+        for (std::string v : visites)
+            if (v == ville) dejaVisite = true;
+
+        if (!dejaVisite)
+        {
+            visites.push_back(ville);
+            for (std::string voisin : graphe[ville])
+                file.push_back(voisin);
+        }
+    }
+    return false;  // pas de chemin
 }

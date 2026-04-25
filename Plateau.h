@@ -14,11 +14,14 @@ public:
 
     // Accesseurs
     std::vector<Ville> getVille() const;
-    std::vector<Route> getRoute() const;
+    //std::vector<Route> getRoute() const;
+    std::vector<Route>& getRoute();
     std::vector<CarteTrain>& getPioche();
     void setPioche(std::vector<CarteTrain> p);
     std::vector<Ticket> getTickets() const;
     std::vector<Ticket> getDefausseTicket() const;
+    std::vector<CarteTrain> getDefausseCartes() const;
+
 
     // Mutateurs
     std::vector<Route*> setRouteJoueur(Joueur* j);
@@ -29,6 +32,10 @@ public:
     void afficher();
     void retirerCartePioche();
     void ajouterDefausseTicket(Ticket ticket);
+    void viderDefausseTicket();
+    void ajouterDefausseCartes(CarteTrain carte);
+    void viderDefausseCartes();
+
 
 private:
     std::vector<Ville> ville;
@@ -36,5 +43,7 @@ private:
     std::vector<CarteTrain> pioche;
     std::vector<Ticket> tickets;
     std::vector<Ticket> defausseTicket;
+    std::vector<CarteTrain> defausseCartes;
 
 };
+
