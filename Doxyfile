@@ -2,7 +2,7 @@
 # Doxyfile – Les Aventuriers du Rail
 # Génère une documentation HTML complète avec graphes de dépendances.
 #
-# Les variables @CMAKE_SOURCE_DIR@ et @PROJECT_VERSION@ sont substituées
+# Les variables . et @PROJECT_VERSION@ sont substituées
 # automatiquement par CMake via configure_file().
 # =============================================================================
 
@@ -13,13 +13,13 @@ PROJECT_BRIEF          = "Implémentation C++ du jeu de société"
 PROJECT_LOGO           =
 
 # ── Répertoires sources ───────────────────────────────────────────────────────
-INPUT                  = @CMAKE_SOURCE_DIR@/include \
-                         @CMAKE_SOURCE_DIR@/src
+INPUT                  = .
+                         ./src
 RECURSIVE              = YES
 FILE_PATTERNS          = *.hpp *.h *.cpp *.c
 
 # ── Sortie ────────────────────────────────────────────────────────────────────
-OUTPUT_DIRECTORY       = @CMAKE_SOURCE_DIR@/docs
+OUTPUT_DIRECTORY       = ./docs
 OUTPUT_LANGUAGE        = French
 CREATE_SUBDIRS         = NO
 
@@ -75,7 +75,7 @@ ENABLE_PREPROCESSING   = YES
 MACRO_EXPANSION        = YES
 EXPAND_ONLY_PREDEF     = NO
 SEARCH_INCLUDES        = YES
-INCLUDE_PATH           = @CMAKE_SOURCE_DIR@/include
+INCLUDE_PATH           = ./include
 
 # ── Warnings ─────────────────────────────────────────────────────────────────
 QUIET                  = NO

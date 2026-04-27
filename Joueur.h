@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <map> 
 
 #include "CouleurWagon.h"
 #include "Ticket.h"
