@@ -23,8 +23,11 @@ if(NOT BUILD_DOC_ONLY)
         CouleurCarte.h
         CouleurRoute.h
         CouleurWagon.h
-        modules.h       # ← ajouté
+        modules.h 
     )
+configure_file(${CMAKE_SOURCE_DIR}/ticket.csv ${CMAKE_BINARY_DIR}/ticket.csv COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/map.csv ${CMAKE_BINARY_DIR}/map.csv COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/route.csv ${CMAKE_BINARY_DIR}/route.csv COPYONLY)
 
     target_link_libraries(AventuriersDuRail Qt6::Core Qt6::Widgets)
 endif()
