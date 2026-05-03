@@ -5,12 +5,22 @@
 #include <map>
 #include <string>
 
+/**
+ * @brief Intercepte les clics souris et affiche les coordonnées scène dans la console.
+ * @param event Événement souris fourni par Qt.
+ * @note Utile en phase de développement pour repérer les coordonnées des villes.
+ */
 void Affichage::mousePressEvent(QMouseEvent* event)
 {
     QPointF pos = vue->mapToScene(event->pos());
     qDebug() << "x =" << pos.x() << ", y =" << pos.y();
 }
 
+/**
+ * @brief Construit la fenêtre principale et initialise la scène graphique.
+ * @param plateau Pointeur vers le plateau logique (ne doit pas être nul).
+ * @param parent  Widget Qt parent (nullptr = fenêtre racine).
+ */
 Affichage::Affichage(Plateau* plateau, QWidget* parent)
     : QMainWindow(parent), plateau(plateau)
 {
@@ -24,8 +34,14 @@ Affichage::Affichage(Plateau* plateau, QWidget* parent)
     dessinerPlateau();
 }
 
-
-
+/**
+ * @brief Dessine l'intégralité du plateau : toutes les villes et routes du jeu.
+ *
+ * Les coordonnées sont exprimées en pixels dans le repère de la scène Qt.
+ * Les routes doubles sont indiquées par un second argument couleur non transparent.
+ *
+ * @note Le dessin du fond image est commenté — décommenter pour activer.
+ */
 void Affichage::dessinerPlateau()
 {
     //scene->addPixmap(QPixmap("plateau.png"));
@@ -51,7 +67,6 @@ void Affichage::dessinerPlateau()
     dessinerVille(1101, 357, "Washington");
     dessinerVille(953, 531, "Atlanta");
     dessinerVille(1127, 698, "Miami");
-
 
     dessinerRoute(80,  168, 310, 68,    Qt::black,  3, Qt::red);            // Seattle - Calgary
     dessinerRoute(80,  168, 70,  444,   Qt::blue,   3, Qt::green);          // Seattle - San Francisco
@@ -94,7 +109,16 @@ void Affichage::dessinerPlateau()
     dessinerRoute(1127, 698, 856, 657,  Qt::white,  3, Qt::yellow);         // Miami - New Orleans
 }
 
-
+/**
+ * @brief Dessine une ville sous forme d'un cercle étiqueté centré sur (x, y).
+ *
+ * Le nom est affiché en rouge gras, centré dans le cercle blanc.
+ * Le rayon du cercle est fixé à 28 pixels.
+ *
+ * @param x   Coordonnée X du centre (pixels scène).
+ * @param y   Coordonnée Y du centre (pixels scène).
+ * @param nom Nom de la ville affiché dans le cercle.
+ */
 void Affichage::dessinerVille(int x, int y, QString nom)
 {
     scene->addEllipse(x-28, y-28, 56, 56, QPen(Qt::black, 1), QBrush(Qt::white));
@@ -106,19 +130,29 @@ void Affichage::dessinerVille(int x, int y, QString nom)
     texte->setFont(font);
     texte->setDefaultTextColor(Qt::darkRed);
     
-    // Centrage automatique dans le rond
     float textWidth = texte->boundingRect().width();
     float textHeight = texte->boundingRect().height();
     texte->setPos(x - textWidth/2, y - textHeight/2);
 }
 
-
+/**
+ * @brief Met à jour l'affichage complet après une modification du modèle.
+ *
+ * Efface la scène, redessine le plateau de base, puis superpose le prénom
+ * du propriétaire sur chaque route revendiquée, centré sur la route avec
+ * un fond noir pour la lisibilité.
+ *
+ * La couleur du texte correspond à la couleur de wagon du joueur :
+ * - @c CouleurWagon::Rouge  → rouge
+ * - @c CouleurWagon::Bleu   → bleu
+ * - @c CouleurWagon::Jaune  → jaune
+ * - @c CouleurWagon::Vert   → vert
+ */
 void Affichage::mettreAJour()
 {
     scene->clear();
     dessinerPlateau();
 
-    // Map des coordonnées des villes
     std::map<std::string, std::pair<int,int>> coords = {
         {"Seattle",       {80,  168}},
         {"Calgary",       {310, 68}},
@@ -141,7 +175,6 @@ void Affichage::mettreAJour()
         {"Miami",         {1127, 698}}
     };
 
-    // Afficher les propriétaires
     for (Route& r : plateau->getRoute())
     {
         if (!r.estDispo())
@@ -174,7 +207,6 @@ void Affichage::mettreAJour()
                 texte->setDefaultTextColor(couleurTexte);
                 texte->setPos(midX - texte->boundingRect().width()/2,
                               midY - texte->boundingRect().height()/2);
-                // Contour noir derrière le texte
                 QGraphicsRectItem* fond = scene->addRect(
                     midX - texte->boundingRect().width()/2 - 2,
                     midY - texte->boundingRect().height()/2 - 2,
@@ -183,13 +215,31 @@ void Affichage::mettreAJour()
                 );
                 fond->setBrush(QBrush(Qt::black));
                 fond->setPen(QPen(Qt::transparent));
-                fond->setZValue(-1);  // derrière le texte
+                fond->setZValue(-1);
             }
         }
     }
 }
 
-
+/**
+ * @brief Dessine une route segmentée entre deux points de la scène.
+ *
+ * Chaque segment est un rectangle orienté selon l'angle de la route,
+ * espacés régulièrement et centrés entre les deux villes.
+ * Pour une route double, une voie parallèle décalée de 17 px est ajoutée.
+ * Si @p proprio est non vide, le nom du propriétaire est affiché au centre.
+ *
+ * @complexity O(longueur)
+ *
+ * @param x1       Coordonnée X de la ville de départ (pixels scène).
+ * @param y1       Coordonnée Y de la ville de départ (pixels scène).
+ * @param x2       Coordonnée X de la ville d'arrivée (pixels scène).
+ * @param y2       Coordonnée Y de la ville d'arrivée (pixels scène).
+ * @param couleur  Couleur de remplissage des segments de la voie principale.
+ * @param longueur Nombre de segments (= nombre de wagons requis).
+ * @param couleur2 Couleur de la voie parallèle ; Qt::transparent = route simple.
+ * @param proprio  Prénom du joueur propriétaire ; vide = route non revendiquée.
+ */
 void Affichage::dessinerRoute(int x1, int y1, int x2, int y2, QColor couleur, int longueur, QColor couleur2, QString proprio)
 {
     float totalDx = x2 - x1;
@@ -197,14 +247,14 @@ void Affichage::dessinerRoute(int x1, int y1, int x2, int y2, QColor couleur, in
     float angle = atan2(totalDy, totalDx);
     float dist = sqrt(totalDx*totalDx + totalDy*totalDy);
     
-    float segmentW = 60.0f;   // largeur fixe du segment
-    float segmentH = 12.0f;   // hauteur fixe du segment
-    float gap = 6.0f;         // espace entre segments
-    float total = longueur * segmentW + (longueur - 1) * gap;  // taille totale
-    float rayonVille = 28.0f;  // même valeur que dans dessinerVille
-    float offset = (dist - total) / 2.0f;  // centrage entre les deux villes
+    float segmentW = 60.0f;
+    float segmentH = 12.0f;
+    float gap = 6.0f;
+    float total = longueur * segmentW + (longueur - 1) * gap;
+    float rayonVille = 28.0f;
+    float offset = (dist - total) / 2.0f;
 
-    float px = -sin(angle) * 17;  // perpendiculaire pour route double
+    float px = -sin(angle) * 17;
     float py = cos(angle) * 17;
 
     for (int i = 0; i < longueur; i++)
@@ -233,18 +283,18 @@ void Affichage::dessinerRoute(int x1, int y1, int x2, int y2, QColor couleur, in
         }
     }
 
-        if (!proprio.isEmpty())
-        {
-            float midX = (x1 + x2) / 2.0f;
-            float midY = (y1 + y2) / 2.0f;
+    if (!proprio.isEmpty())
+    {
+        float midX = (x1 + x2) / 2.0f;
+        float midY = (y1 + y2) / 2.0f;
 
-            QGraphicsTextItem* texte = scene->addText(proprio);
-            QFont font;
-            font.setPointSize(8);
-            font.setBold(true);
-            texte->setFont(font);
-            texte->setDefaultTextColor(Qt::darkBlue);
-            texte->setPos(midX - texte->boundingRect().width()/2, 
-                        midY - texte->boundingRect().height()/2);
-        }
+        QGraphicsTextItem* texte = scene->addText(proprio);
+        QFont font;
+        font.setPointSize(8);
+        font.setBold(true);
+        texte->setFont(font);
+        texte->setDefaultTextColor(Qt::darkBlue);
+        texte->setPos(midX - texte->boundingRect().width()/2, 
+                    midY - texte->boundingRect().height()/2);
+    }
 }

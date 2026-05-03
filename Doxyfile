@@ -12,13 +12,13 @@ PROJECT_NUMBER         = @PROJECT_VERSION@
 PROJECT_BRIEF          = "Implémentation C++ du jeu de société du même nom."
 
 # ── Répertoires sources ───────────────────────────────────────────────────────
-INPUT                  = @CMAKE_SOURCE_DIR@ \
-                         @CMAKE_SOURCE_DIR@/README.md
+INPUT                  = "@CMAKE_SOURCE_DIR@" \
+                         "@CMAKE_SOURCE_DIR@/README.md"
 RECURSIVE              = YES
 FILE_PATTERNS          = *.hpp *.h *.cpp *.c
 
 # ── Sortie ────────────────────────────────────────────────────────────────────
-OUTPUT_DIRECTORY       = @CMAKE_SOURCE_DIR@/docs
+OUTPUT_DIRECTORY       = "@CMAKE_SOURCE_DIR@/docs"
 OUTPUT_LANGUAGE        = French
 CREATE_SUBDIRS         = NO
 
@@ -74,8 +74,7 @@ ENABLE_PREPROCESSING   = YES
 MACRO_EXPANSION        = YES
 EXPAND_ONLY_PREDEF     = NO
 SEARCH_INCLUDES        = YES
-INCLUDE_PATH           = @CMAKE_SOURCE_DIR@/include
-
+INCLUDE_PATH           = "@CMAKE_SOURCE_DIR@"
 # ── Warnings ─────────────────────────────────────────────────────────────────
 QUIET                  = NO
 WARNINGS               = YES
@@ -106,15 +105,15 @@ AUTOLINK_SUPPORT       = YES
 VERBATIM_HEADERS       = YES
 
 # ── Logo ──────────────────────────────────────────────────────────────────────
-PROJECT_LOGO           = @CMAKE_SOURCE_DIR@/assets/logo.png
+#PROJECT_LOGO           = @CMAKE_SOURCE_DIR@/assets/logo.png
 
 # ── Page d'accueil ────────────────────────────────────────────────────────────
-USE_MDFILE_AS_MAINPAGE = @CMAKE_SOURCE_DIR@/README.md
+USE_MDFILE_AS_MAINPAGE = "@CMAKE_SOURCE_DIR@/README.md"
 
 # ── Exclusions ────────────────────────────────────────────────────────────────
-EXCLUDE                = @CMAKE_SOURCE_DIR@/build \
-                         @CMAKE_SOURCE_DIR@/docs \
-                         @CMAKE_SOURCE_DIR@/tests
+EXCLUDE                = "@CMAKE_SOURCE_DIR@/build" \
+                         "@CMAKE_SOURCE_DIR@/docs" \
+                         "@CMAKE_SOURCE_DIR@/tests"
 EXCLUDE_PATTERNS       = */build/* \
                          *_test.cpp
 EXCLUDE_SYMBOLS        = detail::*
@@ -135,3 +134,7 @@ DOT_GRAPH_MAX_NODES    = 50
 ALIASES                = "complexity=\par Complexité:\n" \
                          "pattern=\par Design Pattern:\n" \
                          "invariant=\par Invariant:\n"
+
+
+                         
+

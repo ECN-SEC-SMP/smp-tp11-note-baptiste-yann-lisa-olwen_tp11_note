@@ -10,24 +10,35 @@
 //////////////////////////////////////
 ////// Constructeur par défaut ///////
 //////////////////////////////////////
+
+/**
+ * @brief Constructeur par défaut — crée un joueur sans nom ni couleur.
+ * @ingroup Joueurs
+ */
 Joueur::Joueur()
 {
 }
 
+/**
+ * @brief Crée un joueur avec un prénom et une couleur de wagon.
+ *
+ * Le joueur commence avec 20 wagons, 0 ticket validé et 0 grande traversée.
+ *
+ * @param prenom       Prénom du joueur.
+ * @param couleurWagon Couleur des wagons attribuée au joueur (voir @ref CouleurWagon).
+ * @ingroup Joueurs
+ */
 Joueur::Joueur(std::string prenom, CouleurWagon couleurWagon) : prenom(prenom), couleurWagon(couleurWagon), nbWagon(20), nbTicketValide(0), grdTraversee(0)
 {
 }
-
-
 
 //////////////////////////////////////
 //////////// Accesseurs //////////////
 //////////////////////////////////////
 
 /**
- * @brief Fonction qui retourne le prénom du joueur
- * 
- * @return std::string 
+ * @brief Retourne le prénom du joueur.
+ * @return Le prénom du joueur.
  */
 std::string Joueur::getPrenom() const
 {
@@ -35,9 +46,8 @@ std::string Joueur::getPrenom() const
 } 
 
 /**
- * @brief Fonction qui retourne la main du joueur
- * 
- * @return std::vector<CarteTrain> 
+ * @brief Retourne la main du joueur (cartes train en sa possession).
+ * @return Référence vers le vecteur de cartes train.
  */
 std::vector<CarteTrain>& Joueur::getMain()
 {
@@ -45,9 +55,8 @@ std::vector<CarteTrain>& Joueur::getMain()
 }
 
 /**
- * @brief Fonction qui retourne la couleur du wagon du joueur 
- * 
- * @return CouleurWagon 
+ * @brief Retourne la couleur de wagon du joueur.
+ * @return La couleur de wagon (voir @ref CouleurWagon).
  */
 CouleurWagon Joueur::getCouleurWagon() const
 {
@@ -55,9 +64,8 @@ CouleurWagon Joueur::getCouleurWagon() const
 }
 
 /**
- * @brief Fonction qui retourne le nombre de wagons du joueur
- * 
- * @return int 
+ * @brief Retourne le nombre de wagons restants du joueur.
+ * @return Nombre de wagons disponibles.
  */
 int Joueur::getNbWagon() const
 {
@@ -65,9 +73,8 @@ int Joueur::getNbWagon() const
 }
 
 /**
- * @brief Fonction qui retourne les tickets du joueur
- * 
- * @return std::vector<Ticket> 
+ * @brief Retourne les tickets destination du joueur.
+ * @return Référence vers le vecteur de tickets.
  */
 std::vector<Ticket>& Joueur::getTicket()
 {
@@ -75,9 +82,8 @@ std::vector<Ticket>& Joueur::getTicket()
 }
 
 /**
- * @brief Fonction qui retourne le nombre de tickets validés du joueur
- * 
- * @return int 
+ * @brief Retourne le nombre de tickets validés du joueur.
+ * @return Nombre de tickets complétés.
  */
 int Joueur::getTicketValide() const
 {
@@ -89,25 +95,21 @@ int Joueur::getTicketValide() const
 //////////////////////////////////////
 
 /**
- * @brief Mutateur pour le nombre de tickets validés du joueur  
- * 
- * @param nbTicketValide 
+ * @brief Modifie le nombre de tickets validés du joueur.
+ * @param nbTicketValide Nouveau nombre de tickets validés.
  */
 void Joueur::setNbTicketValide(int nbTicketValide)
 {
     this->nbTicketValide = nbTicketValide;
 }
 
-
-
 //////////////////////////////////////
 ///////////// Méthodes ///////////////
 //////////////////////////////////////
 
 /**
- * @brief Fonction qui permet au joueur de piocher une carte de train
- * 
- * @param plateau 
+ * @brief Pioche la carte du dessus de la pioche et l'ajoute à la main du joueur.
+ * @param plateau Pointeur vers le plateau contenant la pioche.
  */
 void Joueur::piocherCarte(Plateau* plateau)
 {   
@@ -116,9 +118,11 @@ void Joueur::piocherCarte(Plateau* plateau)
 }
 
 /**
- * @brief Fonction qui permet au joueur de défausser une carte de train
- * 
- * @param carteTrain 
+ * @brief Retire une carte train de la main du joueur.
+ *
+ * Seule la première occurrence de la carte est supprimée.
+ *
+ * @param carteTrain Carte à défausser.
  */
 void Joueur::defausserCarte(CarteTrain carteTrain)
 {
@@ -133,9 +137,8 @@ void Joueur::defausserCarte(CarteTrain carteTrain)
 }
 
 /**
- * @brief Fonction qui permet au joueur de piocher un ticket
- * 
- * @param nouvTicket 
+ * @brief Ajoute un ticket destination à la main du joueur.
+ * @param nouvTicket Ticket à ajouter.
  */
 void Joueur::piocherTicket(Ticket nouvTicket)
 {
@@ -143,21 +146,18 @@ void Joueur::piocherTicket(Ticket nouvTicket)
 }
 
 /**
- * @brief Fonction qui permet au joueur de défausser un ticket
- * 
- * @param ticket 
- * @param plateau 
+ * @brief Défausse un ticket vers la défausse du plateau.
+ * @param ticket  Ticket à défausser.
+ * @param plateau Pointeur vers le plateau contenant la défausse.
  */
 void Joueur::defausserTicket(Ticket ticket, Plateau* plateau)
 {
     plateau->ajouterDefausseTicket(ticket);
-
 }
 
 /**
- * @brief Fonction qui permet au joueur de valider un ticket
- * 
- * @param t 
+ * @brief Valide un ticket si son objectif est atteint et incrémente le compteur.
+ * @param t Pointeur vers le ticket à valider.
  */
 void Joueur::validerTicket(Ticket* t)
 {
@@ -170,11 +170,9 @@ void Joueur::validerTicket(Ticket* t)
 }
 
 /**
- * @brief Fonction qui vérifie si le joueur peut prendre une route en fonction de sa disponibilité
- * 
- * @param route 
- * @return true 
- * @return false 
+ * @brief Vérifie si le joueur peut revendiquer une route.
+ * @param route Pointeur vers la route à tester.
+ * @return @c true si la route est disponible, @c false sinon.
  */
 bool Joueur::peutPrendreRoute(Route* route)
 {
@@ -186,8 +184,7 @@ bool Joueur::peutPrendreRoute(Route* route)
 }
 
 /**
- * @brief Fonction qui affiche la main du joueur
- * 
+ * @brief Affiche dans la console toutes les cartes train de la main du joueur.
  */
 void Joueur::afficherMain()
 {
@@ -198,9 +195,12 @@ void Joueur::afficherMain()
 }
 
 /**
- * @brief Fonction qui permet au joueur de réaliser la grande traversée
- * 
- * @param B 
+ * @brief Gère le bonus de la grande traversée.
+ *
+ * Si @p B est @c true, incrémente le compteur de tickets validés.
+ * Sinon, affiche un message d'échec dans la console.
+ *
+ * @param B @c true si la grande traversée est réussie, @c false sinon.
  */
 void Joueur::GrandeTraversee(bool B)
 {
@@ -216,7 +216,19 @@ void Joueur::GrandeTraversee(bool B)
     }
 }
 
-
+/**
+ * @brief Vérifie si un ticket destination est complété par les routes du joueur.
+ *
+ * Construit un graphe à partir des routes appartenant au joueur, puis effectue
+ * un parcours en largeur (BFS) depuis la ville de départ du ticket pour
+ * déterminer si la ville d'arrivée est atteignable.
+ *
+ * @complexity O(V + E) où V est le nombre de villes et E le nombre de routes du joueur.
+ *
+ * @param t      Ticket destination à vérifier.
+ * @param routes Liste complète des routes du plateau.
+ * @return @c true si le joueur relie les deux villes du ticket, @c false sinon.
+ */
 bool Joueur::verifierTicket(Ticket t, std::vector<Route>& routes)
 {
     std::string villeA = t.getVilleA().getNom();

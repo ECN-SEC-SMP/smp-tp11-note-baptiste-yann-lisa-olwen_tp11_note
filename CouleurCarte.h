@@ -1,17 +1,38 @@
+/**
+ * @file CouleurCarte.h
+ * @brief Définition des couleurs de cartes train et utilitaire de conversion.
+ * @ingroup Cartes
+ */
+
 #pragma once
+
 #include <string>
 
+/**
+ * @brief Couleurs possibles d'une carte train.
+ *
+ * La valeur @c Locomotive est une carte joker utilisable à la place
+ * de n'importe quelle autre couleur.
+ *
+ * @ingroup Cartes
+ */
 enum class CouleurCarte
 {
-    Bleu,
-    Blanc,
-    Rouge,
-    Noir,
-    Jaune,
-    Vert,
-    Locomotive
+    Bleu,        ///< Carte bleue.
+    Blanc,       ///< Carte blanche.
+    Rouge,       ///< Carte rouge.
+    Noir,        ///< Carte noire.
+    Jaune,       ///< Carte jaune.
+    Vert,        ///< Carte verte.
+    Locomotive   ///< Carte locomotive (joker).
 };
 
+/**
+ * @brief Convertit une @ref CouleurCarte en chaîne de caractères lisible.
+ * @param couleur La couleur à convertir.
+ * @return Le nom de la couleur en français, ou @c "Inconnu" si non reconnue.
+ * @ingroup Cartes
+ */
 inline std::string couleurToString(CouleurCarte couleur)
 {
     switch (couleur) {

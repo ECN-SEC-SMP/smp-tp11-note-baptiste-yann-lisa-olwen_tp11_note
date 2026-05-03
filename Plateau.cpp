@@ -8,13 +8,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
-#include <fstream> // Pour la lecture de fichiers.csv
-#include <sstream> // Pour la manipulation de chaînes de caractères lors de la lecture de fichiers.csv
+#include <fstream>
+#include <sstream>
 
 /**
- * @brief Constructeur par défaut et constructeur avec paramètres pour la classe Plateau
- * 
+ * @brief Constructeur par défaut — crée un plateau vide.
+ * @ingroup Modele
  */
 Plateau::Plateau()
 {
@@ -22,10 +21,10 @@ Plateau::Plateau()
 }
 
 /**
- * @brief Constructeur de la classe Plateau avec paramètres pour initialiser les éléments du plateau de jeu
- * 
- * @param A 
- * @param B 
+ * @brief Constructeur avec paramètres (à compléter).
+ * @param A Premier paramètre de configuration du plateau.
+ * @param B Second paramètre de configuration du plateau.
+ * @ingroup Modele
  */
 Plateau::Plateau(int A, int B)
 {
@@ -33,9 +32,8 @@ Plateau::Plateau(int A, int B)
 }
 
 /**
- * @brief Accesseurs pour les éléments du plateau de jeu
- * 
- * @return std::vector<Ville> 
+ * @brief Retourne la liste des villes du plateau.
+ * @return Copie du vecteur de villes.
  */
 std::vector<Ville> Plateau::getVille() const
 {
@@ -43,37 +41,35 @@ std::vector<Ville> Plateau::getVille() const
 }
 
 /**
- * @brief  Accesseur pour les routes du plateau de jeu
- * 
- * @return std::vector<Route> 
+ * @brief Retourne la liste des routes du plateau.
+ * @return Référence vers le vecteur de routes.
  */
-/*std::vector<Route> Plateau::getRoute() const
-{
-    return route;
-}*/
-
 std::vector<Route>& Plateau::getRoute()
 {
     return route;
 }
 
 /**
- * @brief Accesseur pour la pioche de cartes de train du plateau de jeu
- * 
- * @return std::vector<CarteTrain> 
+ * @brief Retourne la pioche de cartes train.
+ * @return Référence vers le vecteur de cartes de la pioche.
  */
-std::vector<CarteTrain>& Plateau::getPioche() {
+std::vector<CarteTrain>& Plateau::getPioche()
+{
     return pioche;
 }
 
-void Plateau::setPioche(std::vector<CarteTrain> p) {
+/**
+ * @brief Remplace la pioche par un nouveau jeu de cartes.
+ * @param p Nouveau vecteur de cartes train.
+ */
+void Plateau::setPioche(std::vector<CarteTrain> p)
+{
     pioche = p;
 }
 
 /**
- * @brief Accesseur pour les tickets du plateau de jeu 
- * 
- * @return std::vector<Ticket> 
+ * @brief Retourne les tickets destination disponibles sur le plateau.
+ * @return Copie du vecteur de tickets.
  */
 std::vector<Ticket> Plateau::getTickets() const
 {
@@ -81,9 +77,8 @@ std::vector<Ticket> Plateau::getTickets() const
 }
 
 /**
- * @brief Accesseur pour la défausse de tickets du plateau de jeu
- * 
- * @return std::vector<Ticket> 
+ * @brief Retourne la défausse de tickets du plateau.
+ * @return Copie du vecteur de tickets défaussés.
  */
 std::vector<Ticket> Plateau::getDefausseTicket() const
 {
@@ -91,17 +86,16 @@ std::vector<Ticket> Plateau::getDefausseTicket() const
 }
 
 /**
- * @brief   Méthode qui retourne une liste de pointeurs vers les routes prises par un joueur donné en paramètre
- * 
- * @param j 
- * @return std::vector<Route*> 
+ * @brief Retourne la liste des routes appartenant à un joueur donné.
+ * @param j Pointeur vers le joueur dont on cherche les routes.
+ * @return Vecteur de pointeurs vers les routes du joueur.
  */
 std::vector<Route*> Plateau::setRouteJoueur(Joueur* j)
 {
     std::vector<Route*> routesPrises;
     for (int i = 0; i < route.size(); i++)      // Parcours de toutes les routes du plateau
     {
-        if (route[i].getProprio() == j)         // Si le propriétaire de la route est le joueur j   
+        if (route[i].getProprio() == j)         // Si le propriétaire de la route est le joueur j
         {
             routesPrises.push_back(&route[i]);  // On ajoute un pointeur vers la route à la liste des routes prises par le joueur
         }
@@ -109,61 +103,64 @@ std::vector<Route*> Plateau::setRouteJoueur(Joueur* j)
     return routesPrises;                        // On retourne la liste des routes prises par le joueur
 }
 
-
 /**
- * @brief  
- * 
+ * @brief Charge les tickets destination depuis le fichier @c Ticket.csv.
+ *
+ * Le fichier doit contenir une ligne d'en-tête suivie de lignes au format :
+ * @code
+ * id,villeA,villeB
+ * @endcode
+ * Les villes référencées doivent déjà être présentes dans le vecteur @c ville.
+ *
+ * @note Affiche une erreur sur @c stderr si le fichier est introuvable ou si
+ *       les villes ne sont pas trouvées.
  */
 void Plateau::chargerTicketCsv()
 {
-    std::fstream fichierTicket("Ticket.csv"); // Ouvre le fichier Ticket.csv en lecture
+    std::fstream fichierTicket("Ticket.csv");
 
     if (!fichierTicket.is_open()) {
         std::cerr << "Erreur : impossible d'ouvrir le fichier Ticket.csv" << std::endl;
         return;
     }
 
-    std::string ligne; // Variable pour stocker chaque ligne du fichier
-
+    std::string ligne;
     std::getline(fichierTicket, ligne); // Lit la première ligne (en-tête) et l'ignore
 
-    std::stringstream flux_string(ligne);  // Créer un flux de string pour la ligne lue
-    std::string id_str, city_A, city_B;  // Variables pour stocker les valeurs extraites de la ligne
+    std::stringstream flux_string(ligne);
+    std::string id_str, city_A, city_B;
 
-    // Lire les valeurs séparées par des virgules
-    if (std::getline(flux_string, id_str, ',') && 
+    if (std::getline(flux_string, id_str, ',') &&
         std::getline(flux_string, city_A, ',') &&
-        std::getline(flux_string, city_B, ',')) 
+        std::getline(flux_string, city_B, ','))
     {
-        int id = std::stoi(id_str); // Convertir l'ID en entier
+        int id = std::stoi(id_str);
 
-        // Trouver les villes par nom
         Ville* villeA = nullptr;
         Ville* villeB = nullptr;
 
-        for (int i = 0; i < ville.size(); i++) { // Parcours de toutes les villes du plateau
-            Ville& v = ville[i];        // Référence à la ville courante
-            if (v.getNom() == city_A) { // Si le nom de la ville correspond à city_A
-                villeA = &v;            // On stocke un pointeur vers la villeA trouvée
+        for (int i = 0; i < ville.size(); i++) {
+            Ville& v = ville[i];
+            if (v.getNom() == city_A) {
+                villeA = &v;
             }
-            if (v.getNom() == city_B) { // Si le nom de la ville correspond à city_B
-                villeB = &v;            // On stocke un pointeur vers la villeB trouvée
+            if (v.getNom() == city_B) {
+                villeB = &v;
             }
         }
 
-        if (villeA && villeB) {         // Si les deux villes ont été trouvées, on peut créer le ticket
-            Ticket nouveauTicket(id, *villeA, *villeB); // Création du ticket avec les villes trouvées 
-            tickets.push_back(nouveauTicket); // Ajout du ticket à la liste des tickets du plateau
+        if (villeA && villeB) {
+            Ticket nouveauTicket(id, *villeA, *villeB);
+            tickets.push_back(nouveauTicket);
         } else {
             std::cerr << "Erreur : villes non trouvées pour le ticket " << id << std::endl;
         }
     }
-    fichierTicket.close(); // Ferme le fichier après la lecture
+    fichierTicket.close();
 }
 
 /**
- * @brief   Affiche le plateau de jeu (villes, routes, cartes de train disponibles, etc.)
- * 
+ * @brief Affiche le plateau de jeu dans la console (à implémenter).
  */
 void Plateau::afficher()
 {
@@ -171,25 +168,33 @@ void Plateau::afficher()
 }
 
 /**
- * @brief  
- * 
+ * @brief Retire la carte du dessus de la pioche.
  */
 void Plateau::retirerCartePioche()
 {
-    pioche.pop_back(); // Retire la dernière carte de la pioche
+    pioche.pop_back();
 }
 
 /**
- * @brief   Ajoute un ticket à la défausse du plateau de jeu
- * 
- * @param ticket 
+ * @brief Ajoute un ticket à la défausse du plateau.
+ * @param ticket Ticket à défausser.
  */
 void Plateau::ajouterDefausseTicket(Ticket ticket)
 {
-    defausseTicket.push_back(ticket); // Ajoute un ticket à la défausse
+    defausseTicket.push_back(ticket);
 }
 
-
+/**
+ * @brief Charge les routes depuis le fichier @c route.csv.
+ *
+ * Le fichier doit contenir une ligne d'en-tête suivie de lignes au format :
+ * @code
+ * villeA,villeB,longueur,couleur,couleur2
+ * @endcode
+ * Si @c couleur2 vaut @c "Aucune", la route est simple ; sinon elle est double.
+ *
+ * @note Affiche une erreur sur @c stderr si le fichier est introuvable.
+ */
 void Plateau::chargerMapCsv()
 {
     std::ifstream fichier("route.csv");
@@ -222,11 +227,11 @@ void Plateau::chargerMapCsv()
         if (couleur_str == "Vert")   couleur = CouleurRoute::Vert;
         if (couleur_str == "Jaune")  couleur = CouleurRoute::Jaune;
 
-        Route r(longueur, estDouble, couleur);  // ← créer r d'abord
+        Route r(longueur, estDouble, couleur);
         r.setVilleA(Ville(nomA));
         r.setVilleB(Ville(nomB));
 
-        if (double_str != "Aucune")  // ← setCouleur2 après création de r
+        if (double_str != "Aucune")
         {
             CouleurRoute couleur2 = CouleurRoute::Blanc;
             if (double_str == "Noir")   couleur2 = CouleurRoute::Noir;
@@ -243,19 +248,35 @@ void Plateau::chargerMapCsv()
     fichier.close();
 }
 
+/**
+ * @brief Vide la défausse de tickets.
+ */
 void Plateau::viderDefausseTicket()
 {
     defausseTicket.clear();
 }
 
+/**
+ * @brief Ajoute une carte train à la défausse de cartes.
+ * @param carte Carte à défausser.
+ */
 void Plateau::ajouterDefausseCartes(CarteTrain carte)
 {
     defausseCartes.push_back(carte);
 }
+
+/**
+ * @brief Retourne la défausse de cartes train.
+ * @return Copie du vecteur de cartes défaussées.
+ */
 std::vector<CarteTrain> Plateau::getDefausseCartes() const
 {
     return defausseCartes;
 }
+
+/**
+ * @brief Vide la défausse de cartes train.
+ */
 void Plateau::viderDefausseCartes()
 {
     defausseCartes.clear();

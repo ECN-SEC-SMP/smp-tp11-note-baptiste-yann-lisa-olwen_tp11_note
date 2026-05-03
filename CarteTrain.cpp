@@ -1,9 +1,9 @@
 #include "CarteTrain.h"
 
 /**
- * @brief   Constructeur de la classe CarteTrain qui initialise la couleur de la carte de train
- * 
- * @param couleur 
+ * @brief Initialise une carte train avec la couleur donnée.
+ * @param couleur Couleur de la carte (voir @ref CouleurCarte).
+ * @ingroup Cartes
  */
 CarteTrain::CarteTrain(CouleurCarte couleur) : couleur(couleur) 
 {
@@ -11,9 +11,8 @@ CarteTrain::CarteTrain(CouleurCarte couleur) : couleur(couleur)
 }
 
 /**
- * @brief Accesseur pour la couleur de la carte de train
- * 
- * @return CouleurCarte 
+ * @brief Retourne la couleur de la carte train.
+ * @return La couleur de cette carte (voir @ref CouleurCarte).
  */
 CouleurCarte CarteTrain::getCouleur() const
 {
@@ -21,11 +20,9 @@ CouleurCarte CarteTrain::getCouleur() const
 }
 
 /**
- * @brief Surcharge d'opérateur d'égalité pour comparer deux cartes de train en fonction de leur couleur
- * 
- * @param other 
- * @return true 
- * @return false 
+ * @brief Compare deux cartes train par leur couleur.
+ * @param other Carte à comparer.
+ * @return @c true si les deux cartes ont la même couleur, @c false sinon.
  */
 bool CarteTrain::operator==(const CarteTrain& other) const
 {

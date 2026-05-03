@@ -2,50 +2,47 @@
 #include "Joueur.h"
 #include "Plateau.h"
 
-/**
- * @brief Constructeur par défaut et constructeur avec paramètres pour la classe Route
- * 
- */
 //////////////////////////////////////
 ////// Constructeur par défaut ///////
 //////////////////////////////////////
+
+/**
+ * @brief Constructeur par défaut — crée une route vide sans propriétaire.
+ * @ingroup Modele
+ */
 Route::Route()
 {
-    proprio = nullptr; 
+    proprio = nullptr;
     longueur = 0;
     estRouteDouble = false;
 }
 
 /**
- * @brief Constructeur de la classe Route avec paramètres pour initialiser les éléments d'une route du plateau de jeu
- * 
- * @param longueur 
- * @param estRouteDouble 
- * @param couleurRoute 
+ * @brief Crée une route avec ses caractéristiques de base.
+ * @param longueur       Nombre de wagons nécessaires pour revendiquer la route.
+ * @param estRouteDouble @c true si la route possède une voie parallèle.
+ * @param couleurRoute   Couleur de la voie principale (voir @ref CouleurRoute).
+ * @ingroup Modele
  */
-Route::Route(int longueur, bool estRouteDouble, CouleurRoute couleurRoute) : longueur(longueur), estRouteDouble(estRouteDouble), couleurRoute(couleurRoute), proprio(nullptr) {}
-
+Route::Route(int longueur, bool estRouteDouble, CouleurRoute couleurRoute)
+    : longueur(longueur), estRouteDouble(estRouteDouble), couleurRoute(couleurRoute), proprio(nullptr) {}
 
 //////////////////////////////////////
 //////////// Accesseurs //////////////
 //////////////////////////////////////
 
-
 /**
- * @brief Fonction qui retourne la ville A de la route
- * 
- * @return Ville 
+ * @brief Retourne la ville de départ de la route.
+ * @return La ville A.
  */
-
 Ville Route::getVilleA() const
 {
     return villeA;
 }
 
 /**
- * @brief Fonction qui retourne la ville B de la route
- * 
- * @return Ville 
+ * @brief Retourne la ville d'arrivée de la route.
+ * @return La ville B.
  */
 Ville Route::getVilleB() const
 {
@@ -53,9 +50,8 @@ Ville Route::getVilleB() const
 }
 
 /**
- * @brief Fonction qui retourne la couleur de la route
- * 
- * @return CouleurRoute 
+ * @brief Retourne la couleur principale de la route.
+ * @return La couleur de la voie principale (voir @ref CouleurRoute).
  */
 CouleurRoute Route::getCouleur() const
 {
@@ -63,9 +59,17 @@ CouleurRoute Route::getCouleur() const
 }
 
 /**
- * @brief Fonction qui retourne la longueur de la route
- * 
- * @return int 
+ * @brief Retourne la couleur de la voie parallèle (route double).
+ * @return La couleur de la seconde voie (voir @ref CouleurRoute).
+ */
+CouleurRoute Route::getCouleur2() const
+{
+    return couleurRoute2;
+}
+
+/**
+ * @brief Retourne le nombre de wagons nécessaires pour revendiquer la route.
+ * @return La longueur de la route.
  */
 int Route::getLongueur() const
 {
@@ -73,9 +77,8 @@ int Route::getLongueur() const
 }
 
 /**
- * @brief Fonction qui retourne le propriétaire de la route
- * 
- * @return Joueur* 
+ * @brief Retourne le propriétaire de la route.
+ * @return Pointeur vers le joueur propriétaire, ou @c nullptr si la route est libre.
  */
 Joueur* Route::getProprio() const
 {
@@ -83,74 +86,63 @@ Joueur* Route::getProprio() const
 }
 
 /**
- * @brief Fonction qui retourne si la route est double
- * 
- * @return bool 
+ * @brief Indique si la route est une route double.
+ * @return @c true si la route possède une voie parallèle, @c false sinon.
  */
 bool Route::getEstDouble() const
 {
     return estRouteDouble;
 }
 
-
 //////////////////////////////////////
 ///////////// Mutateurs //////////////
 //////////////////////////////////////
 
 /**
- * @brief Mutateur pour le propriétaire de la route
- * 
- * @param j 
+ * @brief Définit le propriétaire de la route.
+ * @param j Pointeur vers le joueur qui revendique la route.
  */
 void Route::setProprio(Joueur* j)
 {
     proprio = j;
 }
 
+/**
+ * @brief Définit la ville de départ de la route.
+ * @param v Ville de départ.
+ */
+void Route::setVilleA(Ville v)
+{
+    villeA = v;
+}
+
+/**
+ * @brief Définit la ville d'arrivée de la route.
+ * @param v Ville d'arrivée.
+ */
+void Route::setVilleB(Ville v)
+{
+    villeB = v;
+}
+
+/**
+ * @brief Définit la couleur de la voie parallèle (route double).
+ * @param c Couleur de la seconde voie (voir @ref CouleurRoute).
+ */
+void Route::setCouleur2(CouleurRoute c)
+{
+    couleurRoute2 = c;
+}
 
 //////////////////////////////////////
 ///////////// Méthodes ///////////////
 //////////////////////////////////////
 
 /**
- * @brief Fonction qui vérifie si la route est disponible
- * 
- * @return true 
- * @return false 
+ * @brief Vérifie si la route est disponible (non revendiquée).
+ * @return @c true si aucun joueur ne possède la route, @c false sinon.
  */
 bool Route::estDispo() const
 {
     return proprio == nullptr;
 }
-
-
-void Route::setVilleA(Ville v) 
-{ 
-    villeA = v; 
-}
-
-void Route::setVilleB(Ville v) 
-{ 
-    villeB = v; 
-}
-
-CouleurRoute Route::getCouleur2() const 
-{ 
-    return couleurRoute2; 
-}
-
-void Route::setCouleur2(CouleurRoute c) 
-{ 
-    couleurRoute2 = c; 
-}
-
-
-
-
-
-    
-
-
-
-
-

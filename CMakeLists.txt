@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(AventuriersDuRail VERSION 1.0.0)  # ← VERSION ajoutée
+project(AventuriersDuRail VERSION 1.0.0)
 set(CMAKE_CXX_STANDARD 17)
 
 option(BUILD_DOC_ONLY "Ne construire que la documentation (pas besoin de Qt6)" OFF)
@@ -23,6 +23,7 @@ if(NOT BUILD_DOC_ONLY)
         CouleurCarte.h
         CouleurRoute.h
         CouleurWagon.h
+        modules.h       # ← ajouté
     )
 
     target_link_libraries(AventuriersDuRail Qt6::Core Qt6::Widgets)

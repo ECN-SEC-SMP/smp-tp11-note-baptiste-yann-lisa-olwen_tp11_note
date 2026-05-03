@@ -1,3 +1,25 @@
+/**
+ * @file main.cpp
+ * @brief Point d'entrée du jeu Les Aventuriers du Rail.
+ *
+ * Initialise l'application Qt, le plateau, les joueurs, la pioche de cartes
+ * et les tickets destination. Gère ensuite la boucle principale de jeu en
+ * mode console, avec affichage graphique Qt synchronisé.
+ *
+ * @section flux Flux général
+ * 1. Création du plateau et de la fenêtre Qt.
+ * 2. Saisie du nombre de joueurs et de leurs prénoms.
+ * 3. Génération et mélange de la pioche de cartes train.
+ * 4. Distribution de 4 cartes et 2 tickets à chaque joueur.
+ * 5. Boucle de jeu : chaque joueur choisit une action par tour.
+ * 6. Fin de partie dès qu'un joueur atteint 6 tickets validés ou n'a plus de wagons.
+ *
+ * @section actions Actions disponibles par tour
+ * - **1** : Piocher deux cartes train.
+ * - **2** : Poser des wagons sur une route disponible.
+ * - **3** : Échanger ses deux tickets contre deux nouveaux.
+ */
+
 #include <QApplication>
 #include <iostream>
 #include <string>
@@ -6,6 +28,7 @@
 #include <ctime>
 #include <fstream>
 #include <sstream>
+#include <map>
 
 #include "CouleurWagon.h"
 #include "Joueur.h"
@@ -15,9 +38,13 @@
 #include "CouleurCarte.h"
 #include "Ticket.h"
 #include "Ville.h"
-#include <map>
 
-
+/**
+ * @brief Point d'entrée principal de l'application.
+ * @param argc Nombre d'arguments de la ligne de commande.
+ * @param argv Tableau des arguments de la ligne de commande.
+ * @return Code de retour de l'application Qt, ou -1 en cas d'erreur.
+ */
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
@@ -63,6 +90,7 @@ int main(int argc, char *argv[])
         CouleurCarte::Locomotive
     };
 
+    // 10 cartes par couleur + 12 locomotives supplémentaires
     for (CouleurCarte couleur : couleursCartes)
     {
         for (int i = 0; i < 10; i++)
@@ -110,7 +138,7 @@ int main(int argc, char *argv[])
     }
 
     std::string ligne;
-    std::getline(fichier, ligne);
+    std::getline(fichier, ligne); // ignorer l'en-tête
 
     plateau.chargerMapCsv();
 
@@ -352,6 +380,7 @@ int main(int argc, char *argv[])
 
                     plateau.getRoute()[choixRoute].setProprio(&joueurCourant);
                     std::cout << "Route posée avec succès !" << std::endl;
+
                     // Vérifier les tickets
                     std::vector<Ticket>& ticketsJoueur = joueurCourant.getTicket();
                     for (int i = 0; i < (int)ticketsJoueur.size(); i++)
@@ -369,7 +398,6 @@ int main(int argc, char *argv[])
                             if (piocheTickets.empty())
                             {
                                 piocheTickets = plateau.getDefausseTicket();
-                                // Mélanger
                                 for (int k = piocheTickets.size() - 1; k > 0; k--)
                                 {
                                     int j = rand() % (k + 1);
@@ -377,7 +405,6 @@ int main(int argc, char *argv[])
                                     piocheTickets[k] = piocheTickets[j];
                                     piocheTickets[j] = temp;
                                 }
-                                // Vider la défausse
                                 plateau.viderDefausseTicket();
                                 std::cout << "Pioche de tickets recyclée !" << std::endl;
                             }
@@ -476,71 +503,7 @@ int main(int argc, char *argv[])
     return app.exec();
 }
 
-
-
-
 /*
 cmake_minimum_required(VERSION 3.16)
-project(AventuriersDuRail VERSION 1.0.0)
- 
-set(CMAKE_CXX_STANDARD 17)
- 
-option(BUILD_DOC_ONLY "Ne construire que la documentation (pas besoin de Qt6)" OFF)
-
-if(NOT BUILD_DOC_ONLY)
-    set(CMAKE_AUTOMOC ON)
-    set(CMAKE_AUTORCC ON)
-    set(CMAKE_AUTOUIC ON)
- 
-    find_package(Qt6 COMPONENTS Core Widgets REQUIRED)
- 
-    add_executable(AventuriersDuRail
-        main.cpp
-        Affichage.cpp
-        Affichage.h
-        Joueur.cpp
-        Joueur.h
-        Plateau.cpp
-        Plateau.h
-        CarteTrain.cpp
-        CarteTrain.h
-        Route.cpp
-        Route.h
-        Ville.cpp
-        Ville.h
-        Ticket.cpp
-        Ticket.h
-        CouleurCarte.h
-        CouleurRoute.h
-        CouleurWagon.h
-    )
- 
-    target_link_libraries(AventuriersDuRail Qt6::Core Qt6::Widgets)
-endif()
- 
-# ── Documentation avec Doxygen ─────────────────────────────────────────────────
-find_package(Doxygen QUIET)
- 
-if(DOXYGEN_FOUND)
-    set(DOXYGEN_IN  ${CMAKE_SOURCE_DIR}/Doxyfile)
-    set(DOXYGEN_OUT ${CMAKE_BINARY_DIR}/Doxyfile.generated)
- 
-    configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
- 
-    add_custom_target(doc
-        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-        COMMENT "Génération de la documentation Doxygen..."
-        VERBATIM
-    )
- 
-    message(STATUS "Doxygen trouvé – cible 'doc' disponible (cmake --build . --target doc)")
-else()
-    message(WARNING
-        "Doxygen non trouvé – la cible 'doc' ne sera pas disponible.\n"
-        "  Linux  : sudo apt install doxygen graphviz\n"
-        "  macOS  : brew install doxygen graphviz\n"
-        "  Windows: https://www.doxygen.nl/download.html"
-    )
-endif()
+...
 */

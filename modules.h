@@ -1,9 +1,9 @@
-#pragma once
-
 /**
  * @file modules.h
  * @brief Déclaration des groupes de documentation Doxygen.
  */
+
+#pragma once
 
 /**
  * @defgroup Affichage Interface graphique Qt
