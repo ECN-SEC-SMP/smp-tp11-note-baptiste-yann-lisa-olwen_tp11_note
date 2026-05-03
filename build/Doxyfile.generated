@@ -2,23 +2,24 @@
 # Doxyfile – Les Aventuriers du Rail
 # Génère une documentation HTML complète avec graphes de dépendances.
 #
-# Les variables @CMAKE_SOURCE_DIR@ et @PROJECT_VERSION@ sont substituées
+# Les variables /Users/olwen/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Cours ECN/SMP/TP11_note/smp-tp11-note-baptiste-yann-lisa-olwen_tp11_note et  sont substituées
 # automatiquement par CMake via configure_file().
 # =============================================================================
 
 # ── Identité du projet ────────────────────────────────────────────────────────
 PROJECT_NAME           = "Les Aventuriers du Rail"
-PROJECT_NUMBER         = @PROJECT_VERSION@
-PROJECT_BRIEF          = "Implémentation C++ du jeu de société du même nom."
+PROJECT_NUMBER         = 0.1
+PROJECT_BRIEF          = "Implémentation C++ du jeu de société"
+PROJECT_LOGO           =
 
 # ── Répertoires sources ───────────────────────────────────────────────────────
-INPUT                  = @CMAKE_SOURCE_DIR@ \
-                         @CMAKE_SOURCE_DIR@/README.md
+INPUT                  = /Users/olwen/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Cours ECN/SMP/TP11_note/smp-tp11-note-baptiste-yann-lisa-olwen_tp11_note/include \
+                         /Users/olwen/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Cours ECN/SMP/TP11_note/smp-tp11-note-baptiste-yann-lisa-olwen_tp11_note/src
 RECURSIVE              = YES
 FILE_PATTERNS          = *.hpp *.h *.cpp *.c
 
 # ── Sortie ────────────────────────────────────────────────────────────────────
-OUTPUT_DIRECTORY       = @CMAKE_SOURCE_DIR@/docs
+OUTPUT_DIRECTORY       = /Users/olwen/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Cours ECN/SMP/TP11_note/smp-tp11-note-baptiste-yann-lisa-olwen_tp11_note/docs
 OUTPUT_LANGUAGE        = French
 CREATE_SUBDIRS         = NO
 
@@ -74,7 +75,7 @@ ENABLE_PREPROCESSING   = YES
 MACRO_EXPANSION        = YES
 EXPAND_ONLY_PREDEF     = NO
 SEARCH_INCLUDES        = YES
-INCLUDE_PATH           = @CMAKE_SOURCE_DIR@/include
+INCLUDE_PATH           = /Users/olwen/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Cours ECN/SMP/TP11_note/smp-tp11-note-baptiste-yann-lisa-olwen_tp11_note/include
 
 # ── Warnings ─────────────────────────────────────────────────────────────────
 QUIET                  = NO
@@ -104,34 +105,3 @@ TYPEDEF_HIDES_STRUCT   = NO
 MARKDOWN_SUPPORT       = YES
 AUTOLINK_SUPPORT       = YES
 VERBATIM_HEADERS       = YES
-
-# ── Logo ──────────────────────────────────────────────────────────────────────
-PROJECT_LOGO           = @CMAKE_SOURCE_DIR@/assets/logo.png
-
-# ── Page d'accueil ────────────────────────────────────────────────────────────
-USE_MDFILE_AS_MAINPAGE = @CMAKE_SOURCE_DIR@/README.md
-
-# ── Exclusions ────────────────────────────────────────────────────────────────
-EXCLUDE                = @CMAKE_SOURCE_DIR@/build \
-                         @CMAKE_SOURCE_DIR@/docs \
-                         @CMAKE_SOURCE_DIR@/tests
-EXCLUDE_PATTERNS       = */build/* \
-                         *_test.cpp
-EXCLUDE_SYMBOLS        = detail::*
-
-# ── Groupes ───────────────────────────────────────────────────────────────────
-DISTRIBUTE_GROUP_DOC   = YES
-GROUP_NESTED_COMPOUNDS = YES
-SUBGROUPING            = YES
-
-# ── Graphes (compléments) ─────────────────────────────────────────────────────
-UML_LOOK               = YES
-UML_LIMIT_NUM_FIELDS   = 10
-TEMPLATE_RELATIONS     = YES
-MAX_DOT_GRAPH_DEPTH    = 4
-DOT_GRAPH_MAX_NODES    = 50
-
-# ── Aliases ───────────────────────────────────────────────────────────────────
-ALIASES                = "complexity=\par Complexité:\n" \
-                         "pattern=\par Design Pattern:\n" \
-                         "invariant=\par Invariant:\n"
