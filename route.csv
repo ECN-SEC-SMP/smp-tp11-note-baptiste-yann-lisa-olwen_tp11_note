@@ -1,0 +1,40 @@
+ville_a,ville_b,longueur,couleur,double
+Seattle,Calgary,4,Noir,Rouge
+Seattle,San Francisco,3,Vert,Bleu
+Seattle,Salt Lake City,3,Blanc,Aucune
+Seattle,Helena,2,Jaune,Aucune
+Calgary,Helena,1,Blanc,Rouge
+Calgary,Winnipeg,3,Jaune,Vert
+Helena,Winnipeg,3,Bleu,Aucune
+Helena,Salt Lake City,1,Vert,Noir
+Helena,Denver,2,Jaune,Aucune
+Salt Lake City,Denver,2,Noir,Bleu
+Salt Lake City,San Francisco,2,Vert,Jaune
+Salt Lake City,Albuquerque,2,Jaune,Aucune
+San Francisco,Los Angeles,1,Noir,Rouge
+Los Angeles,Albuquerque,3,Bleu,Blanc
+Los Angeles,Salt Lake City,2,Rouge,Aucune
+Albuquerque,Denver,1,Rouge,Aucune
+Denver,Kansas City,2,Blanc,Vert
+Winnipeg,Duluth,1,Noir,Rouge
+Kansas City,Dallas,1,Rouge,Jaune
+Kansas City,Atlanta,3,Bleu,Aucune
+Chicago,Atlanta,2,Vert,Aucune
+Dallas,New Orleans,2,Rouge,Bleu
+New Orleans,Atlanta,1,Rouge,Noir
+Dallas,Atlanta,3,Blanc,Aucune
+Dallas,Albuquerque,2,Noir,Vert
+Duluth,Denver,4,Noir,Aucune
+Duluth,Chicago,1,Rouge,Bleu
+Duluth,Montreal,3,Bleu,Vert
+Duluth,Kansas City,2,Blanc,Aucune
+Montreal,New York,1,Noir,Blanc
+Montreal,Chicago,3,Jaune,Aucune
+New York,Washington,1,Jaune,Bleu
+New York,Chicago,3,Blanc,Rouge
+Chicago,Washington,3,Noir,Aucune
+Chicago,Kansas City,1,Jaune,Noir
+Atlanta,Washington,2,Blanc,Jaune
+Atlanta,Miami,2,Bleu,Noir
+Miami,Washington,4,Vert,Rouge
+Miami,New Orleans,3,Blanc,Jaune
