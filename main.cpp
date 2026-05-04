@@ -87,7 +87,6 @@ int main(int argc, char *argv[])
         CouleurCarte::Vert,
         CouleurCarte::Noir,
         CouleurCarte::Blanc,
-        CouleurCarte::Locomotive
     };
 
     // 10 cartes par couleur + 12 locomotives supplémentaires
@@ -216,8 +215,8 @@ int main(int argc, char *argv[])
 
         int action = 0;
         std::cout << "\nQue voulez-vous faire ?" << std::endl;
-        std::cout << "1. Piocher deux cartes 'train'" << std::endl;
-        std::cout << "2. Poser des wagons" << std::endl;
+        std::cout << "1. Piocher deux cartes 'Train'" << std::endl;
+        std::cout << "2. Poser des wagons sur une voie ferrée" << std::endl;
         std::cout << "3. Echanger ses deux tickets contre deux nouveaux" << std::endl;
         std::cout << "Votre choix : ";
         std::cin >> action;
@@ -442,8 +441,12 @@ int main(int argc, char *argv[])
             }
             else
             {
+                // Défausser les tickets vers le plateau
                 joueurCourant.defausserTicket(anciensTickets[0], &plateau);
                 joueurCourant.defausserTicket(anciensTickets[1], &plateau);
+
+                // Vider la main des tickets défaussés ──────────────
+                joueurCourant.getTicket().clear();
 
                 // Recycler si besoin
                 if (piocheTickets.size() < 2)
@@ -487,23 +490,8 @@ int main(int argc, char *argv[])
             app.processEvents();
         }
 
-        // Vérifier la fin de partie
-        for (Joueur& j : joueurs)
-        {
-            if (j.getTicketValide() >= 6 || j.getNbWagon() <= 0)
-            {
-                std::cout << std::endl << j.getPrenom() << " a gagne ! ***" << std::endl;
-                partieFinie = true;
-            }
-        }
-
         nombredeTour++;
     }
 
     return app.exec();
 }
-
-/*
-cmake_minimum_required(VERSION 3.16)
-...
-*/

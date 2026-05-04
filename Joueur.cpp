@@ -271,3 +271,13 @@ bool Joueur::verifierTicket(Ticket t, std::vector<Route>& routes)
     }
     return false;  // pas de chemin
 }
+
+/**
+ * @brief Vider les tickets destination du joueur.
+ *
+ * Permet de réinitialiser l'état du joueur entre les parties ou après un échange de tickets.
+ */
+void Joueur::viderTickets()
+{
+    ticket.clear();
+}

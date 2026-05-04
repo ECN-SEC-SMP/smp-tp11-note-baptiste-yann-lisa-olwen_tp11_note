@@ -134,6 +134,12 @@ public:
      */
     bool verifierTicket(Ticket t, std::vector<Route>& routes);
 
+    /** 
+     * @brief Vider les tickets destination du joueur. 
+     * Permet de réinitialiser l'état du joueur entre les parties ou après un échange de tickets.
+     * */
+    void viderTickets();
+
 private:
     std::string              prenom;         ///< Prénom du joueur.
     std::vector<CarteTrain>  main;           ///< Cartes train en main.
