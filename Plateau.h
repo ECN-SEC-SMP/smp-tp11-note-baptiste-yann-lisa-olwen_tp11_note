@@ -9,6 +9,8 @@
 #include <vector>
 #include "Ville.h"
 #include "Route.h"
+#include "CarteTrain.h"
+#include "Ticket.h"
 
 class Joueur; ///< Déclaration anticipée pour éviter les inclusions circulaires.
 
