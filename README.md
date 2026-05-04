@@ -12,14 +12,14 @@ Chaque joueur cherche à relier des villes sur la carte des États-Unis en posan
 
 - 2 à 4 joueurs, chacun reçoit une couleur de wagon unique.
 - Chaque joueur reçoit **4 cartes train** et **2 tickets destination** au départ.
-- La pioche contient **70 cartes train** (10 par couleur + 12 locomotives supplémentaires).
+- La pioche contient **72 cartes train** (10 par couleur + 12 locomotives supplémentaires).
 
 ### Déroulement d'un tour
 
 À chaque tour, le joueur choisit **une** des trois actions suivantes :
 
-1. **Piocher deux cartes train** — prendre les deux premières cartes de la pioche.
-2. **Poser des wagons** — revendiquer une route disponible en défaussant les cartes de la couleur correspondante.
+1. **Piocher deux cartes Train** — prendre les deux premières cartes de la pioche.
+2. **Poser des wagons sur la voie ferrée** — revendiquer une route disponible en défaussant les cartes de la couleur correspondante.
 3. **Échanger ses tickets** — défausser ses deux tickets actuels et en piocher deux nouveaux.
 
 ### Poser des wagons
