@@ -69,6 +69,12 @@ public:
      */
     void setNbTicketValide(int nbTicketValide);
 
+    /**
+     * @brief Modifie le nombre de wagons restants.
+     * @param nb Nouveau nombre de wagons.
+     */
+    void setNbWagon(int nb);
+
     // ── Méthodes ──────────────────────────────────────────────────────────────
 
     /**

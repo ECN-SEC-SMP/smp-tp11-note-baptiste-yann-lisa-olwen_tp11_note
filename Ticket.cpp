@@ -45,3 +45,13 @@ bool Ticket::estValide() const
 {
     return valide;
 }
+
+/**
+ * @brief Marque le ticket comme valide ou non.
+ * @param v @c true pour valider le ticket, @c false pour l'invalider.
+ * @return Le ticket lui-même pour permettre le chaînage.
+ */
+bool Ticket::operator==(const Ticket& other) const
+{
+    return id == other.id;
+}

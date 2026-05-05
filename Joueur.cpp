@@ -150,9 +150,18 @@ void Joueur::piocherTicket(Ticket nouvTicket)
  * @param ticket  Ticket à défausser.
  * @param plateau Pointeur vers le plateau contenant la défausse.
  */
-void Joueur::defausserTicket(Ticket ticket, Plateau* plateau)
+void Joueur::defausserTicket(Ticket t, Plateau* plateau)
 {
-    plateau->ajouterDefausseTicket(ticket);
+    plateau->ajouterDefausseTicket(t);
+
+    for (auto it = this->ticket.begin(); it != this->ticket.end(); it++)
+    {
+        if (*it == t)
+        {
+            this->ticket.erase(it);
+            break;
+        }
+    }
 }
 
 /**
@@ -167,6 +176,15 @@ void Joueur::validerTicket(Ticket* t)
         TicVal += 1;
         setNbTicketValide(TicVal);
     }
+}
+
+/**
+ * @brief Modifie le nombre de wagons restants du joueur.
+ * @param nb Nouveau nombre de wagons.
+ */
+void Joueur::setNbWagon(int nb)
+{
+    nbWagon = nb;
 }
 
 /**

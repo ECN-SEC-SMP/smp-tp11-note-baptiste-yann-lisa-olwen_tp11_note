@@ -48,12 +48,6 @@ Ce joueur est déclaré vainqueur.
 
 ## Compilation
 
-### Prérequis
-
-- CMake ≥ 3.16
-- Qt6 (Core + Widgets)
-- Doxygen + Graphviz (optionnel, pour la documentation)
-
 ### Compiler le jeu
 
 ```bash

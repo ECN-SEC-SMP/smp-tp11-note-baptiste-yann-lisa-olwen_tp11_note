@@ -186,7 +186,7 @@ int main(int argc, char *argv[])
 
     while (!partieFinie)
     {
-        app.processEvents();  // ← garde la fenêtre Qt réactive
+        app.processEvents();  // garde la fenêtre Qt réactive
 
         Joueur& joueurCourant = joueurs[nombredeTour % nbJoueurs];
 
@@ -221,7 +221,7 @@ int main(int argc, char *argv[])
         std::cout << "Votre choix : ";
         std::cin >> action;
 
-        app.processEvents();  // ← après chaque action
+        app.processEvents();  // après chaque action
 
         if (action == 1)
         {
@@ -378,6 +378,7 @@ int main(int argc, char *argv[])
                     }
 
                     plateau.getRoute()[choixRoute].setProprio(&joueurCourant);
+                    joueurCourant.setNbWagon(joueurCourant.getNbWagon() - longueur); 
                     std::cout << "Route posée avec succès !" << std::endl;
 
                     // Vérifier les tickets

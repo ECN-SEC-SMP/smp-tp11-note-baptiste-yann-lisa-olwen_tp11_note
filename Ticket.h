@@ -49,5 +49,10 @@ public:
      */
     bool estValide() const;
 
-    // Potentiellement fonction pour afficher le ticket
+    /**
+     * @brief Marque le ticket comme valide ou non.
+     * @param v @c true pour valider le ticket, @c false pour l'invalider.
+     * @return Le ticket lui-même pour permettre le chaînage.
+     */
+    bool operator==(const Ticket& other) const;
 };
