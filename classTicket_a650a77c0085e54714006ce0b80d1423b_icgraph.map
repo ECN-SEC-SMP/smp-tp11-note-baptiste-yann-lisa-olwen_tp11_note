@@ -1,0 +1,5 @@
+<map id="Ticket::estValide" name="Ticket::estValide">
+<area shape="rect" id="Node000001" title="Indique si le ticket est encore valide." alt="" coords="208,5,337,31"/>
+<area shape="rect" id="Node000002" href="$classJoueur.html#af880ff43a382ed9c478a8d55eef000ef" title="Valide un ticket si son objectif est atteint." alt="" coords="5,5,160,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,21,160,21,160,15,194,15"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Plateau::chargerTicketCsv" name="Plateau::chargerTicketCsv">
+<area shape="rect" id="Node000001" title="Charge les tickets destination depuis le fichier Ticket.csv." alt="" coords="5,5,196,31"/>
+<area shape="rect" id="Node000002" href="$classVille.html#aea19fe1610b57b39563d6e1b7e5a9d8f" title="Retourne le nom de la ville." alt="" coords="244,5,355,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,15,230,15,230,21,197,21"/>
+</map>

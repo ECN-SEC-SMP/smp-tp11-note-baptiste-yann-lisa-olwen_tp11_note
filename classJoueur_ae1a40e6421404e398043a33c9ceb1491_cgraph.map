@@ -1,0 +1,7 @@
+<map id="Joueur::GrandeTraversee" name="Joueur::GrandeTraversee">
+<area shape="rect" id="Node000001" title="Gère le bonus de la grande traversée." alt="" coords="5,31,187,56"/>
+<area shape="rect" id="Node000002" href="$classJoueur.html#aadd87efcea0d7e32335ec0ef0d041587" title="Retourne le nombre de tickets validés." alt="" coords="243,5,414,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,31,229,26,230,31,187,36"/>
+<area shape="rect" id="Node000003" href="$classJoueur.html#ad208eeeb7c847301bfab4d577ab7ded4" title="Modifie le nombre de tickets validés." alt="" coords="235,55,423,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="187,50,221,54,221,59,187,55"/>
+</map>

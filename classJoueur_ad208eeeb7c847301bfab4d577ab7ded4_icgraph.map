@@ -1,0 +1,9 @@
+<map id="Joueur::setNbTicketValide" name="Joueur::setNbTicketValide">
+<area shape="rect" id="Node000001" title="Modifie le nombre de tickets validés." alt="" coords="235,55,423,80"/>
+<area shape="rect" id="Node000002" href="$classJoueur.html#ae1a40e6421404e398043a33c9ceb1491" title="Gère le bonus de la grande traversée." alt="" coords="5,5,187,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="254,54,156,33,157,28,255,49"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Point d&#39;entrée principal de l&#39;application." alt="" coords="69,55,123,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,70,123,70,123,65,221,65"/>
+<area shape="rect" id="Node000004" href="$classJoueur.html#af880ff43a382ed9c478a8d55eef000ef" title="Valide un ticket si son objectif est atteint." alt="" coords="19,104,173,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="255,85,157,107,156,101,254,80"/>
+</map>

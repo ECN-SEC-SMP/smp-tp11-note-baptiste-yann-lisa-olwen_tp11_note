@@ -1,0 +1,475 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Les Aventuriers du Rail:  Fichier source de Plateau.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Les Aventuriers du Rail<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Implémentation C++ du jeu de société du même nom.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Plateau_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Plateau.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="Plateau_8cpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="Plateau_8h.html">Plateau.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="Joueur_8h.html">Joueur.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="Ticket_8h.html">Ticket.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="Route_8h.html">Route.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="CarteTrain_8h.html">CarteTrain.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="Ville_8h.html">Ville.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"></span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * @brief Constructeur par défaut — crée un plateau vide.</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * @ingroup Modele</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="group__Modele.html#ga07026170529dd928238ee45de0a797d7">   18</a></span><a class="code hl_function" href="group__Modele.html#ga07026170529dd928238ee45de0a797d7">Plateau::Plateau</a>()</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="comment">// Rien à mettre dedans car paramètres par défaut</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
+</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"></span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * @brief Constructeur avec paramètres (à compléter).</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * @param A Premier paramètre de configuration du plateau.</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> * @param B Second paramètre de configuration du plateau.</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> * @ingroup Modele</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="group__Modele.html#ga9f3b91f40a55f03c27c14daae9cc2031">   29</a></span><a class="code hl_function" href="group__Modele.html#ga07026170529dd928238ee45de0a797d7">Plateau::Plateau</a>(<span class="keywordtype">int</span> A, <span class="keywordtype">int</span> B)</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment">// Paramètres à compléter</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
+</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"></span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"> * @brief Retourne la liste des villes du plateau.</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"> * @return Copie du vecteur de villes.</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classPlateau.html#a4bb54985ba9777fea6d87eb29e85acdb">   38</a></span>std::vector&lt;Ville&gt; <a class="code hl_function" href="classPlateau.html#a4bb54985ba9777fea6d87eb29e85acdb">Plateau::getVille</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlateau.html#aab24440690828b90cfe4668919dfad84">ville</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
+</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment"></span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"> * @brief Retourne la liste des routes du plateau.</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"> * @return Référence vers le vecteur de routes.</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classPlateau.html#a1d12853204c743e3ce12bb7ed617b96e">   47</a></span>std::vector&lt;Route&gt;&amp; <a class="code hl_function" href="classPlateau.html#a1d12853204c743e3ce12bb7ed617b96e">Plateau::getRoute</a>()</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlateau.html#adea74ff34dff1429a6b5482e1a26a54a">route</a>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
+</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"></span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> * @brief Retourne la pioche de cartes train.</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> * @return Référence vers le vecteur de cartes de la pioche.</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classPlateau.html#a6afd8b5a1b762cdfbbcfbc4f7b6a9e55">   56</a></span>std::vector&lt;CarteTrain&gt;&amp; <a class="code hl_function" href="classPlateau.html#a6afd8b5a1b762cdfbbcfbc4f7b6a9e55">Plateau::getPioche</a>()</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>{</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlateau.html#a5afea912d610c6d2457ff4333e337c6e">pioche</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
+</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment"></span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"> * @brief Remplace la pioche par un nouveau jeu de cartes.</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment"> * @param p Nouveau vecteur de cartes train.</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classPlateau.html#a8894718dc81395a6491d6cf3d82acf9e">   65</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlateau.html#a8894718dc81395a6491d6cf3d82acf9e">Plateau::setPioche</a>(std::vector&lt;CarteTrain&gt; p)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>{</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_variable" href="classPlateau.html#a5afea912d610c6d2457ff4333e337c6e">pioche</a> = p;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
+</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment"></span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"> * @brief Retourne les tickets destination disponibles sur le plateau.</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment"> * @return Copie du vecteur de tickets.</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classPlateau.html#aab2d5d621b240904193ccaa36a2a3472">   74</a></span>std::vector&lt;Ticket&gt; <a class="code hl_function" href="classPlateau.html#aab2d5d621b240904193ccaa36a2a3472">Plateau::getTickets</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlateau.html#a0a0056b9b30992342797be5e4cbf298d">tickets</a>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
+</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment"></span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment"> * @brief Retourne la défausse de tickets du plateau.</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment"> * @return Copie du vecteur de tickets défaussés.</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classPlateau.html#a6fe48eb03009e27ff2796316bed4fd7a">   83</a></span>std::vector&lt;Ticket&gt; <a class="code hl_function" href="classPlateau.html#a6fe48eb03009e27ff2796316bed4fd7a">Plateau::getDefausseTicket</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlateau.html#ada5524139078f1210fdc206ef674d98f">defausseTicket</a>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
+</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment"></span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment"> * @brief Retourne la liste des routes appartenant à un joueur donné.</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment"> * @param j Pointeur vers le joueur dont on cherche les routes.</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment"> * @return Vecteur de pointeurs vers les routes du joueur.</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classPlateau.html#a0169478bba4d2e5ccc46d404c8c5198e">   93</a></span>std::vector&lt;Route*&gt; <a class="code hl_function" href="classPlateau.html#a0169478bba4d2e5ccc46d404c8c5198e">Plateau::setRouteJoueur</a>(<a class="code hl_class" href="classJoueur.html">Joueur</a>* j)</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>{</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    std::vector&lt;Route*&gt; routesPrises;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="classPlateau.html#adea74ff34dff1429a6b5482e1a26a54a">route</a>.size(); i++)      <span class="comment">// Parcours de toutes les routes du plateau</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classPlateau.html#adea74ff34dff1429a6b5482e1a26a54a">route</a>[i].getProprio() == j)         <span class="comment">// Si le propriétaire de la route est le joueur j</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            routesPrises.push_back(&amp;<a class="code hl_variable" href="classPlateau.html#adea74ff34dff1429a6b5482e1a26a54a">route</a>[i]);  <span class="comment">// On ajoute un pointeur vers la route à la liste des routes prises par le joueur</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">return</span> routesPrises;                        <span class="comment">// On retourne la liste des routes prises par le joueur</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
+</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment"></span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment"> * @brief Charge les tickets destination depuis le fichier @c Ticket.csv.</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment"> * Le fichier doit contenir une ligne d&#39;en-tête suivie de lignes au format :</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment"> * @code</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment"> * id,villeA,villeB</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment"> * @endcode</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment"> * Les villes référencées doivent déjà être présentes dans le vecteur @c ville.</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment"> * @note Affiche une erreur sur @c stderr si le fichier est introuvable ou si</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment"> *       les villes ne sont pas trouvées.</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00118" data-start="{" data-end="}">
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="classPlateau.html#ac62489ed18969a5ef190037ec45b744e">  118</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlateau.html#ac62489ed18969a5ef190037ec45b744e">Plateau::chargerTicketCsv</a>()</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>{</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    std::fstream fichierTicket(<span class="stringliteral">&quot;Ticket.csv&quot;</span>);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordflow">if</span> (!fichierTicket.is_open()) {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        std::cerr &lt;&lt; <span class="stringliteral">&quot;Erreur : impossible d&#39;ouvrir le fichier Ticket.csv&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    }</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    std::string ligne;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    std::getline(fichierTicket, ligne); <span class="comment">// Lit la première ligne (en-tête) et l&#39;ignore</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    std::stringstream flux_string(ligne);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    std::string id_str, city_A, city_B;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordflow">if</span> (std::getline(flux_string, id_str, <span class="charliteral">&#39;,&#39;</span>) &amp;&amp;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        std::getline(flux_string, city_A, <span class="charliteral">&#39;,&#39;</span>) &amp;&amp;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        std::getline(flux_string, city_B, <span class="charliteral">&#39;,&#39;</span>))</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    {</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="keywordtype">int</span> <span class="keywordtype">id</span> = std::stoi(id_str);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <a class="code hl_class" href="classVille.html">Ville</a>* villeA = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <a class="code hl_class" href="classVille.html">Ville</a>* villeB = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="classPlateau.html#aab24440690828b90cfe4668919dfad84">ville</a>.size(); i++) {</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            <a class="code hl_class" href="classVille.html">Ville</a>&amp; v = <a class="code hl_variable" href="classPlateau.html#aab24440690828b90cfe4668919dfad84">ville</a>[i];</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            <span class="keywordflow">if</span> (v.<a class="code hl_function" href="classVille.html#aea19fe1610b57b39563d6e1b7e5a9d8f">getNom</a>() == city_A) {</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                villeA = &amp;v;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>            }</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>            <span class="keywordflow">if</span> (v.<a class="code hl_function" href="classVille.html#aea19fe1610b57b39563d6e1b7e5a9d8f">getNom</a>() == city_B) {</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>                villeB = &amp;v;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>            }</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        }</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordflow">if</span> (villeA &amp;&amp; villeB) {</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            <a class="code hl_class" href="classTicket.html">Ticket</a> nouveauTicket(<span class="keywordtype">id</span>, *villeA, *villeB);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            <a class="code hl_variable" href="classPlateau.html#a0a0056b9b30992342797be5e4cbf298d">tickets</a>.push_back(nouveauTicket);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            std::cerr &lt;&lt; <span class="stringliteral">&quot;Erreur : villes non trouvées pour le ticket &quot;</span> &lt;&lt; <span class="keywordtype">id</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        }</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    }</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    fichierTicket.close();</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>}</div>
+</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="comment"></span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment"> * @brief Affiche le plateau de jeu dans la console (à implémenter).</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00165" data-start="{" data-end="}">
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="classPlateau.html#a122c12319a8843a493fa06fe4f6e55d4">  165</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlateau.html#a122c12319a8843a493fa06fe4f6e55d4">Plateau::afficher</a>()</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>{</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="comment">// Afficher le plateau de jeu</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>}</div>
+</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment"></span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="comment"> * @brief Retire la carte du dessus de la pioche.</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00173" data-start="{" data-end="}">
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="classPlateau.html#abcefb7901e1d2e7aa98bd4c1dbd01c37">  173</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlateau.html#abcefb7901e1d2e7aa98bd4c1dbd01c37">Plateau::retirerCartePioche</a>()</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>{</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <a class="code hl_variable" href="classPlateau.html#a5afea912d610c6d2457ff4333e337c6e">pioche</a>.pop_back();</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>}</div>
+</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="comment"></span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment"> * @brief Ajoute un ticket à la défausse du plateau.</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="comment"> * @param ticket Ticket à défausser.</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00182" data-start="{" data-end="}">
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="classPlateau.html#ad806d1907ed88807bea61924a7398a4c">  182</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlateau.html#ad806d1907ed88807bea61924a7398a4c">Plateau::ajouterDefausseTicket</a>(<a class="code hl_class" href="classTicket.html">Ticket</a> ticket)</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>{</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <a class="code hl_variable" href="classPlateau.html#ada5524139078f1210fdc206ef674d98f">defausseTicket</a>.push_back(ticket);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>}</div>
+</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment"></span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment"> * @brief Charge les routes depuis le fichier @c route.csv.</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment"> * Le fichier doit contenir une ligne d&#39;en-tête suivie de lignes au format :</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment"> * @code</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="comment"> * villeA,villeB,longueur,couleur,couleur2</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment"> * @endcode</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment"> * Si @c couleur2 vaut @c &quot;Aucune&quot;, la route est simple ; sinon elle est double.</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment"> * @note Affiche une erreur sur @c stderr si le fichier est introuvable.</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00198" data-start="{" data-end="}">
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="classPlateau.html#a2dcc9eb89dfda47913dfd880d8593ebe">  198</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlateau.html#a2dcc9eb89dfda47913dfd880d8593ebe">Plateau::chargerMapCsv</a>()</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>{</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    std::ifstream fichier(<span class="stringliteral">&quot;route.csv&quot;</span>);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordflow">if</span> (!fichier.is_open()) {</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        std::cerr &lt;&lt; <span class="stringliteral">&quot;Erreur : impossible d&#39;ouvrir route.csv&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    }</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    std::string ligne;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    std::getline(fichier, ligne); <span class="comment">// ignorer l&#39;en-tête</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="keywordflow">while</span> (std::getline(fichier, ligne))</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    {</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        std::stringstream ss(ligne);</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        std::string nomA, nomB, longueur_str, couleur_str, double_str;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        std::getline(ss, nomA, <span class="charliteral">&#39;,&#39;</span>);</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        std::getline(ss, nomB, <span class="charliteral">&#39;,&#39;</span>);</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        std::getline(ss, longueur_str, <span class="charliteral">&#39;,&#39;</span>);</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        std::getline(ss, couleur_str, <span class="charliteral">&#39;,&#39;</span>);</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        std::getline(ss, double_str, <span class="charliteral">&#39;,&#39;</span>);</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="keywordtype">int</span> longueur = std::stoi(longueur_str);</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        <span class="keywordtype">bool</span> estDouble = (double_str != <span class="stringliteral">&quot;Aucune&quot;</span>);</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <a class="code hl_enumeration" href="group__Modele.html#gaf8087df85e17ecf76f0d3cf7032bfc3f">CouleurRoute</a> couleur = <a class="code hl_enumvalue" href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3fa1fa0593d0698e5e91065ce5068141d2c">CouleurRoute::Blanc</a>;</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        <span class="keywordflow">if</span> (couleur_str == <span class="stringliteral">&quot;Noir&quot;</span>)   couleur = <a class="code hl_enumvalue" href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3fae72ff2ebebb5222c8421fdfe895aa5ad">CouleurRoute::Noir</a>;</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="keywordflow">if</span> (couleur_str == <span class="stringliteral">&quot;Blanc&quot;</span>)  couleur = <a class="code hl_enumvalue" href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3fa1fa0593d0698e5e91065ce5068141d2c">CouleurRoute::Blanc</a>;</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="keywordflow">if</span> (couleur_str == <span class="stringliteral">&quot;Rouge&quot;</span>)  couleur = <a class="code hl_enumvalue" href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3faf606b49dcc579cac95d676cdf2dc918d">CouleurRoute::Rouge</a>;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        <span class="keywordflow">if</span> (couleur_str == <span class="stringliteral">&quot;Bleu&quot;</span>)   couleur = <a class="code hl_enumvalue" href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3fa2c93ffdb332f3211dd09daf8bd7ad38f">CouleurRoute::Bleu</a>;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        <span class="keywordflow">if</span> (couleur_str == <span class="stringliteral">&quot;Vert&quot;</span>)   couleur = <a class="code hl_enumvalue" href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3faf87a604e5366b28ba26e14e20c067de3">CouleurRoute::Vert</a>;</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        <span class="keywordflow">if</span> (couleur_str == <span class="stringliteral">&quot;Jaune&quot;</span>)  couleur = <a class="code hl_enumvalue" href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3fa2daf2040687086eb7af780b8ce437f3f">CouleurRoute::Jaune</a>;</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <a class="code hl_class" href="classRoute.html">Route</a> r(longueur, estDouble, couleur);</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        r.<a class="code hl_function" href="classRoute.html#a54a7fd7fe299289b6e2d77b79b738e34">setVilleA</a>(<a class="code hl_class" href="classVille.html">Ville</a>(nomA));</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        r.<a class="code hl_function" href="classRoute.html#a7a6cd8b6979a29ab92a6dbb48169b0df">setVilleB</a>(<a class="code hl_class" href="classVille.html">Ville</a>(nomB));</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        <span class="keywordflow">if</span> (double_str != <span class="stringliteral">&quot;Aucune&quot;</span>)</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        {</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>            <a class="code hl_enumeration" href="group__Modele.html#gaf8087df85e17ecf76f0d3cf7032bfc3f">CouleurRoute</a> couleur2 = <a class="code hl_enumvalue" href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3fa1fa0593d0698e5e91065ce5068141d2c">CouleurRoute::Blanc</a>;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            <span class="keywordflow">if</span> (double_str == <span class="stringliteral">&quot;Noir&quot;</span>)   couleur2 = <a class="code hl_enumvalue" href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3fae72ff2ebebb5222c8421fdfe895aa5ad">CouleurRoute::Noir</a>;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>            <span class="keywordflow">if</span> (double_str == <span class="stringliteral">&quot;Blanc&quot;</span>)  couleur2 = <a class="code hl_enumvalue" href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3fa1fa0593d0698e5e91065ce5068141d2c">CouleurRoute::Blanc</a>;</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>            <span class="keywordflow">if</span> (double_str == <span class="stringliteral">&quot;Rouge&quot;</span>)  couleur2 = <a class="code hl_enumvalue" href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3faf606b49dcc579cac95d676cdf2dc918d">CouleurRoute::Rouge</a>;</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>            <span class="keywordflow">if</span> (double_str == <span class="stringliteral">&quot;Bleu&quot;</span>)   couleur2 = <a class="code hl_enumvalue" href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3fa2c93ffdb332f3211dd09daf8bd7ad38f">CouleurRoute::Bleu</a>;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>            <span class="keywordflow">if</span> (double_str == <span class="stringliteral">&quot;Vert&quot;</span>)   couleur2 = <a class="code hl_enumvalue" href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3faf87a604e5366b28ba26e14e20c067de3">CouleurRoute::Vert</a>;</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            <span class="keywordflow">if</span> (double_str == <span class="stringliteral">&quot;Jaune&quot;</span>)  couleur2 = <a class="code hl_enumvalue" href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3fa2daf2040687086eb7af780b8ce437f3f">CouleurRoute::Jaune</a>;</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>            r.<a class="code hl_function" href="classRoute.html#a40bc5ccba806d6470eb063e0fc158044">setCouleur2</a>(couleur2);</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        }</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <a class="code hl_variable" href="classPlateau.html#adea74ff34dff1429a6b5482e1a26a54a">route</a>.push_back(r);</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    }</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    fichier.close();</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>}</div>
+</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="comment"></span> </div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="comment"> * @brief Vide la défausse de tickets.</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00254" data-start="{" data-end="}">
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno"><a class="line" href="classPlateau.html#a8659e37f60965eab38b8ef9d3fce03e8">  254</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlateau.html#a8659e37f60965eab38b8ef9d3fce03e8">Plateau::viderDefausseTicket</a>()</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>{</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    <a class="code hl_variable" href="classPlateau.html#ada5524139078f1210fdc206ef674d98f">defausseTicket</a>.clear();</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>}</div>
+</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="comment"></span> </div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="comment"> * @brief Ajoute une carte train à la défausse de cartes.</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="comment"> * @param carte Carte à défausser.</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00263" data-start="{" data-end="}">
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno"><a class="line" href="classPlateau.html#a420617f6997ed3710902f6e8546a9294">  263</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlateau.html#a420617f6997ed3710902f6e8546a9294">Plateau::ajouterDefausseCartes</a>(<a class="code hl_class" href="classCarteTrain.html">CarteTrain</a> carte)</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>{</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    <a class="code hl_variable" href="classPlateau.html#ae5044d1f7b23786a593a2749c44d00fe">defausseCartes</a>.push_back(carte);</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>}</div>
+</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="comment"></span> </div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="comment"> * @brief Retourne la défausse de cartes train.</span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="comment"> * @return Copie du vecteur de cartes défaussées.</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00272" data-start="{" data-end="}">
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno"><a class="line" href="classPlateau.html#acf1765b28bb9686922de221b6c860ec3">  272</a></span>std::vector&lt;CarteTrain&gt; <a class="code hl_function" href="classPlateau.html#acf1765b28bb9686922de221b6c860ec3">Plateau::getDefausseCartes</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classPlateau.html#ae5044d1f7b23786a593a2749c44d00fe">defausseCartes</a>;</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>}</div>
+</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="comment"></span> </div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span><span class="comment"> * @brief Vide la défausse de cartes train.</span></div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00280" data-start="{" data-end="}">
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno"><a class="line" href="classPlateau.html#aad646aca07438359317f5007c5635a90">  280</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPlateau.html#aad646aca07438359317f5007c5635a90">Plateau::viderDefausseCartes</a>()</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>{</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    <a class="code hl_variable" href="classPlateau.html#ae5044d1f7b23786a593a2749c44d00fe">defausseCartes</a>.clear();</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>}</div>
+</div>
+<div class="ttc" id="aCarteTrain_8h_html"><div class="ttname"><a href="CarteTrain_8h.html">CarteTrain.h</a></div><div class="ttdoc">Description de la classe CarteTrain.</div></div>
+<div class="ttc" id="aJoueur_8h_html"><div class="ttname"><a href="Joueur_8h.html">Joueur.h</a></div><div class="ttdoc">Déclaration de la classe Joueur.</div></div>
+<div class="ttc" id="aPlateau_8h_html"><div class="ttname"><a href="Plateau_8h.html">Plateau.h</a></div><div class="ttdoc">Déclaration de la classe Plateau.</div></div>
+<div class="ttc" id="aRoute_8h_html"><div class="ttname"><a href="Route_8h.html">Route.h</a></div><div class="ttdoc">Déclaration de la classe Route.</div></div>
+<div class="ttc" id="aTicket_8h_html"><div class="ttname"><a href="Ticket_8h.html">Ticket.h</a></div><div class="ttdoc">Déclaration de la classe Ticket.</div></div>
+<div class="ttc" id="aVille_8h_html"><div class="ttname"><a href="Ville_8h.html">Ville.h</a></div><div class="ttdoc">Déclaration de la classe Ville.</div></div>
+<div class="ttc" id="aclassCarteTrain_html"><div class="ttname"><a href="classCarteTrain.html">CarteTrain</a></div><div class="ttdoc">Représente une carte train identifiée par sa couleur.</div><div class="ttdef"><b>Definition</b> <a href="CarteTrain_8h_source.html#l00022">CarteTrain.h:23</a></div></div>
+<div class="ttc" id="aclassJoueur_html"><div class="ttname"><a href="classJoueur.html">Joueur</a></div><div class="ttdoc">Déclaration anticipée pour éviter les inclusions circulaires.</div><div class="ttdef"><b>Definition</b> <a href="Joueur_8h_source.html#l00030">Joueur.h:30</a></div></div>
+<div class="ttc" id="aclassPlateau_html_a0169478bba4d2e5ccc46d404c8c5198e"><div class="ttname"><a href="classPlateau.html#a0169478bba4d2e5ccc46d404c8c5198e">Plateau::setRouteJoueur</a></div><div class="ttdeci">std::vector&lt; Route * &gt; setRouteJoueur(Joueur *j)</div><div class="ttdoc">Retourne la liste des routes appartenant à un joueur donné.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00093">Plateau.cpp:93</a></div></div>
+<div class="ttc" id="aclassPlateau_html_a0a0056b9b30992342797be5e4cbf298d"><div class="ttname"><a href="classPlateau.html#a0a0056b9b30992342797be5e4cbf298d">Plateau::tickets</a></div><div class="ttdeci">std::vector&lt; Ticket &gt; tickets</div><div class="ttdoc">Tickets destination disponibles.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8h_source.html#l00117">Plateau.h:117</a></div></div>
+<div class="ttc" id="aclassPlateau_html_a122c12319a8843a493fa06fe4f6e55d4"><div class="ttname"><a href="classPlateau.html#a122c12319a8843a493fa06fe4f6e55d4">Plateau::afficher</a></div><div class="ttdeci">void afficher()</div><div class="ttdoc">Affiche le plateau dans la console (à implémenter).</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00165">Plateau.cpp:165</a></div></div>
+<div class="ttc" id="aclassPlateau_html_a1d12853204c743e3ce12bb7ed617b96e"><div class="ttname"><a href="classPlateau.html#a1d12853204c743e3ce12bb7ed617b96e">Plateau::getRoute</a></div><div class="ttdeci">std::vector&lt; Route &gt; &amp; getRoute()</div><div class="ttdoc">Retourne la liste des routes du plateau.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00047">Plateau.cpp:47</a></div></div>
+<div class="ttc" id="aclassPlateau_html_a2dcc9eb89dfda47913dfd880d8593ebe"><div class="ttname"><a href="classPlateau.html#a2dcc9eb89dfda47913dfd880d8593ebe">Plateau::chargerMapCsv</a></div><div class="ttdeci">void chargerMapCsv()</div><div class="ttdoc">Charge les routes depuis le fichier route.csv.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00198">Plateau.cpp:198</a></div></div>
+<div class="ttc" id="aclassPlateau_html_a420617f6997ed3710902f6e8546a9294"><div class="ttname"><a href="classPlateau.html#a420617f6997ed3710902f6e8546a9294">Plateau::ajouterDefausseCartes</a></div><div class="ttdeci">void ajouterDefausseCartes(CarteTrain carte)</div><div class="ttdoc">Ajoute une carte train à la défausse de cartes.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00263">Plateau.cpp:263</a></div></div>
+<div class="ttc" id="aclassPlateau_html_a4bb54985ba9777fea6d87eb29e85acdb"><div class="ttname"><a href="classPlateau.html#a4bb54985ba9777fea6d87eb29e85acdb">Plateau::getVille</a></div><div class="ttdeci">std::vector&lt; Ville &gt; getVille() const</div><div class="ttdoc">Retourne la liste des villes du plateau.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00038">Plateau.cpp:38</a></div></div>
+<div class="ttc" id="aclassPlateau_html_a5afea912d610c6d2457ff4333e337c6e"><div class="ttname"><a href="classPlateau.html#a5afea912d610c6d2457ff4333e337c6e">Plateau::pioche</a></div><div class="ttdeci">std::vector&lt; CarteTrain &gt; pioche</div><div class="ttdoc">Pioche de cartes train.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8h_source.html#l00116">Plateau.h:116</a></div></div>
+<div class="ttc" id="aclassPlateau_html_a6afd8b5a1b762cdfbbcfbc4f7b6a9e55"><div class="ttname"><a href="classPlateau.html#a6afd8b5a1b762cdfbbcfbc4f7b6a9e55">Plateau::getPioche</a></div><div class="ttdeci">std::vector&lt; CarteTrain &gt; &amp; getPioche()</div><div class="ttdoc">Retourne la pioche de cartes train.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00056">Plateau.cpp:56</a></div></div>
+<div class="ttc" id="aclassPlateau_html_a6fe48eb03009e27ff2796316bed4fd7a"><div class="ttname"><a href="classPlateau.html#a6fe48eb03009e27ff2796316bed4fd7a">Plateau::getDefausseTicket</a></div><div class="ttdeci">std::vector&lt; Ticket &gt; getDefausseTicket() const</div><div class="ttdoc">Retourne la défausse de tickets.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00083">Plateau.cpp:83</a></div></div>
+<div class="ttc" id="aclassPlateau_html_a8659e37f60965eab38b8ef9d3fce03e8"><div class="ttname"><a href="classPlateau.html#a8659e37f60965eab38b8ef9d3fce03e8">Plateau::viderDefausseTicket</a></div><div class="ttdeci">void viderDefausseTicket()</div><div class="ttdoc">Vide la défausse de tickets.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00254">Plateau.cpp:254</a></div></div>
+<div class="ttc" id="aclassPlateau_html_a8894718dc81395a6491d6cf3d82acf9e"><div class="ttname"><a href="classPlateau.html#a8894718dc81395a6491d6cf3d82acf9e">Plateau::setPioche</a></div><div class="ttdeci">void setPioche(std::vector&lt; CarteTrain &gt; p)</div><div class="ttdoc">Remplace la pioche par un nouveau jeu de cartes.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00065">Plateau.cpp:65</a></div></div>
+<div class="ttc" id="aclassPlateau_html_aab24440690828b90cfe4668919dfad84"><div class="ttname"><a href="classPlateau.html#aab24440690828b90cfe4668919dfad84">Plateau::ville</a></div><div class="ttdeci">std::vector&lt; Ville &gt; ville</div><div class="ttdoc">Villes du plateau.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8h_source.html#l00114">Plateau.h:114</a></div></div>
+<div class="ttc" id="aclassPlateau_html_aab2d5d621b240904193ccaa36a2a3472"><div class="ttname"><a href="classPlateau.html#aab2d5d621b240904193ccaa36a2a3472">Plateau::getTickets</a></div><div class="ttdeci">std::vector&lt; Ticket &gt; getTickets() const</div><div class="ttdoc">Retourne les tickets destination disponibles.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00074">Plateau.cpp:74</a></div></div>
+<div class="ttc" id="aclassPlateau_html_aad646aca07438359317f5007c5635a90"><div class="ttname"><a href="classPlateau.html#aad646aca07438359317f5007c5635a90">Plateau::viderDefausseCartes</a></div><div class="ttdeci">void viderDefausseCartes()</div><div class="ttdoc">Vide la défausse de cartes train.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00280">Plateau.cpp:280</a></div></div>
+<div class="ttc" id="aclassPlateau_html_abcefb7901e1d2e7aa98bd4c1dbd01c37"><div class="ttname"><a href="classPlateau.html#abcefb7901e1d2e7aa98bd4c1dbd01c37">Plateau::retirerCartePioche</a></div><div class="ttdeci">void retirerCartePioche()</div><div class="ttdoc">Retire la carte du dessus de la pioche.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00173">Plateau.cpp:173</a></div></div>
+<div class="ttc" id="aclassPlateau_html_ac62489ed18969a5ef190037ec45b744e"><div class="ttname"><a href="classPlateau.html#ac62489ed18969a5ef190037ec45b744e">Plateau::chargerTicketCsv</a></div><div class="ttdeci">void chargerTicketCsv()</div><div class="ttdoc">Charge les tickets destination depuis le fichier Ticket.csv.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00118">Plateau.cpp:118</a></div></div>
+<div class="ttc" id="aclassPlateau_html_acf1765b28bb9686922de221b6c860ec3"><div class="ttname"><a href="classPlateau.html#acf1765b28bb9686922de221b6c860ec3">Plateau::getDefausseCartes</a></div><div class="ttdeci">std::vector&lt; CarteTrain &gt; getDefausseCartes() const</div><div class="ttdoc">Retourne la défausse de cartes train.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00272">Plateau.cpp:272</a></div></div>
+<div class="ttc" id="aclassPlateau_html_ad806d1907ed88807bea61924a7398a4c"><div class="ttname"><a href="classPlateau.html#ad806d1907ed88807bea61924a7398a4c">Plateau::ajouterDefausseTicket</a></div><div class="ttdeci">void ajouterDefausseTicket(Ticket ticket)</div><div class="ttdoc">Ajoute un ticket à la défausse.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00182">Plateau.cpp:182</a></div></div>
+<div class="ttc" id="aclassPlateau_html_ada5524139078f1210fdc206ef674d98f"><div class="ttname"><a href="classPlateau.html#ada5524139078f1210fdc206ef674d98f">Plateau::defausseTicket</a></div><div class="ttdeci">std::vector&lt; Ticket &gt; defausseTicket</div><div class="ttdoc">Défausse de tickets.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8h_source.html#l00118">Plateau.h:118</a></div></div>
+<div class="ttc" id="aclassPlateau_html_adea74ff34dff1429a6b5482e1a26a54a"><div class="ttname"><a href="classPlateau.html#adea74ff34dff1429a6b5482e1a26a54a">Plateau::route</a></div><div class="ttdeci">std::vector&lt; Route &gt; route</div><div class="ttdoc">Routes du plateau.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8h_source.html#l00115">Plateau.h:115</a></div></div>
+<div class="ttc" id="aclassPlateau_html_ae5044d1f7b23786a593a2749c44d00fe"><div class="ttname"><a href="classPlateau.html#ae5044d1f7b23786a593a2749c44d00fe">Plateau::defausseCartes</a></div><div class="ttdeci">std::vector&lt; CarteTrain &gt; defausseCartes</div><div class="ttdoc">Défausse de cartes train.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8h_source.html#l00119">Plateau.h:119</a></div></div>
+<div class="ttc" id="aclassRoute_html"><div class="ttname"><a href="classRoute.html">Route</a></div><div class="ttdoc">Déclaration anticipée pour éviter les inclusions circulaires.</div><div class="ttdef"><b>Definition</b> <a href="Route_8h_source.html#l00027">Route.h:27</a></div></div>
+<div class="ttc" id="aclassRoute_html_a40bc5ccba806d6470eb063e0fc158044"><div class="ttname"><a href="classRoute.html#a40bc5ccba806d6470eb063e0fc158044">Route::setCouleur2</a></div><div class="ttdeci">void setCouleur2(CouleurRoute c)</div><div class="ttdoc">Définit la couleur de la voie parallèle.</div><div class="ttdef"><b>Definition</b> <a href="Route_8cpp_source.html#l00132">Route.cpp:132</a></div></div>
+<div class="ttc" id="aclassRoute_html_a54a7fd7fe299289b6e2d77b79b738e34"><div class="ttname"><a href="classRoute.html#a54a7fd7fe299289b6e2d77b79b738e34">Route::setVilleA</a></div><div class="ttdeci">void setVilleA(Ville v)</div><div class="ttdoc">Définit la ville de départ de la route.</div><div class="ttdef"><b>Definition</b> <a href="Route_8cpp_source.html#l00114">Route.cpp:114</a></div></div>
+<div class="ttc" id="aclassRoute_html_a7a6cd8b6979a29ab92a6dbb48169b0df"><div class="ttname"><a href="classRoute.html#a7a6cd8b6979a29ab92a6dbb48169b0df">Route::setVilleB</a></div><div class="ttdeci">void setVilleB(Ville v)</div><div class="ttdoc">Définit la ville d'arrivée de la route.</div><div class="ttdef"><b>Definition</b> <a href="Route_8cpp_source.html#l00123">Route.cpp:123</a></div></div>
+<div class="ttc" id="aclassTicket_html"><div class="ttname"><a href="classTicket.html">Ticket</a></div><div class="ttdoc">Représente un ticket destination entre deux villes.</div><div class="ttdef"><b>Definition</b> <a href="Ticket_8h_source.html#l00021">Ticket.h:21</a></div></div>
+<div class="ttc" id="aclassVille_html"><div class="ttname"><a href="classVille.html">Ville</a></div><div class="ttdoc">Représente une ville sur le plateau de jeu.</div><div class="ttdef"><b>Definition</b> <a href="Ville_8h_source.html#l00021">Ville.h:22</a></div></div>
+<div class="ttc" id="aclassVille_html_aea19fe1610b57b39563d6e1b7e5a9d8f"><div class="ttname"><a href="classVille.html#aea19fe1610b57b39563d6e1b7e5a9d8f">Ville::getNom</a></div><div class="ttdeci">const std::string &amp; getNom() const</div><div class="ttdoc">Retourne le nom de la ville.</div><div class="ttdef"><b>Definition</b> <a href="Ville_8cpp_source.html#l00023">Ville.cpp:23</a></div></div>
+<div class="ttc" id="agroup__Modele_html_ga07026170529dd928238ee45de0a797d7"><div class="ttname"><a href="group__Modele.html#ga07026170529dd928238ee45de0a797d7">Plateau::Plateau</a></div><div class="ttdeci">Plateau()</div><div class="ttdoc">Constructeur par défaut — crée un plateau vide.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00018">Plateau.cpp:18</a></div></div>
+<div class="ttc" id="agroup__Modele_html_gaf8087df85e17ecf76f0d3cf7032bfc3f"><div class="ttname"><a href="group__Modele.html#gaf8087df85e17ecf76f0d3cf7032bfc3f">CouleurRoute</a></div><div class="ttdeci">CouleurRoute</div><div class="ttdoc">Couleurs possibles d'une route sur le plateau de jeu.</div><div class="ttdef"><b>Definition</b> <a href="CouleurRoute_8h_source.html#l00018">CouleurRoute.h:19</a></div></div>
+<div class="ttc" id="agroup__Modele_html_ggaf8087df85e17ecf76f0d3cf7032bfc3fa1fa0593d0698e5e91065ce5068141d2c"><div class="ttname"><a href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3fa1fa0593d0698e5e91065ce5068141d2c">CouleurRoute::Blanc</a></div><div class="ttdeci">@ Blanc</div><div class="ttdoc">Route blanche.</div></div>
+<div class="ttc" id="agroup__Modele_html_ggaf8087df85e17ecf76f0d3cf7032bfc3fa2c93ffdb332f3211dd09daf8bd7ad38f"><div class="ttname"><a href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3fa2c93ffdb332f3211dd09daf8bd7ad38f">CouleurRoute::Bleu</a></div><div class="ttdeci">@ Bleu</div><div class="ttdoc">Route bleue.</div></div>
+<div class="ttc" id="agroup__Modele_html_ggaf8087df85e17ecf76f0d3cf7032bfc3fa2daf2040687086eb7af780b8ce437f3f"><div class="ttname"><a href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3fa2daf2040687086eb7af780b8ce437f3f">CouleurRoute::Jaune</a></div><div class="ttdeci">@ Jaune</div><div class="ttdoc">Route jaune.</div></div>
+<div class="ttc" id="agroup__Modele_html_ggaf8087df85e17ecf76f0d3cf7032bfc3fae72ff2ebebb5222c8421fdfe895aa5ad"><div class="ttname"><a href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3fae72ff2ebebb5222c8421fdfe895aa5ad">CouleurRoute::Noir</a></div><div class="ttdeci">@ Noir</div><div class="ttdoc">Route noire.</div></div>
+<div class="ttc" id="agroup__Modele_html_ggaf8087df85e17ecf76f0d3cf7032bfc3faf606b49dcc579cac95d676cdf2dc918d"><div class="ttname"><a href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3faf606b49dcc579cac95d676cdf2dc918d">CouleurRoute::Rouge</a></div><div class="ttdeci">@ Rouge</div><div class="ttdoc">Route rouge.</div></div>
+<div class="ttc" id="agroup__Modele_html_ggaf8087df85e17ecf76f0d3cf7032bfc3faf87a604e5366b28ba26e14e20c067de3"><div class="ttname"><a href="group__Modele.html#ggaf8087df85e17ecf76f0d3cf7032bfc3faf87a604e5366b28ba26e14e20c067de3">CouleurRoute::Vert</a></div><div class="ttdeci">@ Vert</div><div class="ttdoc">Route verte.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="Plateau_8cpp.html">Plateau.cpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

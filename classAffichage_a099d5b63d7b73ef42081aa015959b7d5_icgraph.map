@@ -1,0 +1,9 @@
+<map id="Affichage::dessinerPlateau" name="Affichage::dessinerPlateau">
+<area shape="rect" id="Node000001" title="Dessine l&#39;intégralité du plateau (villes + routes)." alt="" coords="325,31,520,56"/>
+<area shape="rect" id="Node000002" href="$classAffichage.html#a8c072a04eff871f55d94f642d1fa188e" title="Construit la fenêtre principale et initialise la scène graphique." alt="" coords="117,5,269,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="311,34,269,29,269,24,312,28"/>
+<area shape="rect" id="Node000003" href="$classAffichage.html#ae77eaf95ebb6e1323148959e062df5d9" title="Redessine l&#39;intégralité de la scène pour refléter l&#39;état courant du jeu." alt="" coords="108,55,277,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="312,58,278,61,277,56,311,52"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Point d&#39;entrée principal de l&#39;application." alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="94,70,60,70,60,65,94,65"/>
+</map>

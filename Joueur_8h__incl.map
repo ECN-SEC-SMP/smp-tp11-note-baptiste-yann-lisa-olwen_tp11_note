@@ -1,0 +1,31 @@
+<map id="Joueur.h" name="Joueur.h">
+<area shape="rect" id="Node000001" title="Déclaration de la classe Joueur." alt="" coords="311,5,385,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="147,225,205,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="311,21,258,24,193,32,125,50,92,64,62,81,41,96,28,111,11,153,9,171,15,186,27,198,44,208,89,223,134,231,133,236,87,228,42,213,24,202,10,189,4,171,6,151,24,108,38,92,59,76,90,59,123,45,192,27,258,18,311,16"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="521,79,583,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="382,28,509,72,507,77,380,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="608,79,659,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="386,25,595,76,594,81,385,30"/>
+<area shape="rect" id="Node000005" href="$CouleurWagon_8h.html" title="Définition des couleurs de wagons des joueurs." alt="" coords="360,152,488,177"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="357,30,414,139,409,141,352,32"/>
+<area shape="rect" id="Node000006" href="$Ticket_8h.html" title="Déclaration de la classe Ticket." alt="" coords="423,79,497,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="368,28,431,69,429,73,365,33"/>
+<area shape="rect" id="Node000008" href="$CarteTrain_8h.html" title="Description de la classe CarteTrain." alt="" coords="71,79,171,104"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="312,33,172,77,170,72,311,28"/>
+<area shape="rect" id="Node000010" href="$Route_8h.html" title="Déclaration de la classe Route." alt="" coords="276,79,348,104"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="338,32,318,67,313,65,333,30"/>
+<area shape="poly" id="edge8_Node000006_Node000002" title=" " alt="" coords="498,99,537,111,574,129,588,139,596,151,598,165,590,179,564,198,525,212,476,223,422,231,311,238,220,240,219,235,311,233,422,225,475,218,523,207,561,193,586,176,592,164,591,153,584,143,571,133,535,116,496,104"/>
+<area shape="rect" id="Node000007" href="$Ville_8h.html" title="Déclaration de la classe Ville." alt="" coords="513,152,575,177"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="475,102,521,141,518,145,472,106"/>
+<area shape="poly" id="edge7_Node000007_Node000002" title=" " alt="" coords="513,177,501,180,346,211,220,232,219,227,345,205,500,175,512,172"/>
+<area shape="rect" id="Node000009" href="$CouleurCarte_8h.html" title="Définition des couleurs de cartes train et utilitaire de conversion." alt="" coords="19,152,138,177"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="117,106,95,142,90,139,112,103"/>
+<area shape="poly" id="edge11_Node000009_Node000002" title=" " alt="" coords="96,175,150,215,147,219,93,180"/>
+<area shape="poly" id="edge14_Node000010_Node000001" title=" " alt="" coords="322,77,342,42,347,45,327,80"/>
+<area shape="poly" id="edge13_Node000010_Node000002" title=" " alt="" coords="277,106,238,125,219,138,204,154,188,182,181,212,176,211,183,180,199,150,216,134,235,120,275,101"/>
+<area shape="poly" id="edge18_Node000010_Node000005" title=" " alt="" coords="332,102,395,142,393,147,329,106"/>
+<area shape="poly" id="edge15_Node000010_Node000007" title=" " alt="" coords="349,101,500,147,499,152,348,106"/>
+<area shape="poly" id="edge16_Node000010_Node000009" title=" " alt="" coords="276,106,130,151,129,145,275,101"/>
+<area shape="rect" id="Node000011" href="$CouleurRoute_8h.html" title="Définition des couleurs de routes du plateau." alt="" coords="213,152,336,177"/>
+<area shape="poly" id="edge17_Node000010_Node000011" title=" " alt="" coords="308,106,289,141,285,139,304,103"/>
+</map>

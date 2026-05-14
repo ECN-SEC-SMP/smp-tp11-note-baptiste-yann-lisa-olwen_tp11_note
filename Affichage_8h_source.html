@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Les Aventuriers du Rail:  Fichier source de Affichage.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Les Aventuriers du Rail<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Implémentation C++ du jeu de société du même nom.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Affichage_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Affichage.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="Affichage_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;QMainWindow&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;QGraphicsScene&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;QGraphicsView&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;QGraphicsRectItem&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;QTransform&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;QtMath&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="Plateau_8h.html">Plateau.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="Joueur_8h.html">Joueur.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"></span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * @brief Fenêtre principale de l&#39;application – affichage du plateau de jeu.</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * La classe @c Affichage hérite de QMainWindow et centralise tout le rendu</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> * graphique du jeu : plateau, villes, routes et pions des joueurs.</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * Elle utilise un QGraphicsScene / QGraphicsView pour le dessin 2D.</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * @ingroup Affichage</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classAffichage.html">   22</a></span><span class="keyword">class </span><a class="code hl_class" href="classAffichage.html">Affichage</a> : <span class="keyword">public</span> QMainWindow {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    Q_OBJECT</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classAffichage.html#a404b2883b0fc1f7b0e5cc8ceeea0f303">   26</a></span>    QGraphicsScene* <a class="code hl_variable" href="classAffichage.html#a404b2883b0fc1f7b0e5cc8ceeea0f303">scene</a>;   <span class="comment">///&lt; Scène Qt contenant tous les éléments graphiques.</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classAffichage.html#add9a233987b30e0cae515078be45aae3">   27</a></span>    QGraphicsView*  <a class="code hl_variable" href="classAffichage.html#add9a233987b30e0cae515078be45aae3">vue</a>;     <span class="comment">///&lt; Vue Qt affichant la scène dans la fenêtre.</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classAffichage.html#a946aa200fc57785f3d0eedd91b34164d">   28</a></span>    <a class="code hl_class" href="classPlateau.html">Plateau</a>*        <a class="code hl_variable" href="classAffichage.html#a946aa200fc57785f3d0eedd91b34164d">plateau</a>; <span class="comment">///&lt; Pointeur vers le plateau logique du jeu.</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"></span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">     * @brief Dessine l&#39;intégralité du plateau (villes + routes).</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">     * @note Appelée une seule fois à l&#39;initialisation, puis sur demande de mise à jour.</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAffichage.html#a099d5b63d7b73ef42081aa015959b7d5">dessinerPlateau</a>();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"></span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">     * @brief Dessine une ville sous forme de cercle étiqueté.</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">     * @param x   Coordonnée X du centre de la ville (pixels scène).</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">     * @param y   Coordonnée Y du centre de la ville (pixels scène).</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">     * @param nom Nom affiché sous le symbole de la ville.</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, QString nom);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"></span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">     * @brief Dessine une route entre deux points, avec support des routes doubles.</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">     * Si @p couleur2 est différente de Qt::transparent, une seconde voie</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">     * parallèle est tracée à côté de la première (route double).</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">     * Si @p proprio est non vide, la route est coloriée aux couleurs du joueur</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">     * propriétaire.</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">     * @param x1       Coordonnée X du point de départ (pixels scène).</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">     * @param y1       Coordonnée Y du point de départ (pixels scène).</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">     * @param x2       Coordonnée X du point d&#39;arrivée (pixels scène).</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">     * @param y2       Coordonnée Y du point d&#39;arrivée (pixels scène).</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">     * @param couleur  Couleur principale de la route.</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">     * @param longueur Nombre de wagons nécessaires pour revendiquer la route.</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">     * @param couleur2 Couleur de la voie parallèle (Qt::transparent = route simple).</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">     * @param proprio  Nom du joueur propriétaire (vide = route libre).</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(<span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y1, <span class="keywordtype">int</span> x2, <span class="keywordtype">int</span> y2,</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                       QColor couleur, <span class="keywordtype">int</span> longueur,</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                       QColor couleur2 = Qt::transparent,</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                       QString proprio = <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment"></span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">     * @brief Dessine les pions et informations de chaque joueur sur le plateau.</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classAffichage.html#a378e66f8415d6009177f2a0a62b3f1c5">   69</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAffichage.html#a378e66f8415d6009177f2a0a62b3f1c5">dessinerJoueurs</a>();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">     * @brief Construit la fenêtre principale et initialise la scène graphique.</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">     * @param plateau Pointeur vers le plateau logique (ne doit pas être nul).</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">     * @param parent  Widget Qt parent (nullptr = fenêtre racine).</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="classAffichage.html">Affichage</a>(<a class="code hl_class" href="classPlateau.html">Plateau</a>* <a class="code hl_variable" href="classAffichage.html#a946aa200fc57785f3d0eedd91b34164d">plateau</a>, QWidget* parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment"></span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">     * @brief Redessine l&#39;intégralité de la scène pour refléter l&#39;état courant du jeu.</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">     * @note À appeler après chaque modification du modèle (pose de wagons, etc.).</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAffichage.html#ae77eaf95ebb6e1323148959e062df5d9">mettreAJour</a>();</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keyword">protected</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">     * @brief Intercepte les clics souris pour la sélection de routes ou de villes.</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">     * @param event Événement souris fourni par Qt.</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAffichage.html#abb32581965a12a712d63aecb87cba6e2">mousePressEvent</a>(QMouseEvent* event) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>};</div>
+</div>
+<div class="ttc" id="aJoueur_8h_html"><div class="ttname"><a href="Joueur_8h.html">Joueur.h</a></div><div class="ttdoc">Déclaration de la classe Joueur.</div></div>
+<div class="ttc" id="aPlateau_8h_html"><div class="ttname"><a href="Plateau_8h.html">Plateau.h</a></div><div class="ttdoc">Déclaration de la classe Plateau.</div></div>
+<div class="ttc" id="aclassAffichage_html"><div class="ttname"><a href="classAffichage.html">Affichage</a></div><div class="ttdoc">Fenêtre principale de l'application – affichage du plateau de jeu.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8h_source.html#l00022">Affichage.h:22</a></div></div>
+<div class="ttc" id="aclassAffichage_html_a099d5b63d7b73ef42081aa015959b7d5"><div class="ttname"><a href="classAffichage.html#a099d5b63d7b73ef42081aa015959b7d5">Affichage::dessinerPlateau</a></div><div class="ttdeci">void dessinerPlateau()</div><div class="ttdoc">Dessine l'intégralité du plateau (villes + routes).</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8cpp_source.html#l00045">Affichage.cpp:45</a></div></div>
+<div class="ttc" id="aclassAffichage_html_a378e66f8415d6009177f2a0a62b3f1c5"><div class="ttname"><a href="classAffichage.html#a378e66f8415d6009177f2a0a62b3f1c5">Affichage::dessinerJoueurs</a></div><div class="ttdeci">void dessinerJoueurs()</div><div class="ttdoc">Dessine les pions et informations de chaque joueur sur le plateau.</div></div>
+<div class="ttc" id="aclassAffichage_html_a404b2883b0fc1f7b0e5cc8ceeea0f303"><div class="ttname"><a href="classAffichage.html#a404b2883b0fc1f7b0e5cc8ceeea0f303">Affichage::scene</a></div><div class="ttdeci">QGraphicsScene * scene</div><div class="ttdoc">Scène Qt contenant tous les éléments graphiques.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8h_source.html#l00026">Affichage.h:26</a></div></div>
+<div class="ttc" id="aclassAffichage_html_a946aa200fc57785f3d0eedd91b34164d"><div class="ttname"><a href="classAffichage.html#a946aa200fc57785f3d0eedd91b34164d">Affichage::plateau</a></div><div class="ttdeci">Plateau * plateau</div><div class="ttdoc">Pointeur vers le plateau logique du jeu.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8h_source.html#l00028">Affichage.h:28</a></div></div>
+<div class="ttc" id="aclassAffichage_html_abb32581965a12a712d63aecb87cba6e2"><div class="ttname"><a href="classAffichage.html#abb32581965a12a712d63aecb87cba6e2">Affichage::mousePressEvent</a></div><div class="ttdeci">void mousePressEvent(QMouseEvent *event) override</div><div class="ttdoc">Intercepte les clics souris pour la sélection de routes ou de villes.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8cpp_source.html#l00013">Affichage.cpp:13</a></div></div>
+<div class="ttc" id="aclassAffichage_html_add9a233987b30e0cae515078be45aae3"><div class="ttname"><a href="classAffichage.html#add9a233987b30e0cae515078be45aae3">Affichage::vue</a></div><div class="ttdeci">QGraphicsView * vue</div><div class="ttdoc">Vue Qt affichant la scène dans la fenêtre.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8h_source.html#l00027">Affichage.h:27</a></div></div>
+<div class="ttc" id="aclassAffichage_html_ae77eaf95ebb6e1323148959e062df5d9"><div class="ttname"><a href="classAffichage.html#ae77eaf95ebb6e1323148959e062df5d9">Affichage::mettreAJour</a></div><div class="ttdeci">void mettreAJour()</div><div class="ttdoc">Redessine l'intégralité de la scène pour refléter l'état courant du jeu.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8cpp_source.html#l00151">Affichage.cpp:151</a></div></div>
+<div class="ttc" id="aclassAffichage_html_aef32b46ea8533260f1a6c9ca0b34d9a7"><div class="ttname"><a href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">Affichage::dessinerRoute</a></div><div class="ttdeci">void dessinerRoute(int x1, int y1, int x2, int y2, QColor couleur, int longueur, QColor couleur2=Qt::transparent, QString proprio=&quot;&quot;)</div><div class="ttdoc">Dessine une route entre deux points, avec support des routes doubles.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8cpp_source.html#l00243">Affichage.cpp:243</a></div></div>
+<div class="ttc" id="aclassAffichage_html_aefd220a7781092371db8958d5e384168"><div class="ttname"><a href="classAffichage.html#aefd220a7781092371db8958d5e384168">Affichage::dessinerVille</a></div><div class="ttdeci">void dessinerVille(int x, int y, QString nom)</div><div class="ttdoc">Dessine une ville sous forme de cercle étiqueté.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8cpp_source.html#l00122">Affichage.cpp:122</a></div></div>
+<div class="ttc" id="aclassPlateau_html"><div class="ttname"><a href="classPlateau.html">Plateau</a></div><div class="ttdoc">Déclaration anticipée pour éviter les inclusions circulaires.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8h_source.html#l00026">Plateau.h:26</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="Affichage_8h.html">Affichage.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

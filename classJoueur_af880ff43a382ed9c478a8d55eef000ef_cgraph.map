@@ -1,0 +1,9 @@
+<map id="Joueur::validerTicket" name="Joueur::validerTicket">
+<area shape="rect" id="Node000001" title="Valide un ticket si son objectif est atteint." alt="" coords="5,55,160,80"/>
+<area shape="rect" id="Node000002" href="$classTicket.html#a650a77c0085e54714006ce0b80d1423b" title="Indique si le ticket est encore valide." alt="" coords="237,5,367,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,52,231,31,232,36,140,57"/>
+<area shape="rect" id="Node000003" href="$classJoueur.html#aadd87efcea0d7e32335ec0ef0d041587" title="Retourne le nombre de tickets validés." alt="" coords="217,55,387,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,65,203,65,203,70,160,70"/>
+<area shape="rect" id="Node000004" href="$classJoueur.html#ad208eeeb7c847301bfab4d577ab7ded4" title="Modifie le nombre de tickets validés." alt="" coords="208,104,396,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="140,77,232,98,231,104,139,83"/>
+</map>

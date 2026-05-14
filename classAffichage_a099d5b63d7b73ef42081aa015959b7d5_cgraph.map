@@ -1,0 +1,7 @@
+<map id="Affichage::dessinerPlateau" name="Affichage::dessinerPlateau">
+<area shape="rect" id="Node000001" title="Dessine l&#39;intégralité du plateau (villes + routes)." alt="" coords="5,31,200,56"/>
+<area shape="rect" id="Node000002" href="$classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7" title="Dessine une route entre deux points, avec support des routes doubles." alt="" coords="248,5,432,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,30,234,27,235,32,200,36"/>
+<area shape="rect" id="Node000003" href="$classAffichage.html#aefd220a7781092371db8958d5e384168" title="Dessine une ville sous forme de cercle étiqueté." alt="" coords="253,55,427,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="200,51,239,55,239,60,200,56"/>
+</map>

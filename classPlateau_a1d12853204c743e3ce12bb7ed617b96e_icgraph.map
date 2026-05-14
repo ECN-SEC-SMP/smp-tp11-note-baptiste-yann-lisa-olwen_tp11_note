@@ -1,0 +1,8 @@
+<map id="Plateau::getRoute" name="Plateau::getRoute">
+<area shape="rect" id="Node000001" title="Retourne la liste des routes du plateau." alt="" coords="325,5,464,31"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Point d&#39;entrée principal de l&#39;application." alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="312,21,60,21,60,15,312,15"/>
+<area shape="rect" id="Node000003" href="$classAffichage.html#ae77eaf95ebb6e1323148959e062df5d9" title="Redessine l&#39;intégralité de la scène pour refléter l&#39;état courant du jeu." alt="" coords="108,31,277,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="312,31,278,35,277,30,311,26"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="99,31,60,25,61,20,99,26"/>
+</map>

@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Les Aventuriers du Rail:  Fichier source de Affichage.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Les Aventuriers du Rail<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Implémentation C++ du jeu de société du même nom.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Affichage_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Affichage.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="Affichage_8cpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="Affichage_8h.html">Affichage.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;QGraphicsTextItem&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;QMouseEvent&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;QDebug&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"></span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * @brief Intercepte les clics souris et affiche les coordonnées scène dans la console.</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * @param event Événement souris fourni par Qt.</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * @note Utile en phase de développement pour repérer les coordonnées des villes.</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="}">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classAffichage.html#abb32581965a12a712d63aecb87cba6e2">   13</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAffichage.html#abb32581965a12a712d63aecb87cba6e2">Affichage::mousePressEvent</a>(QMouseEvent* event)</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    QPointF pos = <a class="code hl_variable" href="classAffichage.html#add9a233987b30e0cae515078be45aae3">vue</a>-&gt;mapToScene(event-&gt;pos());</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    qDebug() &lt;&lt; <span class="stringliteral">&quot;x =&quot;</span> &lt;&lt; pos.x() &lt;&lt; <span class="stringliteral">&quot;, y =&quot;</span> &lt;&lt; pos.y();</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
+</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"></span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * @brief Construit la fenêtre principale et initialise la scène graphique.</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * @param plateau Pointeur vers le plateau logique (ne doit pas être nul).</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * @param parent  Widget Qt parent (nullptr = fenêtre racine).</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classAffichage.html#a8c072a04eff871f55d94f642d1fa188e">   24</a></span><a class="code hl_function" href="classAffichage.html#a8c072a04eff871f55d94f642d1fa188e">Affichage::Affichage</a>(<a class="code hl_class" href="classPlateau.html">Plateau</a>* plateau, QWidget* parent)</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    : QMainWindow(parent), plateau(plateau)</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_variable" href="classAffichage.html#a404b2883b0fc1f7b0e5cc8ceeea0f303">scene</a> = <span class="keyword">new</span> QGraphicsScene();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_variable" href="classAffichage.html#a404b2883b0fc1f7b0e5cc8ceeea0f303">scene</a>-&gt;setBackgroundBrush(Qt::white); </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_variable" href="classAffichage.html#add9a233987b30e0cae515078be45aae3">vue</a> = <span class="keyword">new</span> QGraphicsView(<a class="code hl_variable" href="classAffichage.html#a404b2883b0fc1f7b0e5cc8ceeea0f303">scene</a>);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    setCentralWidget(<a class="code hl_variable" href="classAffichage.html#add9a233987b30e0cae515078be45aae3">vue</a>);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    setWindowTitle(<span class="stringliteral">&quot;Les Aventuriers du Rail&quot;</span>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    resize(1200, 800);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_function" href="classAffichage.html#a099d5b63d7b73ef42081aa015959b7d5">dessinerPlateau</a>();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"></span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"> * @brief Dessine l&#39;intégralité du plateau : toutes les villes et routes du jeu.</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"> * Les coordonnées sont exprimées en pixels dans le repère de la scène Qt.</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"> * Les routes doubles sont indiquées par un second argument couleur non transparent.</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"> * @note Le dessin du fond image est commenté — décommenter pour activer.</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classAffichage.html#a099d5b63d7b73ef42081aa015959b7d5">   45</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAffichage.html#a099d5b63d7b73ef42081aa015959b7d5">Affichage::dessinerPlateau</a>()</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">//scene-&gt;addPixmap(QPixmap(&quot;plateau.png&quot;));</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">//QPixmap img(&quot;plateau.png&quot;);</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">//scene-&gt;addPixmap(img.scaled(1200, 800, Qt::KeepAspectRatio));</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(80,  168, <span class="stringliteral">&quot;Seattle&quot;</span>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(310, 68,  <span class="stringliteral">&quot;Calgary&quot;</span>);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(70,  444, <span class="stringliteral">&quot;San Francisco&quot;</span>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(157,  577, <span class="stringliteral">&quot;Los Angeles&quot;</span>);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(274, 388, <span class="stringliteral">&quot;Salt Lake City&quot;</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(314, 222, <span class="stringliteral">&quot;Helena&quot;</span>);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(484, 413, <span class="stringliteral">&quot;Denver&quot;</span>);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(439, 570, <span class="stringliteral">&quot;Albuquerque&quot;</span>);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(584, 99,  <span class="stringliteral">&quot;Winnipeg&quot;</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(692, 413, <span class="stringliteral">&quot;Kansas City&quot;</span>);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(655, 581, <span class="stringliteral">&quot;Dallas&quot;</span>);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(856, 657, <span class="stringliteral">&quot;New Orleans&quot;</span>);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(730, 173, <span class="stringliteral">&quot;Duluth&quot;</span>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(1015, 96,  <span class="stringliteral">&quot;Montreal&quot;</span>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(1135, 199, <span class="stringliteral">&quot;New York&quot;</span>);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(825, 309, <span class="stringliteral">&quot;Chicago&quot;</span>);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(1101, 357, <span class="stringliteral">&quot;Washington&quot;</span>);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(953, 531, <span class="stringliteral">&quot;Atlanta&quot;</span>);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">dessinerVille</a>(1127, 698, <span class="stringliteral">&quot;Miami&quot;</span>);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(80,  168, 310, 68,    Qt::black,  3, Qt::red);            <span class="comment">// Seattle - Calgary</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(80,  168, 70,  444,   Qt::blue,   3, Qt::green);          <span class="comment">// Seattle - San Francisco</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(80,  168, 274, 388,   Qt::white,  3, Qt::transparent);    <span class="comment">// Seattle - Salt Lake City</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(80,  168, 314, 222,   Qt::yellow, 2, Qt::transparent);    <span class="comment">// Seattle - Helena</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(310, 68,  314, 222,   Qt::white,  1, Qt::red);            <span class="comment">// Calgary - Helena</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(310, 68,  584, 99,    Qt::yellow, 3, Qt::green);          <span class="comment">// Calgary - Winnipeg</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(314, 222, 584, 99,    Qt::blue,   3, Qt::transparent);    <span class="comment">// Helena - Winnipeg</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(314, 222, 274, 388,   Qt::green,  1, Qt::black);          <span class="comment">// Helena - Salt Lake City</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(314, 222, 484, 413,   Qt::yellow, 2, Qt::transparent);    <span class="comment">// Helena - Denver</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(274, 388, 484, 413,   Qt::black,  2, Qt::blue);           <span class="comment">// Salt Lake City - Denver</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(274, 388, 70,  444,   Qt::green,  2, Qt::yellow);         <span class="comment">// Salt Lake City - San Francisco</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(274, 388, 439, 570,   Qt::yellow, 2, Qt::transparent);    <span class="comment">// Salt Lake City - Albuquerque</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(70,  444, 157, 577,   Qt::black,  1, Qt::red);            <span class="comment">// San Francisco - Los Angeles</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(157, 577, 439, 570,   Qt::blue,   3, Qt::white);          <span class="comment">// Los Angeles - Albuquerque</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(157, 577, 274, 388,   Qt::red,    2, Qt::transparent);    <span class="comment">// Los Angeles - Salt Lake City</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(439, 570, 484, 413,   Qt::red,    1, Qt::transparent);    <span class="comment">// Albuquerque - Denver</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(484, 413, 692, 413,   Qt::white,  2, Qt::green);          <span class="comment">// Denver - Kansas City</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(584, 99,  730, 173,   Qt::black,  1, Qt::red);            <span class="comment">// Winnipeg - Duluth</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(692, 413, 655, 581,   Qt::red,    1, Qt::yellow);         <span class="comment">// Kansas City - Dallas</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(692, 413, 953, 531,   Qt::blue,   3, Qt::transparent);    <span class="comment">// Kansas City - Atlanta</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(825, 309, 953, 531,   Qt::green,  2, Qt::transparent);    <span class="comment">// Chicago - Atlanta</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(655, 581, 856, 657,   Qt::red,    2, Qt::blue);           <span class="comment">// Dallas - New Orleans</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(856, 657, 953, 531,   Qt::red,    1, Qt::black);          <span class="comment">// New Orleans - Atlanta</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(655, 581, 953, 531,   Qt::white,  3, Qt::transparent);    <span class="comment">// Dallas - Atlanta</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(655, 581, 439, 570,   Qt::black,  2, Qt::green);          <span class="comment">// Dallas - Albuquerque</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(730, 173, 484, 413,   Qt::black,  4, Qt::transparent);    <span class="comment">// Duluth - Denver</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(730, 173, 825, 309,   Qt::red,    1, Qt::blue);           <span class="comment">// Duluth - Chicago</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(730, 173, 1015, 96,   Qt::blue,   3, Qt::green);          <span class="comment">// Duluth - Montreal</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(730, 173, 692, 413,   Qt::white,  2, Qt::transparent);    <span class="comment">// Duluth - Kansas City</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(1015, 96,  1135, 199, Qt::black,  1, Qt::white);          <span class="comment">// Montreal - New York</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(1015, 96,  825, 309,  Qt::yellow, 3, Qt::transparent);    <span class="comment">// Montreal - Chicago</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(1135, 199, 1101, 357, Qt::yellow, 1, Qt::blue);           <span class="comment">// New York - Washington</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(1135, 199, 825, 309,  Qt::white,  3, Qt::red);            <span class="comment">// New York - Chicago</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(825, 309, 1101, 357,  Qt::black,  3, Qt::transparent);    <span class="comment">// Chicago - Washington</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(825, 309, 692, 413,   Qt::yellow, 1, Qt::black);          <span class="comment">// Chicago - Kansas City</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(953, 531, 1101, 357,  Qt::white,  2, Qt::yellow);         <span class="comment">// Atlanta - Washington</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(953, 531, 1127, 698,  Qt::blue,   2, Qt::black);          <span class="comment">// Atlanta - Miami</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(1127, 698, 1101, 357, Qt::green,  4, Qt::red);            <span class="comment">// Miami - Washington</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">dessinerRoute</a>(1127, 698, 856, 657,  Qt::white,  3, Qt::yellow);         <span class="comment">// Miami - New Orleans</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
+</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment"></span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment"> * @brief Dessine une ville sous forme d&#39;un cercle étiqueté centré sur (x, y).</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment"> * Le nom est affiché en rouge gras, centré dans le cercle blanc.</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment"> * Le rayon du cercle est fixé à 28 pixels.</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment"> * @param x   Coordonnée X du centre (pixels scène).</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment"> * @param y   Coordonnée Y du centre (pixels scène).</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment"> * @param nom Nom de la ville affiché dans le cercle.</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00122" data-start="{" data-end="}">
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="classAffichage.html#aefd220a7781092371db8958d5e384168">  122</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAffichage.html#aefd220a7781092371db8958d5e384168">Affichage::dessinerVille</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, QString nom)</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>{</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <a class="code hl_variable" href="classAffichage.html#a404b2883b0fc1f7b0e5cc8ceeea0f303">scene</a>-&gt;addEllipse(x-28, y-28, 56, 56, QPen(Qt::black, 1), QBrush(Qt::white));</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    QGraphicsTextItem* texte = <a class="code hl_variable" href="classAffichage.html#a404b2883b0fc1f7b0e5cc8ceeea0f303">scene</a>-&gt;addText(nom);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    QFont font;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    font.setPointSize(12);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    font.setBold(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    texte-&gt;setFont(font);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    texte-&gt;setDefaultTextColor(Qt::darkRed);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordtype">float</span> textWidth = texte-&gt;boundingRect().width();</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordtype">float</span> textHeight = texte-&gt;boundingRect().height();</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    texte-&gt;setPos(x - textWidth/2, y - textHeight/2);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>}</div>
+</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment"></span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="comment"> * @brief Met à jour l&#39;affichage complet après une modification du modèle.</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="comment"> * Efface la scène, redessine le plateau de base, puis superpose le prénom</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment"> * du propriétaire sur chaque route revendiquée, centré sur la route avec</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment"> * un fond noir pour la lisibilité.</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment"> * La couleur du texte correspond à la couleur de wagon du joueur :</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment"> * - @c CouleurWagon::Rouge  → rouge</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment"> * - @c CouleurWagon::Bleu   → bleu</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment"> * - @c CouleurWagon::Jaune  → jaune</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="comment"> * - @c CouleurWagon::Vert   → vert</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00151" data-start="{" data-end="}">
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="classAffichage.html#ae77eaf95ebb6e1323148959e062df5d9">  151</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAffichage.html#ae77eaf95ebb6e1323148959e062df5d9">Affichage::mettreAJour</a>()</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>{</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <a class="code hl_variable" href="classAffichage.html#a404b2883b0fc1f7b0e5cc8ceeea0f303">scene</a>-&gt;clear();</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <a class="code hl_function" href="classAffichage.html#a099d5b63d7b73ef42081aa015959b7d5">dessinerPlateau</a>();</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    std::map&lt;std::string, std::pair&lt;int,int&gt;&gt; coords = {</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        {<span class="stringliteral">&quot;Seattle&quot;</span>,       {80,  168}},</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        {<span class="stringliteral">&quot;Calgary&quot;</span>,       {310, 68}},</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        {<span class="stringliteral">&quot;San Francisco&quot;</span>, {70,  444}},</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        {<span class="stringliteral">&quot;Los Angeles&quot;</span>,   {157, 577}},</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        {<span class="stringliteral">&quot;Salt Lake City&quot;</span>,{274, 388}},</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        {<span class="stringliteral">&quot;Helena&quot;</span>,        {314, 222}},</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        {<span class="stringliteral">&quot;Denver&quot;</span>,        {484, 413}},</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        {<span class="stringliteral">&quot;Albuquerque&quot;</span>,   {439, 570}},</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        {<span class="stringliteral">&quot;Winnipeg&quot;</span>,      {584, 99}},</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        {<span class="stringliteral">&quot;Kansas City&quot;</span>,   {692, 413}},</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        {<span class="stringliteral">&quot;Dallas&quot;</span>,        {655, 581}},</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        {<span class="stringliteral">&quot;New Orleans&quot;</span>,   {856, 657}},</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        {<span class="stringliteral">&quot;Duluth&quot;</span>,        {730, 173}},</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        {<span class="stringliteral">&quot;Montreal&quot;</span>,      {1015, 96}},</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        {<span class="stringliteral">&quot;New York&quot;</span>,      {1135, 199}},</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        {<span class="stringliteral">&quot;Chicago&quot;</span>,       {825, 309}},</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        {<span class="stringliteral">&quot;Washington&quot;</span>,    {1101, 357}},</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        {<span class="stringliteral">&quot;Atlanta&quot;</span>,       {953, 531}},</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        {<span class="stringliteral">&quot;Miami&quot;</span>,         {1127, 698}}</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    };</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="keywordflow">for</span> (<a class="code hl_class" href="classRoute.html">Route</a>&amp; r : <a class="code hl_variable" href="classAffichage.html#a946aa200fc57785f3d0eedd91b34164d">plateau</a>-&gt;<a class="code hl_function" href="classPlateau.html#a1d12853204c743e3ce12bb7ed617b96e">getRoute</a>())</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    {</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <span class="keywordflow">if</span> (!r.estDispo())</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        {</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>            std::string nomA = r.getVilleA().getNom();</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>            std::string nomB = r.getVilleB().getNom();</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            <span class="keywordflow">if</span> (coords.count(nomA) &amp;&amp; coords.count(nomB))</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>            {</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>                <span class="keywordtype">int</span> x1 = coords[nomA].first;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                <span class="keywordtype">int</span> y1 = coords[nomA].second;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                <span class="keywordtype">int</span> x2 = coords[nomB].first;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>                <span class="keywordtype">int</span> y2 = coords[nomB].second;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>                <span class="keywordtype">float</span> midX = (x1 + x2) / 2.0f;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                <span class="keywordtype">float</span> midY = (y1 + y2) / 2.0f;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                QString proprio = QString::fromStdString(r.getProprio()-&gt;getPrenom());</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                QGraphicsTextItem* texte = <a class="code hl_variable" href="classAffichage.html#a404b2883b0fc1f7b0e5cc8ceeea0f303">scene</a>-&gt;addText(proprio);</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                QFont font;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                font.setPointSize(15);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                font.setBold(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                texte-&gt;setFont(font);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                QColor couleurTexte;</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>                <a class="code hl_enumeration" href="group__Joueurs.html#ga7c8ad6b097e3aa884baa3f1e84bcfa7f">CouleurWagon</a> cw = r.getProprio()-&gt;getCouleurWagon();</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>                <span class="keywordflow">if</span> (cw == <a class="code hl_enumvalue" href="group__Joueurs.html#gga7c8ad6b097e3aa884baa3f1e84bcfa7faf606b49dcc579cac95d676cdf2dc918d">CouleurWagon::Rouge</a>)  couleurTexte = Qt::red;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>                <span class="keywordflow">if</span> (cw == <a class="code hl_enumvalue" href="group__Joueurs.html#gga7c8ad6b097e3aa884baa3f1e84bcfa7fa2c93ffdb332f3211dd09daf8bd7ad38f">CouleurWagon::Bleu</a>)   couleurTexte = Qt::blue;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>                <span class="keywordflow">if</span> (cw == <a class="code hl_enumvalue" href="group__Joueurs.html#gga7c8ad6b097e3aa884baa3f1e84bcfa7fa2daf2040687086eb7af780b8ce437f3f">CouleurWagon::Jaune</a>)  couleurTexte = Qt::yellow;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>                <span class="keywordflow">if</span> (cw == <a class="code hl_enumvalue" href="group__Joueurs.html#gga7c8ad6b097e3aa884baa3f1e84bcfa7faf87a604e5366b28ba26e14e20c067de3">CouleurWagon::Vert</a>)   couleurTexte = Qt::green;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>                texte-&gt;setDefaultTextColor(couleurTexte);</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>                texte-&gt;setPos(midX - texte-&gt;boundingRect().width()/2,</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                              midY - texte-&gt;boundingRect().height()/2);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>                QGraphicsRectItem* fond = <a class="code hl_variable" href="classAffichage.html#a404b2883b0fc1f7b0e5cc8ceeea0f303">scene</a>-&gt;addRect(</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>                    midX - texte-&gt;boundingRect().width()/2 - 2,</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>                    midY - texte-&gt;boundingRect().height()/2 - 2,</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>                    texte-&gt;boundingRect().width() + 4,</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                    texte-&gt;boundingRect().height() + 4</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>                );</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>                fond-&gt;setBrush(QBrush(Qt::black));</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>                fond-&gt;setPen(QPen(Qt::transparent));</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>                fond-&gt;setZValue(-1);</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>            }</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        }</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    }</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>}</div>
+</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="comment"></span> </div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="comment"> * @brief Dessine une route segmentée entre deux points de la scène.</span></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="comment"> * Chaque segment est un rectangle orienté selon l&#39;angle de la route,</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="comment"> * espacés régulièrement et centrés entre les deux villes.</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="comment"> * Pour une route double, une voie parallèle décalée de 17 px est ajoutée.</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="comment"> * Si @p proprio est non vide, le nom du propriétaire est affiché au centre.</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="comment"> * @complexity O(longueur)</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="comment"> * @param x1       Coordonnée X de la ville de départ (pixels scène).</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="comment"> * @param y1       Coordonnée Y de la ville de départ (pixels scène).</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="comment"> * @param x2       Coordonnée X de la ville d&#39;arrivée (pixels scène).</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="comment"> * @param y2       Coordonnée Y de la ville d&#39;arrivée (pixels scène).</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="comment"> * @param couleur  Couleur de remplissage des segments de la voie principale.</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="comment"> * @param longueur Nombre de segments (= nombre de wagons requis).</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="comment"> * @param couleur2 Couleur de la voie parallèle ; Qt::transparent = route simple.</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="comment"> * @param proprio  Prénom du joueur propriétaire ; vide = route non revendiquée.</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00243" data-start="{" data-end="}">
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno"><a class="line" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">  243</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">Affichage::dessinerRoute</a>(<span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y1, <span class="keywordtype">int</span> x2, <span class="keywordtype">int</span> y2, QColor couleur, <span class="keywordtype">int</span> longueur, QColor couleur2, QString proprio)</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>{</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="keywordtype">float</span> totalDx = x2 - x1;</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keywordtype">float</span> totalDy = y2 - y1;</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keywordtype">float</span> angle = atan2(totalDy, totalDx);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    <span class="keywordtype">float</span> dist = sqrt(totalDx*totalDx + totalDy*totalDy);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    </div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <span class="keywordtype">float</span> segmentW = 60.0f;</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    <span class="keywordtype">float</span> segmentH = 12.0f;</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <span class="keywordtype">float</span> gap = 6.0f;</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    <span class="keywordtype">float</span> total = longueur * segmentW + (longueur - 1) * gap;</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    <span class="keywordtype">float</span> rayonVille = 28.0f;</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <span class="keywordtype">float</span> offset = (dist - total) / 2.0f;</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span> </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    <span class="keywordtype">float</span> px = -sin(angle) * 17;</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    <span class="keywordtype">float</span> py = cos(angle) * 17;</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; longueur; i++)</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    {</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        <span class="keywordtype">float</span> d = offset + i * (segmentW + gap);</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        <span class="keywordtype">float</span> x = x1 + cos(angle) * d;</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="keywordtype">float</span> y = y1 + sin(angle) * d;</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        QGraphicsRectItem* segment = <a class="code hl_variable" href="classAffichage.html#a404b2883b0fc1f7b0e5cc8ceeea0f303">scene</a>-&gt;addRect(0, -segmentH/2, segmentW, segmentH);</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        segment-&gt;setBrush(QBrush(couleur));</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        segment-&gt;setPen(QPen(Qt::black));</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        QTransform transform;</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        transform.translate(x, y);</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        transform.rotateRadians(angle);</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        segment-&gt;setTransform(transform);</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span> </div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <span class="keywordflow">if</span> (couleur2 != Qt::transparent)</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        {</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>            QGraphicsRectItem* segment2 = <a class="code hl_variable" href="classAffichage.html#a404b2883b0fc1f7b0e5cc8ceeea0f303">scene</a>-&gt;addRect(0, -segmentH/2, segmentW, segmentH);</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>            segment2-&gt;setBrush(QBrush(couleur2));</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>            segment2-&gt;setPen(QPen(Qt::black));</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>            QTransform transform2;</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>            transform2.translate(x + px, y + py);</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>            transform2.rotateRadians(angle);</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>            segment2-&gt;setTransform(transform2);</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        }</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    }</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    <span class="keywordflow">if</span> (!proprio.isEmpty())</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    {</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        <span class="keywordtype">float</span> midX = (x1 + x2) / 2.0f;</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        <span class="keywordtype">float</span> midY = (y1 + y2) / 2.0f;</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span> </div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        QGraphicsTextItem* texte = <a class="code hl_variable" href="classAffichage.html#a404b2883b0fc1f7b0e5cc8ceeea0f303">scene</a>-&gt;addText(proprio);</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>        QFont font;</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        font.setPointSize(8);</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        font.setBold(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        texte-&gt;setFont(font);</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        texte-&gt;setDefaultTextColor(Qt::darkBlue);</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        texte-&gt;setPos(midX - texte-&gt;boundingRect().width()/2, </div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>                    midY - texte-&gt;boundingRect().height()/2);</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    }</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>}</div>
+</div>
+<div class="ttc" id="aAffichage_8h_html"><div class="ttname"><a href="Affichage_8h.html">Affichage.h</a></div></div>
+<div class="ttc" id="aclassAffichage_html_a099d5b63d7b73ef42081aa015959b7d5"><div class="ttname"><a href="classAffichage.html#a099d5b63d7b73ef42081aa015959b7d5">Affichage::dessinerPlateau</a></div><div class="ttdeci">void dessinerPlateau()</div><div class="ttdoc">Dessine l'intégralité du plateau (villes + routes).</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8cpp_source.html#l00045">Affichage.cpp:45</a></div></div>
+<div class="ttc" id="aclassAffichage_html_a404b2883b0fc1f7b0e5cc8ceeea0f303"><div class="ttname"><a href="classAffichage.html#a404b2883b0fc1f7b0e5cc8ceeea0f303">Affichage::scene</a></div><div class="ttdeci">QGraphicsScene * scene</div><div class="ttdoc">Scène Qt contenant tous les éléments graphiques.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8h_source.html#l00026">Affichage.h:26</a></div></div>
+<div class="ttc" id="aclassAffichage_html_a8c072a04eff871f55d94f642d1fa188e"><div class="ttname"><a href="classAffichage.html#a8c072a04eff871f55d94f642d1fa188e">Affichage::Affichage</a></div><div class="ttdeci">Affichage(Plateau *plateau, QWidget *parent=nullptr)</div><div class="ttdoc">Construit la fenêtre principale et initialise la scène graphique.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8cpp_source.html#l00024">Affichage.cpp:24</a></div></div>
+<div class="ttc" id="aclassAffichage_html_a946aa200fc57785f3d0eedd91b34164d"><div class="ttname"><a href="classAffichage.html#a946aa200fc57785f3d0eedd91b34164d">Affichage::plateau</a></div><div class="ttdeci">Plateau * plateau</div><div class="ttdoc">Pointeur vers le plateau logique du jeu.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8h_source.html#l00028">Affichage.h:28</a></div></div>
+<div class="ttc" id="aclassAffichage_html_abb32581965a12a712d63aecb87cba6e2"><div class="ttname"><a href="classAffichage.html#abb32581965a12a712d63aecb87cba6e2">Affichage::mousePressEvent</a></div><div class="ttdeci">void mousePressEvent(QMouseEvent *event) override</div><div class="ttdoc">Intercepte les clics souris pour la sélection de routes ou de villes.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8cpp_source.html#l00013">Affichage.cpp:13</a></div></div>
+<div class="ttc" id="aclassAffichage_html_add9a233987b30e0cae515078be45aae3"><div class="ttname"><a href="classAffichage.html#add9a233987b30e0cae515078be45aae3">Affichage::vue</a></div><div class="ttdeci">QGraphicsView * vue</div><div class="ttdoc">Vue Qt affichant la scène dans la fenêtre.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8h_source.html#l00027">Affichage.h:27</a></div></div>
+<div class="ttc" id="aclassAffichage_html_ae77eaf95ebb6e1323148959e062df5d9"><div class="ttname"><a href="classAffichage.html#ae77eaf95ebb6e1323148959e062df5d9">Affichage::mettreAJour</a></div><div class="ttdeci">void mettreAJour()</div><div class="ttdoc">Redessine l'intégralité de la scène pour refléter l'état courant du jeu.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8cpp_source.html#l00151">Affichage.cpp:151</a></div></div>
+<div class="ttc" id="aclassAffichage_html_aef32b46ea8533260f1a6c9ca0b34d9a7"><div class="ttname"><a href="classAffichage.html#aef32b46ea8533260f1a6c9ca0b34d9a7">Affichage::dessinerRoute</a></div><div class="ttdeci">void dessinerRoute(int x1, int y1, int x2, int y2, QColor couleur, int longueur, QColor couleur2=Qt::transparent, QString proprio=&quot;&quot;)</div><div class="ttdoc">Dessine une route entre deux points, avec support des routes doubles.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8cpp_source.html#l00243">Affichage.cpp:243</a></div></div>
+<div class="ttc" id="aclassAffichage_html_aefd220a7781092371db8958d5e384168"><div class="ttname"><a href="classAffichage.html#aefd220a7781092371db8958d5e384168">Affichage::dessinerVille</a></div><div class="ttdeci">void dessinerVille(int x, int y, QString nom)</div><div class="ttdoc">Dessine une ville sous forme de cercle étiqueté.</div><div class="ttdef"><b>Definition</b> <a href="Affichage_8cpp_source.html#l00122">Affichage.cpp:122</a></div></div>
+<div class="ttc" id="aclassPlateau_html"><div class="ttname"><a href="classPlateau.html">Plateau</a></div><div class="ttdoc">Déclaration anticipée pour éviter les inclusions circulaires.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8h_source.html#l00026">Plateau.h:26</a></div></div>
+<div class="ttc" id="aclassPlateau_html_a1d12853204c743e3ce12bb7ed617b96e"><div class="ttname"><a href="classPlateau.html#a1d12853204c743e3ce12bb7ed617b96e">Plateau::getRoute</a></div><div class="ttdeci">std::vector&lt; Route &gt; &amp; getRoute()</div><div class="ttdoc">Retourne la liste des routes du plateau.</div><div class="ttdef"><b>Definition</b> <a href="Plateau_8cpp_source.html#l00047">Plateau.cpp:47</a></div></div>
+<div class="ttc" id="aclassRoute_html"><div class="ttname"><a href="classRoute.html">Route</a></div><div class="ttdoc">Déclaration anticipée pour éviter les inclusions circulaires.</div><div class="ttdef"><b>Definition</b> <a href="Route_8h_source.html#l00027">Route.h:27</a></div></div>
+<div class="ttc" id="agroup__Joueurs_html_ga7c8ad6b097e3aa884baa3f1e84bcfa7f"><div class="ttname"><a href="group__Joueurs.html#ga7c8ad6b097e3aa884baa3f1e84bcfa7f">CouleurWagon</a></div><div class="ttdeci">CouleurWagon</div><div class="ttdoc">Couleurs possibles des wagons d'un joueur.</div><div class="ttdef"><b>Definition</b> <a href="CouleurWagon_8h_source.html#l00017">CouleurWagon.h:18</a></div></div>
+<div class="ttc" id="agroup__Joueurs_html_gga7c8ad6b097e3aa884baa3f1e84bcfa7fa2c93ffdb332f3211dd09daf8bd7ad38f"><div class="ttname"><a href="group__Joueurs.html#gga7c8ad6b097e3aa884baa3f1e84bcfa7fa2c93ffdb332f3211dd09daf8bd7ad38f">CouleurWagon::Bleu</a></div><div class="ttdeci">@ Bleu</div><div class="ttdoc">Wagons bleus.</div></div>
+<div class="ttc" id="agroup__Joueurs_html_gga7c8ad6b097e3aa884baa3f1e84bcfa7fa2daf2040687086eb7af780b8ce437f3f"><div class="ttname"><a href="group__Joueurs.html#gga7c8ad6b097e3aa884baa3f1e84bcfa7fa2daf2040687086eb7af780b8ce437f3f">CouleurWagon::Jaune</a></div><div class="ttdeci">@ Jaune</div><div class="ttdoc">Wagons jaunes.</div></div>
+<div class="ttc" id="agroup__Joueurs_html_gga7c8ad6b097e3aa884baa3f1e84bcfa7faf606b49dcc579cac95d676cdf2dc918d"><div class="ttname"><a href="group__Joueurs.html#gga7c8ad6b097e3aa884baa3f1e84bcfa7faf606b49dcc579cac95d676cdf2dc918d">CouleurWagon::Rouge</a></div><div class="ttdeci">@ Rouge</div><div class="ttdoc">Wagons rouges.</div></div>
+<div class="ttc" id="agroup__Joueurs_html_gga7c8ad6b097e3aa884baa3f1e84bcfa7faf87a604e5366b28ba26e14e20c067de3"><div class="ttname"><a href="group__Joueurs.html#gga7c8ad6b097e3aa884baa3f1e84bcfa7faf87a604e5366b28ba26e14e20c067de3">CouleurWagon::Vert</a></div><div class="ttdeci">@ Vert</div><div class="ttdoc">Wagons verts.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="Affichage_8cpp.html">Affichage.cpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

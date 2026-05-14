@@ -1,0 +1,8 @@
+<map id="Ticket.h" name="Ticket.h">
+<area shape="rect" id="Node000001" title="Déclaration de la classe Ticket." alt="" coords="35,5,108,31"/>
+<area shape="rect" id="Node000002" href="$Ville_8h.html" title="Déclaration de la classe Ville." alt="" coords="5,79,68,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,32,51,67,46,65,63,30"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="42,152,101,177"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="76,31,83,78,83,110,79,139,74,138,78,110,78,79,71,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="45,103,62,138,57,141,40,106"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Route::setCouleur2" name="Route::setCouleur2">
+<area shape="rect" id="Node000001" title="Définit la couleur de la voie parallèle." alt="" coords="336,5,483,31"/>
+<area shape="rect" id="Node000002" href="$classPlateau.html#a2dcc9eb89dfda47913dfd880d8593ebe" title="Charge les routes depuis le fichier route.csv." alt="" coords="108,5,288,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="322,21,288,21,288,15,322,15"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Point d&#39;entrée principal de l&#39;application." alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+</map>

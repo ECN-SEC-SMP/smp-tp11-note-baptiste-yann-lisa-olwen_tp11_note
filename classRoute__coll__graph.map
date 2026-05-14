@@ -1,0 +1,26 @@
+<map id="Route" name="Route">
+<area shape="rect" id="Node000001" title="Déclaration anticipée pour éviter les inclusions circulaires." alt="" coords="5,1269,139,1655"/>
+<area shape="rect" id="Node000002" href="$classVille.html" title="Représente une ville sur le plateau de jeu." alt="" coords="83,263,210,428"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,429,83,467,68,509,57,553,53,597,53,1045,60,1253,54,1253,48,1045,48,597,52,552,63,507,78,465,96,427"/>
+<area shape="rect" id="Node000011" href="$classTicket.html" title="Représente un ticket destination entre deux villes." alt="" coords="89,505,205,691"/>
+<area shape="poly" id="edge12_Node000011_Node000002" title=" " alt="" coords="149,428,149,489,144,489,144,428"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="306,135,385,200"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="312,202,224,279,221,275,308,198"/>
+<area shape="rect" id="Node000005" href="$classJoueur.html" title="Déclaration anticipée pour éviter les inclusions circulaires." alt="" coords="242,881,395,1207"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="386,181,435,204,487,239,510,261,528,286,541,313,545,344,545,787,542,819,533,849,519,878,501,905,458,952,411,990,407,986,454,948,497,901,514,875,528,847,537,818,540,787,540,344,536,315,524,288,506,264,484,243,432,209,384,185"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="280,5,411,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="348,99,348,134,343,134,343,99"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="244,1176,149,1335,145,1333,240,1173"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="300,753,479,819"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="383,820,370,866,365,865,378,818"/>
+<area shape="rect" id="Node000007" href="$classCarteTrain.html" title="Représente une carte train identifiée par sa couleur." alt="" coords="378,545,494,651"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="430,652,412,730,409,739,404,737,407,729,425,650"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="231,565,353,631"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="289,645,291,687,296,708,305,728,326,751,322,755,300,731,291,710,286,688,283,645"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="124,753,276,819"/>
+<area shape="poly" id="edge13_Node000010_Node000008" title=" " alt="" coords="258,643,226,683,207,716,201,754,195,753,201,714,222,680,254,640"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="281,313,303,378"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="295,378,295,549,289,549,289,378"/>
+<area shape="poly" id="edge10_Node000005_Node000010" title=" " alt="" coords="217,818,239,866,234,868,212,820"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="92,691,92,710,98,728,113,745,109,749,94,731,87,711,87,691"/>
+</map>

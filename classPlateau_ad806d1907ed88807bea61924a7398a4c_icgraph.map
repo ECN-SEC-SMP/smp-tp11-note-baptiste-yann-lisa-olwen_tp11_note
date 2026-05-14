@@ -1,0 +1,7 @@
+<map id="Plateau::ajouterDefausseTicket" name="Plateau::ajouterDefausseTicket">
+<area shape="rect" id="Node000001" title="Ajoute un ticket à la défausse." alt="" coords="331,5,517,45"/>
+<area shape="rect" id="Node000002" href="$classJoueur.html#a7170d1939d6c1adcc4db6ecab42acd01" title="Défausse un ticket vers la défausse du plateau." alt="" coords="108,13,283,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="316,28,283,28,283,23,316,23"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Point d&#39;entrée principal de l&#39;application." alt="" coords="5,13,60,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,28,60,28,60,23,95,23"/>
+</map>

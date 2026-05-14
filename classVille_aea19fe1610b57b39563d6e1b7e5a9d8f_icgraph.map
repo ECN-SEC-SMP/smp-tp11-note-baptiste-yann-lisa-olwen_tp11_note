@@ -1,0 +1,9 @@
+<map id="Ville::getNom" name="Ville::getNom">
+<area shape="rect" id="Node000001" title="Retourne le nom de la ville." alt="" coords="347,31,457,56"/>
+<area shape="rect" id="Node000002" href="$classPlateau.html#ac62489ed18969a5ef190037ec45b744e" title="Charge les tickets destination depuis le fichier Ticket.csv." alt="" coords="108,5,299,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="333,37,298,33,299,28,334,32"/>
+<area shape="rect" id="Node000003" href="$classJoueur.html#a1c632f392231561d3966fd5b73d2e3fc" title="Vérifie si un ticket destination est complété par les routes du joueur." alt="" coords="125,55,281,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="333,54,282,61,281,55,333,49"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Point d&#39;entrée principal de l&#39;application." alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="111,70,60,70,60,65,111,65"/>
+</map>

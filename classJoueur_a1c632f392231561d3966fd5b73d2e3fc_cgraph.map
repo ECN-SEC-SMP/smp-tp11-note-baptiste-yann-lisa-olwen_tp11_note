@@ -1,0 +1,9 @@
+<map id="Joueur::verifierTicket" name="Joueur::verifierTicket">
+<area shape="rect" id="Node000001" title="Vérifie si un ticket destination est complété par les routes du joueur." alt="" coords="5,55,161,80"/>
+<area shape="rect" id="Node000002" href="$classVille.html#aea19fe1610b57b39563d6e1b7e5a9d8f" title="Retourne le nom de la ville." alt="" coords="218,5,329,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,52,209,32,211,37,134,57"/>
+<area shape="rect" id="Node000003" href="$classTicket.html#ae7367fe4608274199fb32c6772cdb934" title="Retourne la ville de départ du ticket." alt="" coords="209,55,337,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,65,195,65,195,70,161,70"/>
+<area shape="rect" id="Node000004" href="$classTicket.html#a4d0198e0be5d53cf4573d31d436a162a" title="Retourne la ville d&#39;arrivée du ticket." alt="" coords="209,104,337,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="134,77,211,98,209,103,132,83"/>
+</map>

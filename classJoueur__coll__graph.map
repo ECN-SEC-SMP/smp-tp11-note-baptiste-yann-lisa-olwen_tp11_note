@@ -1,0 +1,23 @@
+<map id="Joueur" name="Joueur">
+<area shape="rect" id="Node000001" title="Déclaration anticipée pour éviter les inclusions circulaires." alt="" coords="304,881,457,1207"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="416,135,495,200"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="476,199,486,223,505,282,511,344,511,787,508,825,499,862,468,930,463,928,493,860,503,824,506,787,506,344,500,283,481,225,471,201"/>
+<area shape="rect" id="Node000010" href="$classVille.html" title="Représente une ville sur le plateau de jeu." alt="" coords="343,263,469,428"/>
+<area shape="poly" id="edge10_Node000010_Node000002" title=" " alt="" coords="449,201,436,248,431,246,444,199"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="390,5,521,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="458,99,458,134,453,134,453,99"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="82,753,261,819"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="199,817,296,935,291,938,195,821"/>
+<area shape="rect" id="Node000005" href="$classCarteTrain.html" title="Représente une carte train identifiée par sa couleur." alt="" coords="5,545,121,651"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="67,650,74,690,91,728,101,741,97,744,86,731,69,692,62,651"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="175,565,296,631"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="208,644,189,678,175,715,171,753,166,753,170,714,184,676,203,641"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="305,753,457,819"/>
+<area shape="poly" id="edge11_Node000008_Node000006" title=" " alt="" coords="257,642,280,685,311,728,336,751,332,755,307,731,276,688,252,644"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="224,313,247,378"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="238,378,238,549,233,549,233,378"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="383,819,383,865,378,865,378,819"/>
+<area shape="rect" id="Node000009" href="$classTicket.html" title="Représente un ticket destination entre deux villes." alt="" coords="344,505,460,691"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="394,691,389,737,384,737,389,691"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="407,428,406,489,401,489,402,428"/>
+</map>

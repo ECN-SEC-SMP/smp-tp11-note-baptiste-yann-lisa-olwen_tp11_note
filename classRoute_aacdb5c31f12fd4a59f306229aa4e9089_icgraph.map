@@ -1,0 +1,5 @@
+<map id="Route::estDispo" name="Route::estDispo">
+<area shape="rect" id="Node000001" title="Vérifie si la route est disponible (non revendiquée)." alt="" coords="241,5,367,31"/>
+<area shape="rect" id="Node000002" href="$classJoueur.html#ab99345a2bcd09508828c171fb5703af9" title="Vérifie si le joueur peut revendiquer une route." alt="" coords="5,5,193,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,21,194,21,194,15,227,15"/>
+</map>

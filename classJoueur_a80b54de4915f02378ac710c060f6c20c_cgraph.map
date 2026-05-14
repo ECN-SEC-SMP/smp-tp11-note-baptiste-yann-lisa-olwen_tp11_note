@@ -1,0 +1,7 @@
+<map id="Joueur::piocherCarte" name="Joueur::piocherCarte">
+<area shape="rect" id="Node000001" title="Pioche la carte du dessus de la pioche et l&#39;ajoute à la main." alt="" coords="5,31,160,56"/>
+<area shape="rect" id="Node000002" href="$classPlateau.html#a6afd8b5a1b762cdfbbcfbc4f7b6a9e55" title="Retourne la pioche de cartes train." alt="" coords="235,5,378,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,32,221,25,222,30,160,37"/>
+<area shape="rect" id="Node000003" href="$classPlateau.html#abcefb7901e1d2e7aa98bd4c1dbd01c37" title="Retire la carte du dessus de la pioche." alt="" coords="208,55,405,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,49,195,53,194,58,160,54"/>
+</map>
